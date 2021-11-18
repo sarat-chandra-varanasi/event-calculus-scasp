@@ -1,0 +1,27 @@
+% req 1
+While motor engagement is not confirmed, when the motor engagement criteria become satisfiedx, the motor engagement controller shall command motor engagement within 100 ms.
+% req 2
+While the motor engagement criteria are satisfied, when the motor engagement becomes not confirmed, the motor engagement controller shall command motor engagement within 100 ms.
+% req 3?
+That this definition means that when the motor has been engaged by another channel, and disengagement is detected, this channel will command engagement.
+% req 3
+When the motor engagement become not satisfied, the motor engagement controller shall command motor disengagement within 100 ms.
+% req 4
+While motor engagement is commanded, when the motor engagement becomes confirmed, the motor engagement controller shall set motor status to engaged within x ms.
+% req 5
+When the motor engagement criteria become not satisfied, the motor engagement controller shall set motor status to disengaged within x ms.
+
+Definitions
+Define command motor engagement motor command to engage.
+Define command motor disengagement motor command to disengage.
+Define motor engagement as confirmed while ‘Motor Engaged Pin Feedback’ is true, otherwise not confirmed.
+Define automation as requested when pilot  interface indicates automatic control requested, otherwise not requested.
+Define motor engagement criteria as satisfied, the automation is online and none of the motor inhibit conditions have been active within the previous 5 seconds, otherwise not satisfied
+
+Define motor Inhibit conditions as the set comprising
+
+{axyFunction is invalid, motor feedback is invalid, the Monitor flag has been set following autopilot commanded engagement, the motor is ‘stuck open’, a motor runaway is active, an SEU or power transient reset has occurred}
+Define motor runaway as active Runway Monitor Function is valid and the Monitor Feedback indicates a runaway, condition otherwise inactive.
+
+Define motor feedback as valid while both Up and Down position feedback sensors have been valid within the previous 0.3 seconds, otherwise invalid
+Define motor as stuck open while the motor engagement criteria have been satisfied for 0.5 seconds and motor engagement is not confirmed.
