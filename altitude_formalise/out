@@ -1,0 +1,26 @@
+QUERY:?- reset,query(A,B).
+
+no models
+
+QUERY:?- reset,query(A,B).
+QUERY:?- reset,query(A,BQUERY:?- reset,query(A,B).
+
+no models
+
+QUERY:?- reset,query(A,B).
+
+no models
+
+QUERY:?- reset,query(A,B).
+
+no models
+
+QUERY:?- reset,query(A,B).
+
+no models
+
+QUERY:?- reset,query(A,B).
+
+no models
+
+QUERY:?- reset,query(A,B

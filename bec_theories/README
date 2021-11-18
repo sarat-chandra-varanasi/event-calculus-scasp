@@ -1,0 +1,36 @@
+bec_original.lp (also bec_theory.lp)
+----------------
+  Proper ASP encoding of BEC axioms. Ideally this should be the only one used.  
+  Suffers from non-termination issues currently when the execution reaches some forall. 
+
+bec_sarat.lp
+-------------
+ Prolog style execution of BEC axioms. Has no ASP negation-as-failure (NAF) calls, 
+ and uses findall instead of forall. Useful debugging aid, but models returned are not 
+ precise yet.
+
+ bec_sarat_swi.lp
+ -----------------
+
+ Same as bec_sarat.lp but for SWI-Prolog. 
+
+
+bec_clingo.lp
+--------------
+ 
+     SAT-based clingo encoding of BEC. Time is discretized. 
+
+xc_shanahan.lp
+---------------
+   
+    Extended Event Calculus axioms from Shanahan. The axioms are not completely written, 
+    and are also written in the style of bec_sarat
+
+causal.lp
+----------
+    Additional causal axioms modelling fluents affected by simultaneous events, as in Thielscher ciruit. The axioms are written in pure ASP with NAF.
+
+
+causal_sarat.lp
+-----------------
+    Same as causal.lp, but written in Prolog style using findall. Has no NAF. 

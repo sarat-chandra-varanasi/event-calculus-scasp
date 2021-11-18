@@ -1,0 +1,1251 @@
+Ciao 1.19.0 [LINUXx86_64]
+?- display_debugged.
+{No module is selected for debugging}
+{No module is selected for source debugging}
+
+yes
+?- debug_module_source('scasp').
+{No module is selected for debugging}
+{Modules selected for source debugging: [scasp]}
+
+yes
+?- trace.
+{The debugger will first creep -- showing everything (trace)}
+
+yes
+{trace}
+?- use_module('/home/sarat/.ciao/sCASP/src/scasp.pl').
+
+yes
+{trace}
+?- notrace.
+{The debugger is switched off}
+
+yes
+?- spy(solve_goal).
+{The debugger will first leap -- showing spypoints and breakpoints (debug)}
+{Spypoint placed on 'scasp:solve_goal'/4}
+
+yes
+{debug}
+?-trace.
+{The debugger will first creep -- showing everything (trace)}
+
+yes
+{trace}
+?- main(['-i', '~/bec_theories/counter_clingo.lp']).
+   1  1  Call: scasp:main([-i,~/bec_theories/counter_clingo.lp]) ? l
+
+?- holdsAt(no_of_entries(0), 0).
+QUERY:?- holdsAt(no_of_entries(0),0).
+ + 38  7  Call: scasp:solve_goal(holdsAt(no_of_entries(0),0),[],StackOut,Modelx) ? l
+ + 55  12  Call: scasp:solve_goal(0 < 0,[holdsAt(no_of_entries(0),0)],StackOut,Modelx) ? l
+ + 55  12  Fail: scasp:solve_goal(0 < 0,[holdsAt(no_of_entries(0),0)],StackOut,Modelx) ? l
+ + 55  12  Call: scasp:solve_goal(time(_59930),[holdsAt(no_of_entries(0),0)],StackOut,Modelx) ? l
+ + 55  12  Exit: scasp:solve_goal(time(0),[holdsAt(no_of_entries(0),0)],[[],time(0),holdsAt(no_of_entries(0),0)],[time(0)]),
+	   Modelx = [time(0)],
+	   StackOut = [[],time(0),holdsAt(no_of_entries(0),0)] ? l
+ + 95  14  Call: scasp:solve_goal(time(_59938),[[],proved(time(0)),[],time(0),holdsAt(no_of_entries(0),0)],StackOut,Modelx) ? l
+ + 95  14  Exit: scasp:solve_goal(time(0),[[],proved(time(0)),[],time(0),holdsAt(no_of_entries(0),0)],[[],time(0),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(0),0)],[time(0)]),
+	   Modelx = [time(0)],
+	   StackOut = [[],time(0),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(0),0)] ? l
+ + 119  15  Call: scasp:solve_goal(event(_59942),[[],time(0),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(0),0)],StackOut,Modelx) ? l
+ + 119  15  Exit: scasp:solve_goal(event(entry),[[],time(0),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(0),0)],[[],event(entry),[],time(0),[],proved(time(0)),[],time(0),holdsAt(...)],[event(entry)]),
+	   Modelx = [event(entry)],
+	   StackOut = [[],event(entry),[],time(0),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(...),0)] ? l
+ + 143  16  Call: scasp:solve_goal(fluent(_59946),[[],event(entry),[],time(0),[],proved(time(0)),[],time(0),holdsAt(...)],StackOut,Modelx) ? l
+ + 160  21  Call: scasp:solve_goal(num(_88119),[fluent(no_of_entries(_88119)),[],event(entry),[],time(0),[],proved(time(0)),[],time(...)|...],StackOut,Modelx) ? l
+ + 160  21  Exit: scasp:solve_goal(num(0),[fluent(no_of_entries(0)),[],event(entry),[],time(0),[],proved(time(0)),[],time(...)|...],[[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(0),[],proved(...)|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(0),[],proved(time(...)),[]|...] ? l
+ + 143  16  Exit: scasp:solve_goal(fluent(no_of_entries(0)),[[],event(entry),[],time(0),[],proved(time(0)),[],time(0),holdsAt(...)],[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(0),[]|...],[fluent(no_of_entries(0)),num(0),[]]),
+	   Modelx = [fluent(no_of_entries(0)),num(0),[]],
+	   StackOut = [[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(0),[],proved(...)|...] ? l
+ + 236  18  Call: scasp:solve_goal(initiates(entry,no_of_entries(0),0),[[],proved(fluent(no_of_entries(0))),[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[]|...],StackOut,Modelx) ? l
+ + 269  24  Call: scasp:solve_goal(num(_17263),[[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(0))),[],[],num(0),fluent(...)|...],StackOut,Modelx) ? l
+ + 269  24  Exit: scasp:solve_goal(num(0),[[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(0))),[],[],num(0),fluent(...)|...],[[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(0))),[],[],num(...)|...] ? l
+ + 269  24  Redo: scasp:solve_goal(num(0),[[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(0))),[],[],num(0),fluent(...)|...],[[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(0))),[],[],num(...)|...] ? l
+ + 269  24  Exit: scasp:solve_goal(num(1),[[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(0))),[],[],num(0),fluent(...)|...],[[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(1)]),
+	   Modelx = [num(1)],
+	   StackOut = [[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(0))),[],[],num(...)|...] ? l
+ + 319  25  Call: scasp:solve_goal(holdsAt(no_of_entries(1),0),[[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(...))),[],[]|...],StackOut,Modelx) ? l
+ + 336  30  Call: scasp:solve_goal(0 < 0,[holdsAt(no_of_entries(1),0),[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(fluent(...)),[]|...],StackOut,Modelx) ? l
+ + 336  30  Fail: scasp:solve_goal(0 < 0,[holdsAt(no_of_entries(1),0),[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(fluent(...)),[]|...],StackOut,Modelx) ? l
+ + 336  30  Call: scasp:solve_goal(time(_38540),[holdsAt(no_of_entries(1),0),[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(fluent(...)),[]|...],StackOut,Modelx) ? l
+ + 336  30  Exit: scasp:solve_goal(time(0),[holdsAt(no_of_entries(1),0),[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(fluent(...)),[]|...],[[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(...),0),[]|...],[time(0)]),
+	   Modelx = [time(0)],
+	   StackOut = [[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(...)|...] ? l
+ + 376  32  Call: scasp:solve_goal(time(_38548),[[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[],proved(...)|...],StackOut,Modelx) ? l
+ + 376  32  Exit: scasp:solve_goal(time(0),[[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[],proved(...)|...],[[],time(0),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],[time(0)]),
+	   Modelx = [time(0)],
+	   StackOut = [[],time(0),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[]|...] ? l
+ + 400  33  Call: scasp:solve_goal(event(_38552),[[],time(0),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],StackOut,Modelx) ? l
+ + 400  33  Exit: scasp:solve_goal(event(entry),[[],time(0),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],[[],event(entry),[],time(0),[],proved(time(0)),[],time(0),holdsAt(...)|...],[event(entry)]),
+	   Modelx = [event(entry)],
+l	   StackOut = [[],event(entry),[],time(0),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(...),0),[]|...] ? l
+ + 424  34  Call: scasp:solve_goal(fluent(_38556),[[],event(entry),[],time(0),[],proved(time(0)),[],time(0),holdsAt(...)|...],StackOut,Modelx) ? l
+ + 441  39  Call: scasp:solve_goal(num(_74394),[fluent(no_of_entries(_74394)),[],event(entry),[],time(0),[],proved(time(0)),[],time(...)|...],StackOut,Modelx) ? l
+ + 441  39  Exit: scasp:solve_goal(num(0),[fluent(no_of_entries(0)),[],event(entry),[],time(0),[],proved(time(0)),[],time(...)|...],[[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(0),[],proved(...)|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(0),[],proved(time(...)),[]|...] ? 
+   455  39  Call: term_basic:=([num(0)],[num(0)|JGoal]) ? l
+ + 424  34  Exit: scasp:solve_goal(fluent(no_of_entries(0)),[[],event(entry),[],time(0),[],proved(time(0)),[],time(0),holdsAt(...)|...],[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(0),[]|...],[fluent(no_of_entries(0)),num(0),[]]),
+	   Modelx = [fluent(no_of_entries(0)),num(0),[]],
+	   StackOut = [[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(0),[],proved(...)|...] ? l
+ + 519  35  Call: scasp:solve_goal(fluent(no_of_entries(1)),[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(0),[]|...],StackOut,Modelx) ? l
+ + 519  35  Exit: scasp:solve_goal(fluent(no_of_entries(1)),[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(0),[]|...],[[],[],proved(num(1)),fluent(no_of_entries(1)),[],[],num(0),fluent(no_of_entries(...)),[]|...],[fluent(no_of_entries(1)),proved(num(1)),[]]),
+	   Modelx = [fluent(no_of_entries(1)),proved(num(1)),[]],
+	   StackOut = [[],[],proved(num(1)),fluent(no_of_entries(1)),[],[],num(0),fluent(no_of_entries(0)),[],event(...)|...] ? l
+ + 519  35  Redo: scasp:solve_goal(fluent(no_of_entries(1)),[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(0),[]|...],[[],[],proved(num(1)),fluent(no_of_entries(1)),[],[],num(0),fluent(no_of_entries(...)),[]|...],[fluent(no_of_entries(1)),proved(num(1)),[]]),
+	   Modelx = [fluent(no_of_entries(1)),proved(num(1)),[]],
+	   StackOut = [[],[],proved(num(1)),fluent(no_of_entries(1)),[],[],num(0),fluent(no_of_entries(0)),[],event(...)|...] ? l
+ + 519  35  Fail: scasp:solve_goal(fluent(no_of_entries(1)),[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(0),[]|...],StackOut,Modelx) ? l
+ + 424  34  Redo: scasp:solve_goal(fluent(no_of_entries(0)),[[],event(entry),[],time(0),[],proved(time(0)),[],time(0),holdsAt(...)|...],[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(0),[]|...],[fluent(no_of_entries(0)),num(0),[]]),
+	   Modelx = [fluent(no_of_entries(0)),num(0),[]],
+	   StackOut = [[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(0),[],proved(...)|...] ? l
+ + 441  39  Redo: scasp:solve_goal(num(0),[fluent(no_of_entries(0)),[],event(entry),[],time(0),[],proved(time(0)),[],time(...)|...],[[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(0),[],proved(...)|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(0),[],proved(time(...)),[]|...] ? l
+ + 441  39  Exit: scasp:solve_goal(num(1),[fluent(no_of_entries(1)),[],event(entry),[],time(0),[],proved(time(0)),[],time(...)|...],[[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(0),[],proved(...)|...],[num(1)]),
+	   Modelx = [num(1)],
+	   StackOut = [[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(0),[],proved(time(...)),[]|...] ? l
+ + 424  34  Exit: scasp:solve_goal(fluent(no_of_entries(1)),[[],event(entry),[],time(0),[],proved(time(0)),[],time(0),holdsAt(...)|...],[[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(0),[]|...],[fluent(no_of_entries(1)),num(1),[]]),
+	   Modelx = [fluent(no_of_entries(1)),num(1),[]],
+	   StackOut = [[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(0),[],proved(...)|...] ? l
+ + 537  36  Call: scasp:solve_goal(initiates(entry,no_of_entries(1),0),[[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[]|...],StackOut,Modelx) ? l
+ + 570  42  Call: scasp:solve_goal(num(_57848),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],StackOut,Modelx) ? l
+ + 570  42  Exit: scasp:solve_goal(num(0),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],[[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(...)|...] ? l
+ + 570  42  Redo: scasp:solve_goal(num(0),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],[[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(...)|...] ? l
+ + 570  42  Exit: scasp:solve_goal(num(1),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],[[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(1)]),
+	   Modelx = [num(1)],
+	   StackOut = [[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(...)|...] ? l
+ + 570  42  Redo: scasp:solve_goal(num(1),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],[[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(1)]),
+	   Modelx = [num(1)],
+	   StackOut = [[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(...)|...] ? l
+ + 570  42  Fail: scasp:solve_goal(num(_57848),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],StackOut,Modelx) ? l
+ + 537  36  Fail: scasp:solve_goal(initiates(entry,no_of_entries(1),0),[[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[]|...],StackOut,Modelx) ? l
+ + 424  34  Redo: scasp:solve_goal(fluent(no_of_entries(1)),[[],event(entry),[],time(0),[],proved(time(0)),[],time(0),holdsAt(...)|...],[[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(0),[]|...],[fluent(no_of_entries(1)),num(1),[]]),
+	   Modelx = [fluent(no_of_entries(1)),num(1),[]],
+	   StackOut = [[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(0),[],proved(...)|...] ? l
+ + 441  39  Redo: scasp:solve_goal(num(1),[fluent(no_of_entries(1)),[],event(entry),[],time(0),[],proved(time(0)),[],time(...)|...],[[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(0),[],proved(...)|...],[num(1)]),
+	   Modelx = [num(1)],
+	   StackOut = [[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(0),[],proved(time(...)),[]|...] ? l
+ + 441  39  Fail: scasp:solve_goal(num(_28292),[fluent(no_of_entries(_28292)),[],event(entry),[],time(0),[],proved(time(0)),[],time(...)|...],StackOut,Modelx) ? l
+ + 424  34  Fail: scasp:solve_goal(fluent(_21738),[[],event(entry),[],time(0),[],proved(time(0)),[],time(0),holdsAt(...)|...],StackOut,Modelx) ? l
+ + 400  33  Redo: scasp:solve_goal(event(entry),[[],time(0),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],[[],event(entry),[],time(0),[],proved(time(0)),[],time(0),holdsAt(...)|...],[event(entry)]),
+	   Modelx = [event(entry)],
+	   StackOut = [[],event(entry),[],time(0),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(...),0),[]|...] ? l
+ + 400  33  Fail: scasp:solve_goal(event(_21734),[[],time(0),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],StackOut,Modelx) ? l
+ + 376  32  Redo: scasp:solve_goal(time(0),[[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[],proved(...)|...],[[],time(0),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],[time(0)]),
+	   Modelx = [time(0)],
+	   StackOut = [[],time(0),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[]|...] ? l
+ + 376  32  Exit: scasp:solve_goal(time(1),[[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[],proved(...)|...],[[],time(1),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],[time(1)]),
+	   Modelx = [time(1)],
+	   StackOut = [[],time(1),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[]|...] ? l
+ + 400  33  Call: scasp:solve_goal(event(_21734),[[],time(1),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],StackOut,Modelx) ? l
+ + 400  33  Exit: scasp:solve_goal(event(entry),[[],time(1),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],[[],event(entry),[],time(1),[],proved(time(0)),[],time(0),holdsAt(...)|...],[event(entry)]),
+	   Modelx = [event(entry)],
+	   StackOut = [[],event(entry),[],time(1),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(...),0),[]|...] ? l
+ + 424  34  Call: scasp:solve_goal(fluent(_21738),[[],event(entry),[],time(1),[],proved(time(0)),[],time(0),holdsAt(...)|...],StackOut,Modelx) ? l
+ + 441  39  Call: scasp:solve_goal(num(_42831),[fluent(no_of_entries(_42831)),[],event(entry),[],time(1),[],proved(time(0)),[],time(...)|...],StackOut,Modelx) ? l
+ + 441  39  Exit: scasp:solve_goal(num(0),[fluent(no_of_entries(0)),[],event(entry),[],time(1),[],proved(time(0)),[],time(...)|...],[[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(1),[],proved(...)|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(1),[],proved(time(...)),[]|...] ? 
+   455  39  Call: term_basic:=([num(0)],[num(0)|JGoal]) ? l
+ + 424  34  Exit: scasp:solve_goal(fluent(no_of_entries(0)),[[],event(entry),[],time(1),[],proved(time(0)),[],time(0),holdsAt(...)|...],[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(1),[]|...],[fluent(no_of_entries(0)),num(0),[]]),
+	   Modelx = [fluent(no_of_entries(0)),num(0),[]],
+	   StackOut = [[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(1),[],proved(...)|...] ? l
+ + 519  35  Call: scasp:solve_goal(fluent(no_of_entries(1)),[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(1),[]|...],StackOut,Modelx) ? l
+ + 519  35  Exit: scasp:solve_goal(fluent(no_of_entries(1)),[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(1),[]|...],[[],[],proved(num(1)),fluent(no_of_entries(1)),[],[],num(0),fluent(no_of_entries(...)),[]|...],[fluent(no_of_entries(1)),proved(num(1)),[]]),
+	   Modelx = [fluent(no_of_entries(1)),proved(num(1)),[]],
+	   StackOut = [[],[],proved(num(1)),fluent(no_of_entries(1)),[],[],num(0),fluent(no_of_entries(0)),[],event(...)|...] ? l
+ + 519  35  Redo: scasp:solve_goal(fluent(no_of_entries(1)),[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(1),[]|...],[[],[],proved(num(1)),fluent(no_of_entries(1)),[],[],num(0),fluent(no_of_entries(...)),[]|...],[fluent(no_of_entries(1)),proved(num(1)),[]]),
+	   Modelx = [fluent(no_of_entries(1)),proved(num(1)),[]],
+	   StackOut = [[],[],proved(num(1)),fluent(no_of_entries(1)),[],[],num(0),fluent(no_of_entries(0)),[],event(...)|...] ? l
+ + 519  35  Fail: scasp:solve_goal(fluent(no_of_entries(1)),[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(1),[]|...],StackOut,Modelx) ? l
+ + 424  34  Redo: scasp:solve_goal(fluent(no_of_entries(0)),[[],event(entry),[],time(1),[],proved(time(0)),[],time(0),holdsAt(...)|...],[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(1),[]|...],[fluent(no_of_entries(0)),num(0),[]]),
+	   Modelx = [fluent(no_of_entries(0)),num(0),[]],
+	   StackOut = [[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(1),[],proved(...)|...] ? l
+ + 441  39  Redo: scasp:solve_goal(num(0),[fluent(no_of_entries(0)),[],event(entry),[],time(1),[],proved(time(0)),[],time(...)|...],[[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(1),[],proved(...)|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(1),[],proved(time(...)),[]|...] ? l
+ + 441  39  Exit: scasp:solve_goal(num(1),[fluent(no_of_entries(1)),[],event(entry),[],time(1),[],proved(time(0)),[],time(...)|...],[[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(1),[],proved(...)|...],[num(1)]),
+	   Modelx = [num(1)],
+	   StackOut = [[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(1),[],proved(time(...)),[]|...] ? l
+ + 424  34  Exit: scasp:solve_goal(fluent(no_of_entries(1)),[[],event(entry),[],time(1),[],proved(time(0)),[],time(0),holdsAt(...)|...],[[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(1),[]|...],[fluent(no_of_entries(1)),num(1),[]]),
+	   Modelx = [fluent(no_of_entries(1)),num(1),[]],
+	   StackOut = [[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(1),[],proved(...)|...] ? l
+ + 537  36  Call: scasp:solve_goal(initiates(entry,no_of_entries(1),0),[[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[]|...],StackOut,Modelx) ? l
+ + 570  42  Call: scasp:solve_goal(num(_77123),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],StackOut,Modelx) ? l
+ + 570  42  Exit: scasp:solve_goal(num(0),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],[[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(...)|...] ? l
+ + 570  42  Redo: scasp:solve_goal(num(0),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],[[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(...)|...] ? l
+ + 570  42  Exit: scasp:solve_goal(num(1),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],[[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(1)]),
+	   Modelx = [num(1)],
+	   StackOut = [[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(...)|...] ? l
+ + 570  42  Redo: scasp:solve_goal(num(1),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],[[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(1)]),
+	   Modelx = [num(1)],
+	   StackOut = [[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(...)|...] ? l
+ + 570  42  Fail: scasp:solve_goal(num(_33384),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],StackOut,Modelx) ? l
+ + 537  36  Fail: scasp:solve_goal(initiates(entry,no_of_entries(1),0),[[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[]|...],StackOut,Modelx) ? l
+ + 424  34  Redo: scasp:solve_goal(fluent(no_of_entries(1)),[[],event(entry),[],time(1),[],proved(time(0)),[],time(0),holdsAt(...)|...],[[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(1),[]|...],[fluent(no_of_entries(1)),num(1),[]]),
+	   Modelx = [fluent(no_of_entries(1)),num(1),[]],
+	   StackOut = [[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(1),[],proved(...)|...] ? l
+ + 441  39  Redo: scasp:solve_goal(num(1),[fluent(no_of_entries(1)),[],event(entry),[],time(1),[],proved(time(0)),[],time(...)|...],[[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(1),[],proved(...)|...],[num(1)]),
+	   Modelx = [num(1)],
+	   StackOut = [[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(1),[],proved(time(...)),[]|...] ? l
+ + 441  39  Fail: scasp:solve_goal(num(_28292),[fluent(no_of_entries(_28292)),[],event(entry),[],time(1),[],proved(time(0)),[],time(...)|...],StackOut,Modelx) ? l
+ + 424  34  Fail: scasp:solve_goal(fluent(_21738),[[],event(entry),[],time(1),[],proved(time(0)),[],time(0),holdsAt(...)|...],StackOut,Modelx) ? l
+ + 400  33  Redo: scasp:solve_goal(event(entry),[[],time(1),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],[[],event(entry),[],time(1),[],proved(time(0)),[],time(0),holdsAt(...)|...],[event(entry)]),
+	   Modelx = [event(entry)],
+	   StackOut = [[],event(entry),[],time(1),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(...),0),[]|...] ? l
+ + 400  33  Fail: scasp:solve_goal(event(_21734),[[],time(1),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],StackOut,Modelx) ? l
+ + 376  32  Redo: scasp:solve_goal(time(1),[[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[],proved(...)|...],[[],time(1),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],[time(1)]),
+	   Modelx = [time(1)],
+	   StackOut = [[],time(1),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[]|...] ? l
+ + 376  32  Exit: scasp:solve_goal(time(2),[[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[],proved(...)|...],[[],time(2),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],[time(2)]),
+	   Modelx = [time(2)],
+	   StackOut = [[],time(2),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[]|...] ? l
+ + 400  33  Call: scasp:solve_goal(event(_21734),[[],time(2),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],StackOut,Modelx) ? l
+ + 400  33  Exit: scasp:solve_goal(event(entry),[[],time(2),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],[[],event(entry),[],time(2),[],proved(time(0)),[],time(0),holdsAt(...)|...],[event(entry)]),
+	   Modelx = [event(entry)],
+	   StackOut = [[],event(entry),[],time(2),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(...),0),[]|...] ? l
+ + 424  34  Call: scasp:solve_goal(fluent(_21738),[[],event(entry),[],time(2),[],proved(time(0)),[],time(0),holdsAt(...)|...],StackOut,Modelx) ? l
+ + 441  39  Call: scasp:solve_goal(num(_42831),[fluent(no_of_entries(_42831)),[],event(entry),[],time(2),[],proved(time(0)),[],time(...)|...],StackOut,Modelx) ? l
+ + 441  39  Exit: scasp:solve_goal(num(0),[fluent(no_of_entries(0)),[],event(entry),[],time(2),[],proved(time(0)),[],time(...)|...],[[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(2),[],proved(...)|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(2),[],proved(time(...)),[]|...] ? l
+ + 424  34  Exit: scasp:solve_goal(fluent(no_of_entries(0)),[[],event(entry),[],time(2),[],proved(time(0)),[],time(0),holdsAt(...)|...],[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(2),[]|...],[fluent(no_of_entries(0)),num(0),[]]),
+	   Modelx = [fluent(no_of_entries(0)),num(0),[]],
+	   StackOut = [[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(2),[],proved(...)|...] ? l
+ + 519  35  Call: scasp:solve_goal(fluent(no_of_entries(1)),[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(2),[]|...],StackOut,Modelx) ? l
+ + 519  35  Exit: scasp:solve_goal(fluent(no_of_entries(1)),[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(2),[]|...],[[],[],proved(num(1)),fluent(no_of_entries(1)),[],[],num(0),fluent(no_of_entries(...)),[]|...],[fluent(no_of_entries(1)),proved(num(1)),[]]),
+	   Modelx = [fluent(no_of_entries(1)),proved(num(1)),[]],
+	   StackOut = [[],[],proved(num(1)),fluent(no_of_entries(1)),[],[],num(0),fluent(no_of_entries(0)),[],event(...)|...] ? l
+ + 519  35  Redo: scasp:solve_goal(fluent(no_of_entries(1)),[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(2),[]|...],[[],[],proved(num(1)),fluent(no_of_entries(1)),[],[],num(0),fluent(no_of_entries(...)),[]|...],[fluent(no_of_entries(1)),proved(num(1)),[]]),
+	   Modelx = [fluent(no_of_entries(1)),proved(num(1)),[]],
+	   StackOut = [[],[],proved(num(1)),fluent(no_of_entries(1)),[],[],num(0),fluent(no_of_entries(0)),[],event(...)|...] ? l
+ + 519  35  Fail: scasp:solve_goal(fluent(no_of_entries(1)),[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(2),[]|...],StackOut,Modelx) ? l
+ + 424  34  Redo: scasp:solve_goal(fluent(no_of_entries(0)),[[],event(entry),[],time(2),[],proved(time(0)),[],time(0),holdsAt(...)|...],[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(2),[]|...],[fluent(no_of_entries(0)),num(0),[]]),
+	   Modelx = [fluent(no_of_entries(0)),num(0),[]],
+	   StackOut = [[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(2),[],proved(...)|...] ? l
+ + 441  39  Redo: scasp:solve_goal(num(0),[fluent(no_of_entries(0)),[],event(entry),[],time(2),[],proved(time(0)),[],time(...)|...],[[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(2),[],proved(...)|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(2),[],proved(time(...)),[]|...] ? l
+ + 441  39  Exit: scasp:solve_goal(num(1),[fluent(no_of_entries(1)),[],event(entry),[],time(2),[],proved(time(0)),[],time(...)|...],[[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(2),[],proved(...)|...],[num(1)]),
+	   Modelx = [num(1)],
+	   StackOut = [[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(2),[],proved(time(...)),[]|...] ? l
+ + 424  34  Exit: scasp:solve_goal(fluent(no_of_entries(1)),[[],event(entry),[],time(2),[],proved(time(0)),[],time(0),holdsAt(...)|...],[[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(2),[]|...],[fluent(no_of_entries(1)),num(1),[]]),
+	   Modelx = [fluent(no_of_entries(1)),num(1),[]],
+	   StackOut = [[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(2),[],proved(...)|...] ? l
+ + 537  36  Call: scasp:solve_goal(initiates(entry,no_of_entries(1),0),[[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[]|...],StackOut,Modelx) ? l
+ + 570  42  Call: scasp:solve_goal(num(_77123),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],StackOut,Modelx) ? l
+ + 570  42  Exit: scasp:solve_goal(num(0),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],[[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(...)|...] ? l
+ + 570  42  Redo: scasp:solve_goal(num(0),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],[[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(...)|...] ? l
+ + 570  42  Exit: scasp:solve_goal(num(1),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],[[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(1)]),
+	   Modelx = [num(1)],
+	   StackOut = [[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(...)|...] ? l
+ + 570  42  Redo: scasp:solve_goal(num(1),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],[[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(1)]),
+	   Modelx = [num(1)],
+	   StackOut = [[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(...)|...] ? l
+ + 570  42  Fail: scasp:solve_goal(num(_33384),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],StackOut,Modelx) ? l
+ + 537  36  Fail: scasp:solve_goal(initiates(entry,no_of_entries(1),0),[[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[]|...],StackOut,Modelx) ?  + 570  42  Redo: scasp:solve_goal(num(0),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],[[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(0)]),
+{Option not applicable at this port}
+ + 537  36  Fail: scasp:solve_goal(initiates(entry,no_of_entries(1),0),[[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[]|...],StackOut,Modelx) ? l
+ + 424  34  Redo: scasp:solve_goal(fluent(no_of_entries(1)),[[],event(entry),[],time(2),[],proved(time(0)),[],time(0),holdsAt(...)|...],[[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(2),[]|...],[fluent(no_of_entries(1)),num(1),[]]),
+	   Modelx = [fluent(no_of_entries(1)),num(1),[]],
+	   StackOut = [[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(2),[],proved(...)|...] ? l
+ + 441  39  Redo: scasp:solve_goal(num(1),[fluent(no_of_entries(1)),[],event(entry),[],time(2),[],proved(time(0)),[],time(...)|...],[[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(2),[],proved(...)|...],[num(1)]),
+	   Modelx = [num(1)],
+	   StackOut = [[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(2),[],proved(time(...)),[]|...] ? 
+   442  40  Call: term_basic:=(num(_28292),findall(_1,_2,_3)) ? l
+ + 441  39  Fail: scasp:solve_goal(num(_28292),[fluent(no_of_entries(_28292)),[],event(entry),[],time(2),[],proved(time(0)),[],time(...)|...],StackOut,Modelx) ? l
+ + 424  34  Fail: scasp:solve_goal(fluent(_21738),[[],event(entry),[],time(2),[],proved(time(0)),[],time(0),holdsAt(...)|...],StackOut,Modelx) ? l
+ + 400  33  Redo: scasp:solve_goal(event(entry),[[],time(2),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],[[],event(entry),[],time(2),[],proved(time(0)),[],time(0),holdsAt(...)|...],[event(entry)]),
+	   Modelx = [event(entry)],
+	   StackOut = [[],event(entry),[],time(2),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(...),0),[]|...] ? l
+ + 400  33  Fail: scasp:solve_goal(event(_21734),[[],time(2),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],StackOut,Modelx) ? l
+ + 376  32  Redo: scasp:solve_goal(time(2),[[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[],proved(...)|...],[[],time(2),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],[time(2)]),
+	   Modelx = [time(2)],
+	   StackOut = [[],time(2),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[]|...] ? l
+ + 376  32  Exit: scasp:solve_goal(time(3),[[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[],proved(...)|...],[[],time(3),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],[time(3)]),
+	   Modelx = [time(3)],
+	   StackOut = [[],time(3),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[]|...] ? l
+ + 400  33  Call: scasp:solve_goal(event(_21734),[[],time(3),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],StackOut,Modelx) ? l
+ + 400  33  Exit: scasp:solve_goal(event(entry),[[],time(3),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],[[],event(entry),[],time(3),[],proved(time(0)),[],time(0),holdsAt(...)|...],[event(entry)]),
+	   Modelx = [event(entry)],
+	   StackOut = [[],event(entry),[],time(3),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(...),0),[]|...] ? l
+ + 424  34  Call: scasp:solve_goal(fluent(_21738),[[],event(entry),[],time(3),[],proved(time(0)),[],time(0),holdsAt(...)|...],StackOut,Modelx) ? l
+ + 441  39  Call: scasp:solve_goal(num(_42821),[fluent(no_of_entries(_42821)),[],event(entry),[],time(3),[],proved(time(0)),[],time(...)|...],StackOut,Modelx) ? l
+ + 441  39  Exit: scasp:solve_goal(num(0),[fluent(no_of_entries(0)),[],event(entry),[],time(3),[],proved(time(0)),[],time(...)|...],[[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(3),[],proved(...)|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(3),[],proved(time(...)),[]|...] ? l
+ + 424  34  Exit: scasp:solve_goal(fluent(no_of_entries(0)),[[],event(entry),[],time(3),[],proved(time(0)),[],time(0),holdsAt(...)|...],[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(3),[]|...],[fluent(no_of_entries(0)),num(0),[]]),
+	   Modelx = [fluent(no_of_entries(0)),num(0),[]],
+	   StackOut = [[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(3),[],proved(...)|...] ? l
+ + 519  35  Call: scasp:solve_goal(fluent(no_of_entries(1)),[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(3),[]|...],StackOut,Modelx) ? l
+ + 519  35  Exit: scasp:solve_goal(fluent(no_of_entries(1)),[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(3),[]|...],[[],[],proved(num(1)),fluent(no_of_entries(1)),[],[],num(0),fluent(no_of_entries(...)),[]|...],[fluent(no_of_entries(1)),proved(num(1)),[]]),
+	   Modelx = [fluent(no_of_entries(1)),proved(num(1)),[]],
+	   StackOut = [[],[],proved(num(1)),fluent(no_of_entries(1)),[],[],num(0),fluent(no_of_entries(0)),[],event(...)|...] ? l
+ + 519  35  Redo: scasp:solve_goal(fluent(no_of_entries(1)),[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(3),[]|...],[[],[],proved(num(1)),fluent(no_of_entries(1)),[],[],num(0),fluent(no_of_entries(...)),[]|...],[fluent(no_of_entries(1)),proved(num(1)),[]]),
+	   Modelx = [fluent(no_of_entries(1)),proved(num(1)),[]],
+	   StackOut = [[],[],proved(num(1)),fluent(no_of_entries(1)),[],[],num(0),fluent(no_of_entries(0)),[],event(...)|...] ? l
+ + 519  35  Fail: scasp:solve_goal(fluent(no_of_entries(1)),[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(3),[]|...],StackOut,Modelx) ? l
+ + 424  34  Redo: scasp:solve_goal(fluent(no_of_entries(0)),[[],event(entry),[],time(3),[],proved(time(0)),[],time(0),holdsAt(...)|...],[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(3),[]|...],[fluent(no_of_entries(0)),num(0),[]]),
+	   Modelx = [fluent(no_of_entries(0)),num(0),[]],
+	   StackOut = [[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(3),[],proved(...)|...] ? l
+ + 441  39  Redo: scasp:solve_goal(num(0),[fluent(no_of_entries(0)),[],event(entry),[],time(3),[],proved(time(0)),[],time(...)|...],[[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(3),[],proved(...)|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(3),[],proved(time(...)),[]|...] ? l
+ + 441  39  Exit: scasp:solve_goal(num(1),[fluent(no_of_entries(1)),[],event(entry),[],time(3),[],proved(time(0)),[],time(...)|...],[[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(3),[],proved(...)|...],[num(1)]),
+	   Modelx = [num(1)],
+	   StackOut = [[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(3),[],proved(time(...)),[]|...] ? l
+ + 424  34  Exit: scasp:solve_goal(fluent(no_of_entries(1)),[[],event(entry),[],time(3),[],proved(time(0)),[],time(0),holdsAt(...)|...],[[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(3),[]|...],[fluent(no_of_entries(1)),num(1),[]]),
+	   Modelx = [fluent(no_of_entries(1)),num(1),[]],
+	   StackOut = [[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(3),[],proved(...)|...] ? l
+ + 537  36  Call: scasp:solve_goal(initiates(entry,no_of_entries(1),0),[[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[]|...],StackOut,Modelx) ? l
+ + 570  42  Call: scasp:solve_goal(num(_77113),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],StackOut,Modelx) ? l
+ + 570  42  Exit: scasp:solve_goal(num(0),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],[[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(...)|...] ? l
+ + 570  42  Redo: scasp:solve_goal(num(0),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],[[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(...)|...] ? l
+ + 570  42  Exit: scasp:solve_goal(num(1),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],[[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(1)]),
+	   Modelx = [num(1)],
+	   StackOut = [[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(...)|...] ? l
+ + 570  42  Redo: scasp:solve_goal(num(1),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],[[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(1)]),
+	   Modelx = [num(1)],
+	   StackOut = [[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(...)|...] ? l
+ + 570  42  Fail: scasp:solve_goal(num(_33200),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],StackOut,Modelx) ? l
+ + 537  36  Fail: scasp:solve_goal(initiates(entry,no_of_entries(1),0),[[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[]|...],StackOut,Modelx) ? l
+ + 424  34  Redo: scasp:solve_goal(fluent(no_of_entries(1)),[[],event(entry),[],time(3),[],proved(time(0)),[],time(0),holdsAt(...)|...],[[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(3),[]|...],[fluent(no_of_entries(1)),num(1),[]]),
+	   Modelx = [fluent(no_of_entries(1)),num(1),[]],
+	   StackOut = [[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(3),[],proved(...)|...] ? l
+ + 441  39  Redo: scasp:solve_goal(num(1),[fluent(no_of_entries(1)),[],event(entry),[],time(3),[],proved(time(0)),[],time(...)|...],[[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(3),[],proved(...)|...],[num(1)]),
+	   Modelx = [num(1)],
+	   StackOut = [[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(3),[],proved(time(...)),[]|...] ? l
+ + 441  39  Fail: scasp:solve_goal(num(_28108),[fluent(no_of_entries(_28108)),[],event(entry),[],time(3),[],proved(time(0)),[],time(...)|...],StackOut,Modelx) ? l
+ + 424  34  Fail: scasp:solve_goal(fluent(_21738),[[],event(entry),[],time(3),[],proved(time(0)),[],time(0),holdsAt(...)|...],StackOut,Modelx) ? l
+ + 400  33  Redo: scasp:solve_goal(event(entry),[[],time(3),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],[[],event(entry),[],time(3),[],proved(time(0)),[],time(0),holdsAt(...)|...],[event(entry)]),
+	   Modelx = [event(entry)],
+	   StackOut = [[],event(entry),[],time(3),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(...),0),[]|...] ? l
+ + 400  33  Fail: scasp:solve_goal(event(_21734),[[],time(3),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],StackOut,Modelx) ? l
+ + 376  32  Redo: scasp:solve_goal(time(3),[[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[],proved(...)|...],[[],time(3),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],[time(3)]),
+	   Modelx = [time(3)],
+	   StackOut = [[],time(3),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[]|...] ? l
+ + 376  32  Fail: scasp:solve_goal(time(_21730),[[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[],proved(...)|...],StackOut,Modelx) ? l
+ + 336  30  Redo: scasp:solve_goal(time(0),[holdsAt(no_of_entries(1),0),[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(fluent(...)),[]|...],[[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(...),0),[]|...],[time(0)]),
+	   Modelx = [time(0)],
+	   StackOut = [[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(...)|...] ? l
+ + 336  30  Exit: scasp:solve_goal(time(1),[holdsAt(no_of_entries(1),0),[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(fluent(...)),[]|...],[[],time(1),holdsAt(no_of_entries(1),0),[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(...),0),[]|...],[time(1)]),
+	   Modelx = [time(1)],
+	   StackOut = [[],time(1),holdsAt(no_of_entries(1),0),[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(...)|...] ? l
+ + 376  32  Call: scasp:solve_goal(time(_21730),[[],proved(time(0)),[],time(1),holdsAt(no_of_entries(1),0),[],num(1),[],proved(...)|...],StackOut,Modelx) ? l
+ + 376  32  Exit: scasp:solve_goal(time(0),[[],proved(time(0)),[],time(1),holdsAt(no_of_entries(1),0),[],num(1),[],proved(...)|...],[[],time(0),[],proved(time(0)),[],time(1),holdsAt(no_of_entries(1),0),[],num(...)|...],[time(0)]),
+	   Modelx = [time(0)],
+	   StackOut = [[],time(0),[],proved(time(0)),[],time(1),holdsAt(no_of_entries(1),0),[],num(1),[]|...] ? l
+ + 400  33  Call: scasp:solve_goal(event(_21734),[[],time(0),[],proved(time(0)),[],time(1),holdsAt(no_of_entries(1),0),[],num(...)|...],StackOut,Modelx) ? l
+ + 400  33  Exit: scasp:solve_goal(event(entry),[[],time(0),[],proved(time(0)),[],time(1),holdsAt(no_of_entries(1),0),[],num(...)|...],[[],event(entry),[],time(0),[],proved(time(0)),[],time(1),holdsAt(...)|...],[event(entry)]),
+	   Modelx = [event(entry)],
+	   StackOut = [[],event(entry),[],time(0),[],proved(time(0)),[],time(1),holdsAt(no_of_entries(...),0),[]|...] ? l
+ + 424  34  Call: scasp:solve_goal(fluent(_21738),[[],event(entry),[],time(0),[],proved(time(0)),[],time(1),holdsAt(...)|...],StackOut,Modelx) ? l
+ + 441  39  Call: scasp:solve_goal(num(_53207),[fluent(no_of_entries(_53207)),[],event(entry),[],time(0),[],proved(time(0)),[],time(...)|...],StackOut,Modelx) ? l
+ + 441  39  Exit: scasp:solve_goal(num(0),[fluent(no_of_entries(0)),[],event(entry),[],time(0),[],proved(time(0)),[],time(...)|...],[[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(0),[],proved(...)|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(0),[],proved(time(...)),[]|...] ? l
+ + 424  34  Exit: scasp:solve_goal(fluent(no_of_entries(0)),[[],event(entry),[],time(0),[],proved(time(0)),[],time(1),holdsAt(...)|...],[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(0),[]|...],[fluent(no_of_entries(0)),num(0),[]]),
+	   Modelx = [fluent(no_of_entries(0)),num(0),[]],
+	   StackOut = [[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(0),[],proved(...)|...] ? l
+ + 519  35  Call: scasp:solve_goal(fluent(no_of_entries(1)),[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(0),[]|...],StackOut,Modelx) ? l
+ + 519  35  Exit: scasp:solve_goal(fluent(no_of_entries(1)),[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(0),[]|...],[[],[],proved(num(1)),fluent(no_of_entries(1)),[],[],num(0),fluent(no_of_entries(...)),[]|...],[fluent(no_of_entries(1)),proved(num(1)),[]]),
+	   Modelx = [fluent(no_of_entries(1)),proved(num(1)),[]],
+	   StackOut = [[],[],proved(num(1)),fluent(no_of_entries(1)),[],[],num(0),fluent(no_of_entries(0)),[],event(...)|...] ? l
+ + 610  36  Call: scasp:solve_goal(initiates(entry,no_of_entries(0),1),[[],[],proved(num(1)),fluent(no_of_entries(1)),[],[],num(0),fluent(no_of_entries(...)),[]|...],StackOut,Modelx) ? l
+ + 643  42  Call: scasp:solve_goal(num(_49697),[[],proved(time(1)),initiates(entry,no_of_entries(0),1),[],[],proved(num(1)),fluent(no_of_entries(1)),[],[]|...],StackOut,Modelx) ? l
+ + 643  42  Exit: scasp:solve_goal(num(0),[[],proved(time(1)),initiates(entry,no_of_entries(0),1),[],[],proved(num(1)),fluent(no_of_entries(1)),[],[]|...],[[],num(0),[],proved(time(1)),initiates(entry,no_of_entries(0),1),[],[],proved(num(...)),fluent(...)|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),[],proved(time(1)),initiates(entry,no_of_entries(0),1),[],[],proved(num(1)),fluent(no_of_entries(...)),[]|...] ? l
+ + 715  43  Call: scasp:solve_goal(holdsAt(no_of_entries(0),1),[[],num(0),[],proved(time(1)),initiates(entry,no_of_entries(0),1),[],[],proved(num(...)),fluent(...)|...],StackOut,Modelx) ? l
+ + 732  48  Call: scasp:solve_goal(0 < 1,[holdsAt(no_of_entries(0),1),[],num(0),[],proved(time(1)),initiates(entry,no_of_entries(0),1),[],[],proved(...)|...],StackOut,Modelx) ? l
+ + 732  48  Exit: scasp:solve_goal(0 < 1,[holdsAt(no_of_entries(0),1),[],num(0),[],proved(time(1)),initiates(entry,no_of_entries(0),1),[],[],proved(...)|...],[[],0 < 1,holdsAt(no_of_entries(0),1),[],num(0),[],proved(time(1)),initiates(entry,no_of_entries(...),1),[]|...],[0 < 1]),
+	   Modelx = [0 < 1],
+	   StackOut = [[],0 < 1,holdsAt(no_of_entries(0),1),[],num(0),[],proved(time(1)),initiates(entry,no_of_entries(0),1),[],[]|...] ? l
+ + 824  50  Call: scasp:solve_goal(initiallyP(no_of_entries(0)),[[],proved(time(1)),[],0 < 1,holdsAt(no_of_entries(0),1),[],num(0),[],proved(...)|...],StackOut,Modelx) ? l
+ + 824  50  Exit: scasp:solve_goal(initiallyP(no_of_entries(0)),[[],proved(time(1)),[],0 < 1,holdsAt(no_of_entries(0),1),[],num(0),[],proved(...)|...],[[],initiallyP(no_of_entries(0)),[],proved(time(1)),[],0 < 1,holdsAt(no_of_entries(0),1),[],num(...)|...],[initiallyP(no_of_entries(0))]),
+	   Modelx = [initiallyP(no_of_entries(0))],
+	   StackOut = [[],initiallyP(no_of_entries(0)),[],proved(time(1)),[],0 < 1,holdsAt(no_of_entries(0),1),[],num(0),[]|...] ? l
+ + 918  52  Call: scasp:solve_goal(not stoppedIn(0,no_of_entries(0),1),[[],proved(fluent(no_of_entries(0))),[],initiallyP(no_of_entries(0)),[],proved(time(1)),[],0 < 1,holdsAt(...)|...],StackOut,Modelx) ? l
+ + 987  57  Call: scasp:solve_goal(not o_stoppedIn_1(0,no_of_entries(0),1),[not stoppedIn(0,no_of_entries(0),1),[],proved(fluent(no_of_entries(0))),[],initiallyP(no_of_entries(0)),[],proved(time(1)),[],0 < 1|...],StackOut,Modelx) ? l
+ + 1001  62  Call: scasp:solve_goal(forall(_94343,forall(_94346,not o_stoppedIn_1(0,no_of_entries(0),1,_94343,_94346))),[not o_stoppedIn_1(0,no_of_entries(0),1),not stoppedIn(0,no_of_entries(0),1),[],proved(fluent(no_of_entries(0))),[],initiallyP(no_of_entries(0)),[],proved(time(...)),[]|...],StackOut,Modelx) ? l
+ + 1738  69  Call: scasp:solve_goal(not o_stoppedIn_1(0,no_of_entries(0),1,_61087,_61085),[forall(_54867,forall(_54870,not o_stoppedIn_1(0,no_of_entries(0),1,_54867,_54870))),not o_stoppedIn_1(0,no_of_entries(0),1),not stoppedIn(0,no_of_entries(0),1),[],proved(fluent(no_of_entries(0))),[],initiallyP(no_of_entries(0)),[],proved(...)|...],StackOut,Modelx) ? l
+ + 1986  76  Call: scasp:solve_goal(not time(_140227),[[],proved(time(1)),[],proved(time(0)),not o_stoppedIn_1(0,no_of_entries(0),1,_140227,_61085),forall(_54867,forall(_54870,not o_stoppedIn_1(...))),not o_stoppedIn_1(0,no_of_entries(...),1),not stoppedIn(...),[]|...],StackOut,Modelx)
+          [attach_attribute(_140227,att(_140227,false,att(clp_disequality_rt,neg([0,1]),[])))] ? l
+ + 2000  81  Call: scasp:solve_goal(not o_time_1(_140227),[not time(_140227),[],proved(time(1)),[],proved(time(0)),not o_stoppedIn_1(0,no_of_entries(0),1,_140227,_61085),forall(_54867,forall(_54870,not...)),not o_stoppedIn_1(...),not...|...],StackOut,Modelx)
+          [attach_attribute(_140227,att(_140227,false,att(clp_disequality_rt,neg([0,1]),[])))] ? l
+ + 2014  86  Call: scasp:solve_goal(_140227\=0,[not o_time_1(_140227),not time(_140227),[],proved(time(1)),[],proved(time(0)),not o_stoppedIn_1(0,no_of_entries(...),1,_140227,_61085),forall(_54867,forall(...)),not...|...],StackOut,Modelx)
+          [attach_attribute(_140227,att(_140227,false,att(clp_disequality_rt,neg([0,1]),[])))] ? l
+ + 2014  86  Exit: scasp:solve_goal(_140227\=0,[not o_time_1(_140227),not time(_140227),[],proved(time(1)),[],proved(time(0)),not o_stoppedIn_1(0,no_of_entries(...),1,_140227,_61085),forall(_54867,forall(...)),not...|...],[[],_140227\=0,not o_time_1(_140227),not time(_140227),[],proved(time(1)),[],proved(time(...)),not...|...],[_140227\=0]),
+	   Modelx = [_140227\=0],
+	   StackOut = [[],_140227\=0,not o_time_1(_140227),not time(_140227),[],proved(time(1)),[],proved(time(0)),not o_stoppedIn_1(...),forall(...)|...]
+          [attach_attribute(_140227,att(_140227,false,att(clp_disequality_rt,neg([0,1]),[])))] ? l
+ + 2000  81  Exit: scasp:solve_goal(not o_time_1(_140227),[not time(_140227),[],proved(time(1)),[],proved(time(0)),not o_stoppedIn_1(0,no_of_entries(0),1,_140227,_61085),forall(_54867,forall(_54870,not...)),not o_stoppedIn_1(...),not...|...],[[],[],_140227\=0,not o_time_1(_140227),not time(_140227),[],proved(time(1)),[],proved(...)|...],[not o_time_1(_140227),[]]),
+	   Modelx = [not o_time_1(_140227),[]],
+	   StackOut = [[],[],_140227\=0,not o_time_1(_140227),not time(_140227),[],proved(time(1)),[],proved(time(...)),not...|...]
+          [attach_attribute(_140227,att(_140227,false,att(clp_disequality_rt,neg([0,1]),[])))] ? l
+ + 2046  82  Call: scasp:solve_goal(not o_time_2(_140227),[[],[],_140227\=0,not o_time_1(_140227),not time(_140227),[],proved(time(1)),[],proved(...)|...],StackOut,Modelx)
+          [attach_attribute(_140227,att(_140227,false,att(clp_disequality_rt,neg([0,1]),[])))] ? l
+ + 2060  87  Call: scasp:solve_goal(_140227\=1,[not o_time_2(_140227),[],[],_140227\=0,not o_time_1(_140227),not time(_140227),[],proved(time(...)),[]|...],StackOut,Modelx)
+          [attach_attribute(_140227,att(_140227,false,att(clp_disequality_rt,neg([0,1]),[])))] ? l
+ + 2060  87  Exit: scasp:solve_goal(_140227\=1,[not o_time_2(_140227),[],[],_140227\=0,not o_time_1(_140227),not time(_140227),[],proved(time(...)),[]|...],[[],_140227\=1,not o_time_2(_140227),[],[],_140227\=0,not o_time_1(_140227),not time(...),[]|...],[_140227\=1]),
+	   Modelx = [_140227\=1],
+	   StackOut = [[],_140227\=1,not o_time_2(_140227),[],[],_140227\=0,not o_time_1(_140227),not time(_140227),[],proved(...)|...]
+          [attach_attribute(_140227,att(_140227,false,att(clp_disequality_rt,neg([0,1]),[])))] ? l
+ + 2046  82  Exit: scasp:solve_goal(not o_time_2(_140227),[[],[],_140227\=0,not o_time_1(_140227),not time(_140227),[],proved(time(1)),[],proved(...)|...],[[],[],_140227\=1,not o_time_2(_140227),[],[],_140227\=0,not o_time_1(...),not...|...],[not o_time_2(_140227),[]]),
+	   Modelx = [not o_time_2(_140227),[]],
+	   StackOut = [[],[],_140227\=1,not o_time_2(_140227),[],[],_140227\=0,not o_time_1(_140227),not time(...),[]|...]
+          [attach_attribute(_140227,att(_140227,false,att(clp_disequality_rt,neg([0,1]),[])))] ? l
+ + 2092  83  Call: scasp:solve_goal(not o_time_3(_77251),[[],[],_77251\=1,not o_time_2(_77251),[],[],_77251\=0,not o_time_1(...),not...|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1]),[])))] ? l
+ + 2106  88  Call: scasp:solve_goal(_77251\=2,[not o_time_3(_77251),[],[],_77251\=1,not o_time_2(_77251),[],[],_77251\=0,not...|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1]),[])))] ? l
+ + 2106  88  Exit: scasp:solve_goal(_77251\=2,[not o_time_3(_77251),[],[],_77251\=1,not o_time_2(_77251),[],[],_77251\=0,not...|...],[[],_77251\=2,not o_time_3(_77251),[],[],_77251\=1,not o_time_2(_77251),[],[]|...],[_77251\=2]),
+	   Modelx = [_77251\=2],
+	   StackOut = [[],_77251\=2,not o_time_3(_77251),[],[],_77251\=1,not o_time_2(_77251),[],[],_77251\= ...|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2]),[])))] ? l
+ + 2092  83  Exit: scasp:solve_goal(not o_time_3(_77251),[[],[],_77251\=1,not o_time_2(_77251),[],[],_77251\=0,not o_time_1(...),not...|...],[[],[],_77251\=2,not o_time_3(_77251),[],[],_77251\=1,not o_time_2(...),[]|...],[not o_time_3(_77251),[]]),
+	   Modelx = [not o_time_3(_77251),[]],
+	   StackOut = [[],[],_77251\=2,not o_time_3(_77251),[],[],_77251\=1,not o_time_2(_77251),[],[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2]),[])))] ? l
+ + 2138  84  Call: scasp:solve_goal(not o_time_4(_77251),[[],[],_77251\=2,not o_time_3(_77251),[],[],_77251\=1,not o_time_2(...),[]|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2]),[])))] ? l
+ + 2152  89  Call: scasp:solve_goal(_77251\=3,[not o_time_4(_77251),[],[],_77251\=2,not o_time_3(_77251),[],[],_77251\=1,not...|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2]),[])))] ? l
+ + 2152  89  Exit: scasp:solve_goal(_77251\=3,[not o_time_4(_77251),[],[],_77251\=2,not o_time_3(_77251),[],[],_77251\=1,not...|...],[[],_77251\=3,not o_time_4(_77251),[],[],_77251\=2,not o_time_3(_77251),[],[]|...],[_77251\=3]),
+	   Modelx = [_77251\=3],
+	   StackOut = [[],_77251\=3,not o_time_4(_77251),[],[],_77251\=2,not o_time_3(_77251),[],[],_77251\= ...|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))] ? l
+ + 2138  84  Exit: scasp:solve_goal(not o_time_4(_77251),[[],[],_77251\=2,not o_time_3(_77251),[],[],_77251\=1,not o_time_2(...),[]|...],[[],[],_77251\=3,not o_time_4(_77251),[],[],_77251\=2,not o_time_3(...),[]|...],[not o_time_4(_77251),[]]),
+	   Modelx = [not o_time_4(_77251),[]],
+	   StackOut = [[],[],_77251\=3,not o_time_4(_77251),[],[],_77251\=2,not o_time_3(_77251),[],[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))] ? l
+ + 1986  76  Exit: scasp:solve_goal(not time(_77251),[[],proved(time(1)),[],proved(time(0)),not o_stoppedIn_1(0,no_of_entries(0),1,_77251,_61085),forall(_54867,forall(_54870,not o_stoppedIn_1(...))),not o_stoppedIn_1(0,no_of_entries(...),1),not stoppedIn(...),[]|...],[[],[],[],_77251\=3,not o_time_4(_77251),[],[],_77251\=2,not...|...],[not time(_77251),[[]],[[]],[[]],[[]]]),
+	   Modelx = [not time(_77251),[[]],[[]],[[]],[[]]],
+	   StackOut = [[],[],[],_77251\=3,not o_time_4(_77251),[],[],_77251\=2,not o_time_3(...),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))] ? l
+ + 1738  69  Exit: scasp:solve_goal(not o_stoppedIn_1(0,no_of_entries(0),1,_77251,_61085),[forall(_54867,forall(_54870,not o_stoppedIn_1(0,no_of_entries(0),1,_54867,_54870))),not o_stoppedIn_1(0,no_of_entries(0),1),not stoppedIn(0,no_of_entries(0),1),[],proved(fluent(no_of_entries(0))),[],initiallyP(no_of_entries(0)),[],proved(...)|...],[[],[],[],[],_77251\=3,not o_time_4(_77251),[],[],_77251\= ...|...],[not o_stoppedIn_1(0,no_of_entries(0),1,_77251,_61085),proved(time(0)),[],proved(time(1)),[],not time(_77251),[[[]],[[]],[...]|...]]),
+	   Modelx = [not o_stoppedIn_1(0,no_of_entries(0),1,_77251,_61085),proved(time(0)),[],proved(time(1)),[],not time(_77251),[[[]],[[]],[[]],[...]]],
+	   StackOut = [[],[],[],[],_77251\=3,not o_time_4(_77251),[],[],_77251\=2,not...|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))] ? l
+ + 3091  70  Call: scasp:solve_goal(not o_stoppedIn_1(0,no_of_entries(0),1,0,_63441),[[],[],[],[],_77251\=3,not o_time_4(_77251),[],[],_77251\= ...|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))] ? l
+ + 3428  78  Call: scasp:solve_goal(not event(_208203),[[],proved(time(0)),[],proved(time(1)),[],proved(time(0)),not o_stoppedIn_1(0,no_of_entries(...),1,0,_208203),[],[]|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_208203,att(_208203,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 3442  83  Call: scasp:solve_goal(not o_event_1(_138179),[not event(_138179),[],proved(time(0)),[],proved(time(1)),[],proved(time(0)),not o_stoppedIn_1(...),[]|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 3456  88  Call: scasp:solve_goal(_138179\=entry,[not o_event_1(_138179),not event(_138179),[],proved(time(0)),[],proved(time(1)),[],proved(time(...)),not...|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? 
+   3457  89  Call: term_basic:=(_138179\=entry,forall(_1,_2))
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 3456  88  Exit: scasp:solve_goal(_138179\=entry,[not o_event_1(_138179),not event(_138179),[],proved(time(0)),[],proved(time(1)),[],proved(time(...)),not...|...],[[],_138179\=entry,not o_event_1(_138179),not event(_138179),[],proved(time(0)),[],proved(time(...)),[]|...],[_138179\=entry]),
+	   Modelx = [_138179\=entry],
+	   StackOut = [[],_138179\=entry,not o_event_1(_138179),not event(_138179),[],proved(time(0)),[],proved(time(1)),[],proved(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 3442  83  Exit: scasp:solve_goal(not o_event_1(_138179),[not event(_138179),[],proved(time(0)),[],proved(time(1)),[],proved(time(0)),not o_stoppedIn_1(...),[]|...],[[],[],_138179\=entry,not o_event_1(_138179),not event(_138179),[],proved(time(0)),[],proved(...)|...],[not o_event_1(_138179),[]]),
+	   Modelx = [not o_event_1(_138179),[]],
+	   StackOut = [[],[],_138179\=entry,not o_event_1(_138179),not event(_138179),[],proved(time(0)),[],proved(time(...)),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 3428  78  Exit: scasp:solve_goal(not event(_138179),[[],proved(time(0)),[],proved(time(1)),[],proved(time(0)),not o_stoppedIn_1(0,no_of_entries(...),1,0,_138179),[],[]|...],[[],[],[],_138179\=entry,not o_event_1(_138179),not event(_138179),[],proved(time(...)),[]|...],[not event(_138179),[[]]]),
+	   Modelx = [not event(_138179),[[]]],
+	   StackOut = [[],[],[],_138179\=entry,not o_event_1(_138179),not event(_138179),[],proved(time(0)),[],proved(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 3091  70  Exit: scasp:solve_goal(not o_stoppedIn_1(0,no_of_entries(0),1,0,_138179),[[],[],[],[],_77251\=3,not o_time_4(_77251),[],[],_77251\= ...|...],[[],[],[],[],_138179\=entry,not o_event_1(_138179),not event(_138179),[],proved(...)|...],[not o_stoppedIn_1(0,no_of_entries(0),1,0,_138179),proved(time(0)),[],proved(time(1)),[],proved(time(0)),[],not event(...),[...]]),
+	   Modelx = [not o_stoppedIn_1(0,no_of_entries(0),1,0,_138179),proved(time(0)),[],proved(time(1)),[],proved(time(0)),[],not event(_138179),[[...]]],
+	   StackOut = [[],[],[],[],_138179\=entry,not o_event_1(_138179),not event(_138179),[],proved(time(...)),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 4317  71  Call: scasp:solve_goal(not o_stoppedIn_1(0,no_of_entries(0),1,0,entry),[[],[],[],[],_138179\=entry,not o_event_1(_138179),not event(_138179),[],proved(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 4517  81  Call: scasp:solve_goal(not terminates(entry,no_of_entries(0),0),[[],proved(fluent(no_of_entries(0))),[],proved(event(entry)),[],proved(time(0)),[],proved(time(...)),[]|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 4638  86  Call: scasp:solve_goal(not o_terminates_1(entry,no_of_entries(0),0),[not terminates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(0))),[],proved(event(entry)),[],proved(time(0)),[],proved(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 4652  91  Call: scasp:solve_goal(forall(_385257,not o_terminates_1(entry,no_of_entries(0),0,_385257)),[not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(0))),[],proved(event(entry)),[],proved(time(...)),[]|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 6227  98  Call: scasp:solve_goal(not o_terminates_1(entry,no_of_entries(0),0,_200242),[forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(0))),[],proved(event(entry)),[],proved(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 6241  103  Call: scasp:solve_goal((entry)\=entry,[not o_terminates_1(entry,no_of_entries(0),0,_200242),forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(0))),[],proved(event(...)),[]|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 6241  103  Fail: scasp:solve_goal((entry)\=entry,[not o_terminates_1(entry,no_of_entries(0),0,_200242),forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(0))),[],proved(event(...)),[]|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 6241  103  Call: scasp:solve_goal((entry)=entry,[not o_terminates_1(entry,no_of_entries(0),0,_200242),forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(0))),[],proved(event(...)),[]|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 6241  103  Exit: scasp:solve_goal((entry)=entry,[not o_terminates_1(entry,no_of_entries(0),0,_200242),forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(0))),[],proved(event(...)),[]|...],[[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,_200242),forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(0),0),[],proved(fluent(...)),[]|...],[(entry)=entry]),
+	   Modelx = [(entry)=entry],
+	   StackOut = [[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,_200242),forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(...))),[],proved(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 6264  104  Call: scasp:solve_goal(no_of_entries(0)\=no_of_entries(_200242),[[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,_200242),forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(0),0),[],proved(fluent(...)),[]|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 6264  104  Exit: scasp:solve_goal(no_of_entries(0)\=no_of_entries(_241923),[[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,_241923),forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(0),0),[],proved(fluent(...)),[]|...],[[],no_of_entries(0)\=no_of_entries(_241923),[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,_241923),forall(_195121,not o_terminates_1(entry,no_of_entries(...),0,_195121)),not o_terminates_1(entry,no_of_entries(...),0),not terminates(...),[]|...],[no_of_entries(0)\=no_of_entries(_241923)]),
+	   Modelx = [no_of_entries(0)\=no_of_entries(_241923)],
+	   StackOut = [[],no_of_entries(0)\=no_of_entries(_241923),[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,_241923),forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(...),0),[],proved(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))]
+          [attach_attribute(_241923,att(_241923,false,att(clp_disequality_rt,neg([0]),[])))] ? l
+ + 6227  98  Exit: scasp:solve_goal(not o_terminates_1(entry,no_of_entries(0),0,_241923),[forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(0))),[],proved(event(entry)),[],proved(...)|...],[[],[],no_of_entries(0)\=no_of_entries(_241923),[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,_241923),forall(_195121,not o_terminates_1(...)),not o_terminates_1(...),not...|...],[not o_terminates_1(entry,no_of_entries(0),0,_241923),[],[]]),
+	   Modelx = [not o_terminates_1(entry,no_of_entries(0),0,_241923),[],[]],
+	   StackOut = [[],[],no_of_entries(0)\=no_of_entries(_241923),[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,_241923),forall(_195121,not o_terminates_1(entry,no_of_entries(...),0,_195121)),not o_terminates_1(entry,no_of_entries(...),0),not terminates(...),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))]
+          [attach_attribute(_241923,att(_241923,false,att(clp_disequality_rt,neg([0]),[])))] ? l
+ + 6543  99  Call: scasp:solve_goal(not o_terminates_1(entry,no_of_entries(0),0,0),[[],[],no_of_entries(0)\=no_of_entries(_241923),[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,_241923),forall(_195121,not o_terminates_1(...)),not o_terminates_1(...),not...|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))]
+          [attach_attribute(_241923,att(_241923,false,att(clp_disequality_rt,neg([0]),[])))] ? l
+ + 6557  104  Call: scasp:solve_goal((entry)\=entry,[not o_terminates_1(entry,no_of_entries(0),0,0),[],[],no_of_entries(0)\=no_of_entries(_241923),[],(entry)=entry,not o_terminates_1(entry,no_of_entries(...),0,_241923),forall(_195121,not...),not...|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))]
+          [attach_attribute(_241923,att(_241923,false,att(clp_disequality_rt,neg([0]),[])))] ? l
+ + 6557  104  Fail: scasp:solve_goal((entry)\=entry,[not o_terminates_1(entry,no_of_entries(0),0,0),[],[],no_of_entries(0)\=no_of_entries(_241923),[],(entry)=entry,not o_terminates_1(entry,no_of_entries(...),0,_241923),forall(_195121,not...),not...|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))]
+          [attach_attribute(_241923,att(_241923,false,att(clp_disequality_rt,neg([0]),[])))] ? l
+ + 6557  104  Call: scasp:solve_goal((entry)=entry,[not o_terminates_1(entry,no_of_entries(0),0,0),[],[],no_of_entries(0)\=no_of_entries(_241923),[],(entry)=entry,not o_terminates_1(entry,no_of_entries(...),0,_241923),forall(_195121,not...),not...|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))]
+          [attach_attribute(_241923,att(_241923,false,att(clp_disequality_rt,neg([0]),[])))] ? l
+ + 6557  104  Exit: scasp:solve_goal((entry)=entry,[not o_terminates_1(entry,no_of_entries(0),0,0),[],[],no_of_entries(0)\=no_of_entries(_241923),[],(entry)=entry,not o_terminates_1(entry,no_of_entries(...),0,_241923),forall(_195121,not...),not...|...],[[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,0),[],[],no_of_entries(0)\=no_of_entries(_241923),[],(entry)=entry,not...|...],[(entry)=entry]),
+	   Modelx = [(entry)=entry],
+	   StackOut = [[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,0),[],[],no_of_entries(0)\=no_of_entries(_241923),[],(entry)=entry,not o_terminates_1(...),forall(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))]
+          [attach_attribute(_241923,att(_241923,false,att(clp_disequality_rt,neg([0]),[])))] ? l
+ + 6580  105  Call: scasp:solve_goal(no_of_entries(0)\=no_of_entries(0),[[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,0),[],[],no_of_entries(0)\=no_of_entries(_241923),[],(entry)=entry,not...|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))]
+          [attach_attribute(_241923,att(_241923,false,att(clp_disequality_rt,neg([0]),[])))] ? l
+ + 6580  105  Fail: scasp:solve_goal(no_of_entries(0)\=no_of_entries(0),[[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,0),[],[],no_of_entries(0)\=no_of_entries(_241923),[],(entry)=entry,not...|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))]
+          [attach_attribute(_241923,att(_241923,false,att(clp_disequality_rt,neg([0]),[])))] ? l
+ + 6557  104  Call: scasp:solve_goal((entry)=entry,[not o_terminates_1(entry,no_of_entries(0),0,0),[],[],no_of_entries(0)\=no_of_entries(_241923),[],(entry)=entry,not o_terminates_1(entry,no_of_entries(...),0,_241923),forall(_195121,not...),not...|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))]
+          [attach_attribute(_241923,att(_241923,false,att(clp_disequality_rt,neg([0]),[])))] ? l
+ + 6557  104  Exit: scasp:solve_goal((entry)=entry,[not o_terminates_1(entry,no_of_entries(0),0,0),[],[],no_of_entries(0)\=no_of_entries(_241923),[],(entry)=entry,not o_terminates_1(entry,no_of_entries(...),0,_241923),forall(_195121,not...),not...|...],[[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,0),[],[],no_of_entries(0)\=no_of_entries(_241923),[],(entry)=entry,not...|...],[(entry)=entry]),
+	   Modelx = [(entry)=entry],
+	   StackOut = [[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,0),[],[],no_of_entries(0)\=no_of_entries(_241923),[],(entry)=entry,not o_terminates_1(...),forall(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))]
+          [attach_attribute(_241923,att(_241923,false,att(clp_disequality_rt,neg([0]),[])))] ? l
+ + 6580  105  Call: scasp:solve_goal(no_of_entries(0)=no_of_entries(0),[[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,0),[],[],no_of_entries(0)\=no_of_entries(_241923),[],(entry)=entry,not...|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))]
+          [attach_attribute(_241923,att(_241923,false,att(clp_disequality_rt,neg([0]),[])))] ? l
+ + 6580  105  Exit: scasp:solve_goal(no_of_entries(0)=no_of_entries(0),[[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,0),[],[],no_of_entries(0)\=no_of_entries(_241923),[],(entry)=entry,not...|...],[[],no_of_entries(0)=no_of_entries(0),[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,0),[],[],no_of_entries(...)\=no_of_entries(...),[]|...],[no_of_entries(0)=no_of_entries(0)]),
+	   Modelx = [no_of_entries(0)=no_of_entries(0)],
+	   StackOut = [[],no_of_entries(0)=no_of_entries(0),[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,0),[],[],no_of_entries(0)\=no_of_entries(_241923),[],... = ...|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))]
+          [attach_attribute(_241923,att(_241923,false,att(clp_disequality_rt,neg([0]),[])))] ? l
+ + 6557  104  Call: scasp:solve_goal((entry)=entry,[not o_terminates_1(entry,no_of_entries(0),0,0),[],[],no_of_entries(0)\=no_of_entries(_208747),[],(entry)=entry,not o_terminates_1(entry,no_of_entries(...),0,_208747),forall(_195121,not...),not...|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))]
+          [attach_attribute(_208747,att(_208747,false,att(clp_disequality_rt,neg([0]),[])))] ? l
+ + 6557  104  Exit: scasp:solve_goal((entry)=entry,[not o_terminates_1(entry,no_of_entries(0),0,0),[],[],no_of_entries(0)\=no_of_entries(_208747),[],(entry)=entry,not o_terminates_1(entry,no_of_entries(...),0,_208747),forall(_195121,not...),not...|...],[[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,0),[],[],no_of_entries(0)\=no_of_entries(_208747),[],(entry)=entry,not...|...],[(entry)=entry]),
+	   Modelx = [(entry)=entry],
+	   StackOut = [[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,0),[],[],no_of_entries(0)\=no_of_entries(_208747),[],(entry)=entry,not o_terminates_1(...),forall(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))]
+          [attach_attribute(_208747,att(_208747,false,att(clp_disequality_rt,neg([0]),[])))] ? l
+ + 6580  105  Call: scasp:solve_goal(no_of_entries(0)=no_of_entries(0),[[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,0),[],[],no_of_entries(0)\=no_of_entries(_208747),[],(entry)=entry,not...|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))]
+          [attach_attribute(_208747,att(_208747,false,att(clp_disequality_rt,neg([0]),[])))] ? l
+ + 6580  105  Exit: scasp:solve_goal(no_of_entries(0)=no_of_entries(0),[[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,0),[],[],no_of_entries(0)\=no_of_entries(_208747),[],(entry)=entry,not...|...],[[],no_of_entries(0)=no_of_entries(0),[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,0),[],[],no_of_entries(...)\=no_of_entries(...),[]|...],[no_of_entries(0)=no_of_entries(0)]),
+	   Modelx = [no_of_entries(0)=no_of_entries(0)],
+	   StackOut = [[],no_of_entries(0)=no_of_entries(0),[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,0),[],[],no_of_entries(0)\=no_of_entries(_208747),[],... = ...|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))]
+          [attach_attribute(_208747,att(_208747,false,att(clp_disequality_rt,neg([0]),[])))] ? l
+ + 6557  104  Call: scasp:solve_goal((entry)=entry,[not o_terminates_1(entry,no_of_entries(0),0,0),[],[],no_of_entries(0)\=no_of_entries(_208747),[],(entry)=entry,not o_terminates_1(entry,no_of_entries(...),0,_208747),forall(_195121,not...),not...|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))]
+          [attach_attribute(_208747,att(_208747,false,att(clp_disequality_rt,neg([0]),[])))] ? l
+ + 6557  104  Exit: scasp:solve_goal((entry)=entry,[not o_terminates_1(entry,no_of_entries(0),0,0),[],[],no_of_entries(0)\=no_of_entries(_208747),[],(entry)=entry,not o_terminates_1(entry,no_of_entries(...),0,_208747),forall(_195121,not...),not...|...],[[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,0),[],[],no_of_entries(0)\=no_of_entries(_208747),[],(entry)=entry,not...|...],[(entry)=entry]),
+	   Modelx = [(entry)=entry],
+	   StackOut = [[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,0),[],[],no_of_entries(0)\=no_of_entries(_208747),[],(entry)=entry,not o_terminates_1(...),forall(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))]
+          [attach_attribute(_208747,att(_208747,false,att(clp_disequality_rt,neg([0]),[])))] ? l
+ + 6580  105  Call: scasp:solve_goal(no_of_entries(0)=no_of_entries(0),[[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,0),[],[],no_of_entries(0)\=no_of_entries(_208747),[],(entry)=entry,not...|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))]
+          [attach_attribute(_208747,att(_208747,false,att(clp_disequality_rt,neg([0]),[])))] ? l
+ + 6580  105  Exit: scasp:solve_goal(no_of_entries(0)=no_of_entries(0),[[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,0),[],[],no_of_entries(0)\=no_of_entries(_208747),[],(entry)=entry,not...|...],[[],no_of_entries(0)=no_of_entries(0),[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,0),[],[],no_of_entries(...)\=no_of_entries(...),[]|...],[no_of_entries(0)=no_of_entries(0)]),
+	   Modelx = [no_of_entries(0)=no_of_entries(0)],
+	   StackOut = [[],no_of_entries(0)=no_of_entries(0),[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,0),[],[],no_of_entries(0)\=no_of_entries(_208747),[],... = ...|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))]
+          [attach_attribute(_208747,att(_208747,false,att(clp_disequality_rt,neg([0]),[])))] ? l
+ + 6543  99  Fail: scasp:solve_goal(not o_terminates_1(entry,no_of_entries(0),0,0),[[],[],no_of_entries(0)\=no_of_entries(_208747),[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,_208747),forall(_195121,not o_terminates_1(...)),not o_terminates_1(...),not...|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))]
+          [attach_attribute(_208747,att(_208747,false,att(clp_disequality_rt,neg([0]),[])))] ? l
+ + 6227  98  Redo: scasp:solve_goal(not o_terminates_1(entry,no_of_entries(0),0,_208747),[forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(0))),[],proved(event(entry)),[],proved(...)|...],[[],[],no_of_entries(0)\=no_of_entries(_208747),[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,_208747),forall(_195121,not o_terminates_1(...)),not o_terminates_1(...),not...|...],[not o_terminates_1(entry,no_of_entries(0),0,_208747),[],[]]),
+	   Modelx = [not o_terminates_1(entry,no_of_entries(0),0,_208747),[],[]],
+	   StackOut = [[],[],no_of_entries(0)\=no_of_entries(_208747),[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,_208747),forall(_195121,not o_terminates_1(entry,no_of_entries(...),0,_195121)),not o_terminates_1(entry,no_of_entries(...),0),not terminates(...),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))]
+          [attach_attribute(_208747,att(_208747,false,att(clp_disequality_rt,neg([0]),[])))] ? l
+ + 6264  104  Redo: scasp:solve_goal(no_of_entries(0)\=no_of_entries(_208747),[[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,_208747),forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(0),0),[],proved(fluent(...)),[]|...],[[],no_of_entries(0)\=no_of_entries(_208747),[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,_208747),forall(_195121,not o_terminates_1(entry,no_of_entries(...),0,_195121)),not o_terminates_1(entry,no_of_entries(...),0),not terminates(...),[]|...],[no_of_entries(0)\=no_of_entries(_208747)]),
+	   Modelx = [no_of_entries(0)\=no_of_entries(_208747)],
+	   StackOut = [[],no_of_entries(0)\=no_of_entries(_208747),[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,_208747),forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(...),0),[],proved(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))]
+          [attach_attribute(_208747,att(_208747,false,att(clp_disequality_rt,neg([0]),[])))] ? l
+ + 6264  104  Fail: scasp:solve_goal(no_of_entries(0)\=no_of_entries(_200242),[[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,_200242),forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(0),0),[],proved(fluent(...)),[]|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 6241  103  Call: scasp:solve_goal((entry)=entry,[not o_terminates_1(entry,no_of_entries(0),0,_200242),forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(0))),[],proved(event(...)),[]|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 6241  103  Exit: scasp:solve_goal((entry)=entry,[not o_terminates_1(entry,no_of_entries(0),0,_200242),forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(0))),[],proved(event(...)),[]|...],[[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,_200242),forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(0),0),[],proved(fluent(...)),[]|...],[(entry)=entry]),
+	   Modelx = [(entry)=entry],
+	   StackOut = [[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,_200242),forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(...))),[],proved(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 6264  104  Call: scasp:solve_goal(no_of_entries(0)=no_of_entries(_200242),[[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,_200242),forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(0),0),[],proved(fluent(...)),[]|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 6264  104  Exit: scasp:solve_goal(no_of_entries(0)=no_of_entries(0),[[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,0),forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(0),0),[],proved(fluent(...)),[]|...],[[],no_of_entries(0)=no_of_entries(0),[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,0),forall(_195121,not o_terminates_1(entry,no_of_entries(...),0,_195121)),not o_terminates_1(entry,no_of_entries(...),0),not terminates(...),[]|...],[no_of_entries(0)=no_of_entries(0)]),
+	   Modelx = [no_of_entries(0)=no_of_entries(0)],
+	   StackOut = [[],no_of_entries(0)=no_of_entries(0),[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,0),forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(...),0),[],proved(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 6241  103  Call: scasp:solve_goal((entry)=entry,[not o_terminates_1(entry,no_of_entries(0),0,_200242),forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(0))),[],proved(event(...)),[]|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 6241  103  Exit: scasp:solve_goal((entry)=entry,[not o_terminates_1(entry,no_of_entries(0),0,_200242),forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(0))),[],proved(event(...)),[]|...],[[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,_200242),forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(0),0),[],proved(fluent(...)),[]|...],[(entry)=entry]),
+	   Modelx = [(entry)=entry],
+	   StackOut = [[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,_200242),forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(...))),[],proved(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 6264  104  Call: scasp:solve_goal(no_of_entries(0)=no_of_entries(_200242),[[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,_200242),forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(0),0),[],proved(fluent(...)),[]|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 6264  104  Exit: scasp:solve_goal(no_of_entries(0)=no_of_entries(0),[[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,0),forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(0),0),[],proved(fluent(...)),[]|...],[[],no_of_entries(0)=no_of_entries(0),[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,0),forall(_195121,not o_terminates_1(entry,no_of_entries(...),0,_195121)),not o_terminates_1(entry,no_of_entries(...),0),not terminates(...),[]|...],[no_of_entries(0)=no_of_entries(0)]),
+	   Modelx = [no_of_entries(0)=no_of_entries(0)],
+	   StackOut = [[],no_of_entries(0)=no_of_entries(0),[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,0),forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(...),0),[],proved(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 6241  103  Call: scasp:solve_goal((entry)=entry,[not o_terminates_1(entry,no_of_entries(0),0,_200242),forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(0))),[],proved(event(...)),[]|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 6241  103  Exit: scasp:solve_goal((entry)=entry,[not o_terminates_1(entry,no_of_entries(0),0,_200242),forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(0))),[],proved(event(...)),[]|...],[[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,_200242),forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(0),0),[],proved(fluent(...)),[]|...],[(entry)=entry]),
+	   Modelx = [(entry)=entry],
+	   StackOut = [[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,_200242),forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(...))),[],proved(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 6264  104  Call: scasp:solve_goal(no_of_entries(0)=no_of_entries(_200242),[[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,_200242),forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(0),0),[],proved(fluent(...)),[]|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 6264  104  Exit: scasp:solve_goal(no_of_entries(0)=no_of_entries(0),[[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,0),forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(0),0),[],proved(fluent(...)),[]|...],[[],no_of_entries(0)=no_of_entries(0),[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,0),forall(_195121,not o_terminates_1(entry,no_of_entries(...),0,_195121)),not o_terminates_1(entry,no_of_entries(...),0),not terminates(...),[]|...],[no_of_entries(0)=no_of_entries(0)]),
+	   Modelx = [no_of_entries(0)=no_of_entries(0)],
+	   StackOut = [[],no_of_entries(0)=no_of_entries(0),[],(entry)=entry,not o_terminates_1(entry,no_of_entries(0),0,0),forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(...),0),[],proved(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 6227  98  Fail: scasp:solve_goal(not o_terminates_1(entry,no_of_entries(0),0,_200242),[forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(0))),[],proved(event(entry)),[],proved(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 4652  91  Fail: scasp:solve_goal(forall(_195121,not o_terminates_1(entry,no_of_entries(0),0,_195121)),[not o_terminates_1(entry,no_of_entries(0),0),not terminates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(0))),[],proved(event(entry)),[],proved(time(...)),[]|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 4638  86  Fail: scasp:solve_goal(not o_terminates_1(entry,no_of_entries(0),0),[not terminates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(0))),[],proved(event(entry)),[],proved(time(0)),[],proved(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 4517  81  Fail: scasp:solve_goal(not terminates(entry,no_of_entries(0),0),[[],proved(fluent(no_of_entries(0))),[],proved(event(entry)),[],proved(time(0)),[],proved(time(...)),[]|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 4520  81  Call: scasp:solve_goal(terminates(entry,no_of_entries(0),0),[[],proved(fluent(no_of_entries(0))),[],proved(event(entry)),[],proved(time(0)),[],proved(time(...)),[]|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 4683  88  Call: scasp:solve_goal(holdsAt(no_of_entries(0),0),[[],proved(num(0)),[],proved(time(0)),terminates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(...))),[],proved(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 4700  93  Call: scasp:solve_goal(0<0,[holdsAt(no_of_entries(0),0),[],proved(num(0)),[],proved(time(0)),terminates(entry,no_of_entries(0),0),[],proved(fluent(...)),[]|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 4700  93  Fail: scasp:solve_goal(0<0,[holdsAt(no_of_entries(0),0),[],proved(num(0)),[],proved(time(0)),terminates(entry,no_of_entries(0),0),[],proved(fluent(...)),[]|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 4700  93  Call: scasp:solve_goal(time(_359217),[holdsAt(no_of_entries(0),0),[],proved(num(0)),[],proved(time(0)),terminates(entry,no_of_entries(0),0),[],proved(fluent(...)),[]|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 4700  93  Exit: scasp:solve_goal(time(0),[holdsAt(no_of_entries(0),0),[],proved(num(0)),[],proved(time(0)),terminates(entry,no_of_entries(0),0),[],proved(fluent(...)),[]|...],[[],time(0),holdsAt(no_of_entries(0),0),[],proved(num(0)),[],proved(time(0)),terminates(entry,no_of_entries(...),0),[]|...],[time(0)]),
+	   Modelx = [time(0)],
+	   StackOut = [[],time(0),holdsAt(no_of_entries(0),0),[],proved(num(0)),[],proved(time(0)),terminates(entry,no_of_entries(0),0),[],proved(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 4740  95  Call: scasp:solve_goal(time(_359225),[[],proved(time(0)),[],time(0),holdsAt(no_of_entries(0),0),[],proved(num(0)),[],proved(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 4740  95  Exit: scasp:solve_goal(time(0),[[],proved(time(0)),[],time(0),holdsAt(no_of_entries(0),0),[],proved(num(0)),[],proved(...)|...],[[],time(0),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(0),0),[],proved(...)|...],[time(0)]),
+	   Modelx = [time(0)],
+	   StackOut = [[],time(0),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(0),0),[],proved(num(...)),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 4764  96  Call: scasp:solve_goal(event(_196064),[[],time(0),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(0),0),[],proved(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 4764  96  Exit: scasp:solve_goal(event(entry),[[],time(0),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(0),0),[],proved(...)|...],[[],event(entry),[],time(0),[],proved(time(0)),[],time(0),holdsAt(...)|...],[event(entry)]),
+	   Modelx = [event(entry)],
+	   StackOut = [[],event(entry),[],time(0),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(...),0),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 4788  97  Call: scasp:solve_goal(fluent(_196068),[[],event(entry),[],time(0),[],proved(time(0)),[],time(0),holdsAt(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 4805  102  Call: scasp:solve_goal(num(_226383),[fluent(no_of_entries(_226383)),[],event(entry),[],time(0),[],proved(time(0)),[],time(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 4805  102  Exit: scasp:solve_goal(num(0),[fluent(no_of_entries(0)),[],event(entry),[],time(0),[],proved(time(0)),[],time(...)|...],[[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(0),[],proved(...)|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(0),[],proved(time(...)),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 4788  97  Exit: scasp:solve_goal(fluent(no_of_entries(0)),[[],event(entry),[],time(0),[],proved(time(0)),[],time(0),holdsAt(...)|...],[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(0),[]|...],[fluent(no_of_entries(0)),num(0),[]]),
+	   Modelx = [fluent(no_of_entries(0)),num(0),[]],
+	   StackOut = [[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(0),[],proved(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 4989  99  Call: scasp:solve_goal(initiates(entry,no_of_entries(0),0),[[],proved(fluent(no_of_entries(0))),[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[]|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5022  105  Call: scasp:solve_goal(num(_343037),[[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(0))),[],[],num(0),fluent(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5022  105  Exit: scasp:solve_goal(num(0),[[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(0))),[],[],num(0),fluent(...)|...],[[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(0))),[],[],num(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5022  105  Redo: scasp:solve_goal(num(0),[[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(0))),[],[],num(0),fluent(...)|...],[[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(0))),[],[],num(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5022  105  Exit: scasp:solve_goal(num(1),[[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(0))),[],[],num(0),fluent(...)|...],[[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(1)]),
+	   Modelx = [num(1)],
+	   StackOut = [[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(0))),[],[],num(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5180  106  Call: scasp:solve_goal(holdsAt(no_of_entries(1),0),[[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(fluent(no_of_entries(...))),[],[]|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5197  111  Call: scasp:solve_goal(0<0,[holdsAt(no_of_entries(1),0),[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(fluent(...)),[]|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5197  111  Fail: scasp:solve_goal(0<0,[holdsAt(no_of_entries(1),0),[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(fluent(...)),[]|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5197  111  Call: scasp:solve_goal(time(_220981),[holdsAt(no_of_entries(1),0),[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(fluent(...)),[]|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5197  111  Exit: scasp:solve_goal(time(0),[holdsAt(no_of_entries(1),0),[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(fluent(...)),[]|...],[[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(...),0),[]|...],[time(0)]),
+	   Modelx = [time(0)],
+	   StackOut = [[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5237  113  Call: scasp:solve_goal(time(_220989),[[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[],proved(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5237  113  Exit: scasp:solve_goal(time(0),[[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[],proved(...)|...],[[],time(0),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],[time(0)]),
+	   Modelx = [time(0)],
+	   StackOut = [[],time(0),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5261  114  Call: scasp:solve_goal(event(_220993),[[],time(0),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5261  114  Exit: scasp:solve_goal(event(entry),[[],time(0),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],[[],event(entry),[],time(0),[],proved(time(0)),[],time(0),holdsAt(...)|...],[event(entry)]),
+	   Modelx = [event(entry)],
+	   StackOut = [[],event(entry),[],time(0),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(...),0),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5285  115  Call: scasp:solve_goal(fluent(_220997),[[],event(entry),[],time(0),[],proved(time(0)),[],time(0),holdsAt(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5302  120  Call: scasp:solve_goal(num(_298424),[fluent(no_of_entries(_298424)),[],event(entry),[],time(0),[],proved(time(0)),[],time(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5302  120  Exit: scasp:solve_goal(num(0),[fluent(no_of_entries(0)),[],event(entry),[],time(0),[],proved(time(0)),[],time(...)|...],[[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(0),[],proved(...)|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(0),[],proved(time(...)),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5285  115  Exit: scasp:solve_goal(fluent(no_of_entries(0)),[[],event(entry),[],time(0),[],proved(time(0)),[],time(0),holdsAt(...)|...],[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(0),[]|...],[fluent(no_of_entries(0)),num(0),[]]),
+	   Modelx = [fluent(no_of_entries(0)),num(0),[]],
+	   StackOut = [[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(0),[],proved(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5285  115  Redo: scasp:solve_goal(fluent(no_of_entries(0)),[[],event(entry),[],time(0),[],proved(time(0)),[],time(0),holdsAt(...)|...],[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(0),[]|...],[fluent(no_of_entries(0)),num(0),[]]),
+	   Modelx = [fluent(no_of_entries(0)),num(0),[]],
+	   StackOut = [[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(0),[],proved(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5302  120  Redo: scasp:solve_goal(num(0),[fluent(no_of_entries(0)),[],event(entry),[],time(0),[],proved(time(0)),[],time(...)|...],[[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(0),[],proved(...)|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(0),[],proved(time(...)),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5302  120  Exit: scasp:solve_goal(num(1),[fluent(no_of_entries(1)),[],event(entry),[],time(0),[],proved(time(0)),[],time(...)|...],[[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(0),[],proved(...)|...],[num(1)]),
+	   Modelx = [num(1)],
+	   StackOut = [[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(0),[],proved(time(...)),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5285  115  Exit: scasp:solve_goal(fluent(no_of_entries(1)),[[],event(entry),[],time(0),[],proved(time(0)),[],time(0),holdsAt(...)|...],[[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(0),[]|...],[fluent(no_of_entries(1)),num(1),[]]),
+	   Modelx = [fluent(no_of_entries(1)),num(1),[]],
+	   StackOut = [[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(0),[],proved(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5506  117  Call: scasp:solve_goal(initiates(entry,no_of_entries(1),0),[[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[]|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5539  123  Call: scasp:solve_goal(num(_237395),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5539  123  Exit: scasp:solve_goal(num(0),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],[[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5539  123  Redo: scasp:solve_goal(num(0),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],[[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5539  123  Exit: scasp:solve_goal(num(1),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],[[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(1)]),
+	   Modelx = [num(1)],
+	   StackOut = [[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5539  123  Redo: scasp:solve_goal(num(1),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],[[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(1)]),
+	   Modelx = [num(1)],
+	   StackOut = [[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5539  123  Fail: scasp:solve_goal(num(_237395),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5506  117  Fail: scasp:solve_goal(initiates(entry,no_of_entries(1),0),[[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[]|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5285  115  Redo: scasp:solve_goal(fluent(no_of_entries(1)),[[],event(entry),[],time(0),[],proved(time(0)),[],time(0),holdsAt(...)|...],[[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(0),[]|...],[fluent(no_of_entries(1)),num(1),[]]),
+	   Modelx = [fluent(no_of_entries(1)),num(1),[]],
+	   StackOut = [[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(0),[],proved(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5302  120  Redo: scasp:solve_goal(num(1),[fluent(no_of_entries(1)),[],event(entry),[],time(0),[],proved(time(0)),[],time(...)|...],[[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(0),[],proved(...)|...],[num(1)]),
+	   Modelx = [num(1)],
+	   StackOut = [[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(0),[],proved(time(...)),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5302  120  Fail: scasp:solve_goal(num(_227551),[fluent(no_of_entries(_227551)),[],event(entry),[],time(0),[],proved(time(0)),[],time(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5285  115  Fail: scasp:solve_goal(fluent(_220997),[[],event(entry),[],time(0),[],proved(time(0)),[],time(0),holdsAt(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5261  114  Redo: scasp:solve_goal(event(entry),[[],time(0),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],[[],event(entry),[],time(0),[],proved(time(0)),[],time(0),holdsAt(...)|...],[event(entry)]),
+	   Modelx = [event(entry)],
+	   StackOut = [[],event(entry),[],time(0),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(...),0),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5261  114  Fail: scasp:solve_goal(event(_220993),[[],time(0),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5237  113  Redo: scasp:solve_goal(time(0),[[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[],proved(...)|...],[[],time(0),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],[time(0)]),
+	   Modelx = [time(0)],
+	   StackOut = [[],time(0),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5237  113  Exit: scasp:solve_goal(time(1),[[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[],proved(...)|...],[[],time(1),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],[time(1)]),
+	   Modelx = [time(1)],
+	   StackOut = [[],time(1),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5261  114  Call: scasp:solve_goal(event(_220993),[[],time(1),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5261  114  Exit: scasp:solve_goal(event(entry),[[],time(1),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],[[],event(entry),[],time(1),[],proved(time(0)),[],time(0),holdsAt(...)|...],[event(entry)]),
+	   Modelx = [event(entry)],
+	   StackOut = [[],event(entry),[],time(1),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(...),0),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5285  115  Call: scasp:solve_goal(fluent(_220997),[[],event(entry),[],time(1),[],proved(time(0)),[],time(0),holdsAt(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5302  120  Call: scasp:solve_goal(num(_265226),[fluent(no_of_entries(_265226)),[],event(entry),[],time(1),[],proved(time(0)),[],time(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5302  120  Exit: scasp:solve_goal(num(0),[fluent(no_of_entries(0)),[],event(entry),[],time(1),[],proved(time(0)),[],time(...)|...],[[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(1),[],proved(...)|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(1),[],proved(time(...)),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5285  115  Exit: scasp:solve_goal(fluent(no_of_entries(0)),[[],event(entry),[],time(1),[],proved(time(0)),[],time(0),holdsAt(...)|...],[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(1),[]|...],[fluent(no_of_entries(0)),num(0),[]]),
+	   Modelx = [fluent(no_of_entries(0)),num(0),[]],
+	   StackOut = [[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(1),[],proved(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5285  115  Redo: scasp:solve_goal(fluent(no_of_entries(0)),[[],event(entry),[],time(1),[],proved(time(0)),[],time(0),holdsAt(...)|...],[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(1),[]|...],[fluent(no_of_entries(0)),num(0),[]]),
+	   Modelx = [fluent(no_of_entries(0)),num(0),[]],
+	   StackOut = [[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(1),[],proved(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5302  120  Redo: scasp:solve_goal(num(0),[fluent(no_of_entries(0)),[],event(entry),[],time(1),[],proved(time(0)),[],time(...)|...],[[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(1),[],proved(...)|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(1),[],proved(time(...)),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5302  120  Exit: scasp:solve_goal(num(1),[fluent(no_of_entries(1)),[],event(entry),[],time(1),[],proved(time(0)),[],time(...)|...],[[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(1),[],proved(...)|...],[num(1)]),
+	   Modelx = [num(1)],
+	   StackOut = [[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(1),[],proved(time(...)),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5285  115  Exit: scasp:solve_goal(fluent(no_of_entries(1)),[[],event(entry),[],time(1),[],proved(time(0)),[],time(0),holdsAt(...)|...],[[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(1),[]|...],[fluent(no_of_entries(1)),num(1),[]]),
+	   Modelx = [fluent(no_of_entries(1)),num(1),[]],
+	   StackOut = [[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(1),[],proved(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5506  117  Call: scasp:solve_goal(initiates(entry,no_of_entries(1),0),[[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[]|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5539  123  Call: scasp:solve_goal(num(_237395),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5539  123  Exit: scasp:solve_goal(num(0),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],[[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5539  123  Redo: scasp:solve_goal(num(0),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],[[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? 
+   5549  124  Redo: scasp:solve_goal_predicate(num(0),[num(0),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(...)|...],[[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(0)]),
+	   Model = [num(0)],
+	   StackOut = [[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5539  123  Exit: scasp:solve_goal(num(1),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],[[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(1)]),
+	   Modelx = [num(1)],
+	   StackOut = [[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5539  123  Redo: scasp:solve_goal(num(1),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],[[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(1)]),
+	   Modelx = [num(1)],
+	   StackOut = [[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5539  123  Fail: scasp:solve_goal(num(_237395),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5506  117  Fail: scasp:solve_goal(initiates(entry,no_of_entries(1),0),[[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[]|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5285  115  Redo: scasp:solve_goal(fluent(no_of_entries(1)),[[],event(entry),[],time(1),[],proved(time(0)),[],time(0),holdsAt(...)|...],[[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(1),[]|...],[fluent(no_of_entries(1)),num(1),[]]),
+	   Modelx = [fluent(no_of_entries(1)),num(1),[]],
+	   StackOut = [[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(1),[],proved(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5302  120  Redo: scasp:solve_goal(num(1),[fluent(no_of_entries(1)),[],event(entry),[],time(1),[],proved(time(0)),[],time(...)|...],[[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(1),[],proved(...)|...],[num(1)]),
+	   Modelx = [num(1)],
+	   StackOut = [[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(1),[],proved(time(...)),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5302  120  Fail: scasp:solve_goal(num(_227551),[fluent(no_of_entries(_227551)),[],event(entry),[],time(1),[],proved(time(0)),[],time(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5285  115  Fail: scasp:solve_goal(fluent(_220997),[[],event(entry),[],time(1),[],proved(time(0)),[],time(0),holdsAt(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5261  114  Redo: scasp:solve_goal(event(entry),[[],time(1),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],[[],event(entry),[],time(1),[],proved(time(0)),[],time(0),holdsAt(...)|...],[event(entry)]),
+	   Modelx = [event(entry)],
+	   StackOut = [[],event(entry),[],time(1),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(...),0),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5261  114  Fail: scasp:solve_goal(event(_220993),[[],time(1),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5237  113  Redo: scasp:solve_goal(time(1),[[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[],proved(...)|...],[[],time(1),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],[time(1)]),
+	   Modelx = [time(1)],
+	   StackOut = [[],time(1),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5237  113  Exit: scasp:solve_goal(time(2),[[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[],proved(...)|...],[[],time(2),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],[time(2)]),
+	   Modelx = [time(2)],
+	   StackOut = [[],time(2),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5261  114  Call: scasp:solve_goal(event(_220993),[[],time(2),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5261  114  Exit: scasp:solve_goal(event(entry),[[],time(2),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],[[],event(entry),[],time(2),[],proved(time(0)),[],time(0),holdsAt(...)|...],[event(entry)]),
+	   Modelx = [event(entry)],
+	   StackOut = [[],event(entry),[],time(2),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(...),0),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5285  115  Call: scasp:solve_goal(fluent(_220997),[[],event(entry),[],time(2),[],proved(time(0)),[],time(0),holdsAt(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5302  120  Call: scasp:solve_goal(num(_265226),[fluent(no_of_entries(_265226)),[],event(entry),[],time(2),[],proved(time(0)),[],time(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5302  120  Exit: scasp:solve_goal(num(0),[fluent(no_of_entries(0)),[],event(entry),[],time(2),[],proved(time(0)),[],time(...)|...],[[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(2),[],proved(...)|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(2),[],proved(time(...)),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5285  115  Exit: scasp:solve_goal(fluent(no_of_entries(0)),[[],event(entry),[],time(2),[],proved(time(0)),[],time(0),holdsAt(...)|...],[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(2),[]|...],[fluent(no_of_entries(0)),num(0),[]]),
+	   Modelx = [fluent(no_of_entries(0)),num(0),[]],
+	   StackOut = [[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(2),[],proved(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5285  115  Redo: scasp:solve_goal(fluent(no_of_entries(0)),[[],event(entry),[],time(2),[],proved(time(0)),[],time(0),holdsAt(...)|...],[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(2),[]|...],[fluent(no_of_entries(0)),num(0),[]]),
+	   Modelx = [fluent(no_of_entries(0)),num(0),[]],
+	   StackOut = [[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(2),[],proved(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5302  120  Redo: scasp:solve_goal(num(0),[fluent(no_of_entries(0)),[],event(entry),[],time(2),[],proved(time(0)),[],time(...)|...],[[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(2),[],proved(...)|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(2),[],proved(time(...)),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5302  120  Exit: scasp:solve_goal(num(1),[fluent(no_of_entries(1)),[],event(entry),[],time(2),[],proved(time(0)),[],time(...)|...],[[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(2),[],proved(...)|...],[num(1)]),
+	   Modelx = [num(1)],
+	   StackOut = [[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(2),[],proved(time(...)),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5285  115  Exit: scasp:solve_goal(fluent(no_of_entries(1)),[[],event(entry),[],time(2),[],proved(time(0)),[],time(0),holdsAt(...)|...],[[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(2),[]|...],[fluent(no_of_entries(1)),num(1),[]]),
+	   Modelx = [fluent(no_of_entries(1)),num(1),[]],
+	   StackOut = [[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(2),[],proved(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5506  117  Call: scasp:solve_goal(initiates(entry,no_of_entries(1),0),[[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[]|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5539  123  Call: scasp:solve_goal(num(_237395),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5539  123  Exit: scasp:solve_goal(num(0),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],[[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5539  123  Redo: scasp:solve_goal(num(0),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],[[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5539  123  Exit: scasp:solve_goal(num(1),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],[[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(1)]),
+	   Modelx = [num(1)],
+	   StackOut = [[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5539  123  Redo: scasp:solve_goal(num(1),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],[[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(1)]),
+	   Modelx = [num(1)],
+	   StackOut = [[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5539  123  Fail: scasp:solve_goal(num(_237395),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5506  117  Fail: scasp:solve_goal(initiates(entry,no_of_entries(1),0),[[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[]|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5285  115  Redo: scasp:solve_goal(fluent(no_of_entries(1)),[[],event(entry),[],time(2),[],proved(time(0)),[],time(0),holdsAt(...)|...],[[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(2),[]|...],[fluent(no_of_entries(1)),num(1),[]]),
+	   Modelx = [fluent(no_of_entries(1)),num(1),[]],
+	   StackOut = [[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(2),[],proved(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5302  120  Redo: scasp:solve_goal(num(1),[fluent(no_of_entries(1)),[],event(entry),[],time(2),[],proved(time(0)),[],time(...)|...],[[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(2),[],proved(...)|...],[num(1)]),
+	   Modelx = [num(1)],
+	   StackOut = [[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(2),[],proved(time(...)),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5302  120  Fail: scasp:solve_goal(num(_227551),[fluent(no_of_entries(_227551)),[],event(entry),[],time(2),[],proved(time(0)),[],time(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5285  115  Fail: scasp:solve_goal(fluent(_220997),[[],event(entry),[],time(2),[],proved(time(0)),[],time(0),holdsAt(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5261  114  Redo: scasp:solve_goal(event(entry),[[],time(2),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],[[],event(entry),[],time(2),[],proved(time(0)),[],time(0),holdsAt(...)|...],[event(entry)]),
+	   Modelx = [event(entry)],
+	   StackOut = [[],event(entry),[],time(2),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(...),0),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5261  114  Fail: scasp:solve_goal(event(_220993),[[],time(2),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5237  113  Redo: scasp:solve_goal(time(2),[[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[],proved(...)|...],[[],time(2),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],[time(2)]),
+	   Modelx = [time(2)],
+	   StackOut = [[],time(2),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5237  113  Exit: scasp:solve_goal(time(3),[[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[],proved(...)|...],[[],time(3),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],[time(3)]),
+	   Modelx = [time(3)],
+	   StackOut = [[],time(3),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5261  114  Call: scasp:solve_goal(event(_220993),[[],time(3),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5261  114  Exit: scasp:solve_goal(event(entry),[[],time(3),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],[[],event(entry),[],time(3),[],proved(time(0)),[],time(0),holdsAt(...)|...],[event(entry)]),
+	   Modelx = [event(entry)],
+	   StackOut = [[],event(entry),[],time(3),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(...),0),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5285  115  Call: scasp:solve_goal(fluent(_220997),[[],event(entry),[],time(3),[],proved(time(0)),[],time(0),holdsAt(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5302  120  Call: scasp:solve_goal(num(_265216),[fluent(no_of_entries(_265216)),[],event(entry),[],time(3),[],proved(time(0)),[],time(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5302  120  Exit: scasp:solve_goal(num(0),[fluent(no_of_entries(0)),[],event(entry),[],time(3),[],proved(time(0)),[],time(...)|...],[[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(3),[],proved(...)|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(3),[],proved(time(...)),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5285  115  Exit: scasp:solve_goal(fluent(no_of_entries(0)),[[],event(entry),[],time(3),[],proved(time(0)),[],time(0),holdsAt(...)|...],[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(3),[]|...],[fluent(no_of_entries(0)),num(0),[]]),
+	   Modelx = [fluent(no_of_entries(0)),num(0),[]],
+	   StackOut = [[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(3),[],proved(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5285  115  Redo: scasp:solve_goal(fluent(no_of_entries(0)),[[],event(entry),[],time(3),[],proved(time(0)),[],time(0),holdsAt(...)|...],[[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(3),[]|...],[fluent(no_of_entries(0)),num(0),[]]),
+	   Modelx = [fluent(no_of_entries(0)),num(0),[]],
+	   StackOut = [[],[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(3),[],proved(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5302  120  Redo: scasp:solve_goal(num(0),[fluent(no_of_entries(0)),[],event(entry),[],time(3),[],proved(time(0)),[],time(...)|...],[[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(3),[],proved(...)|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),fluent(no_of_entries(0)),[],event(entry),[],time(3),[],proved(time(...)),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5302  120  Exit: scasp:solve_goal(num(1),[fluent(no_of_entries(1)),[],event(entry),[],time(3),[],proved(time(0)),[],time(...)|...],[[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(3),[],proved(...)|...],[num(1)]),
+	   Modelx = [num(1)],
+	   StackOut = [[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(3),[],proved(time(...)),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5285  115  Exit: scasp:solve_goal(fluent(no_of_entries(1)),[[],event(entry),[],time(3),[],proved(time(0)),[],time(0),holdsAt(...)|...],[[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(3),[]|...],[fluent(no_of_entries(1)),num(1),[]]),
+	   Modelx = [fluent(no_of_entries(1)),num(1),[]],
+	   StackOut = [[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(3),[],proved(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5506  117  Call: scasp:solve_goal(initiates(entry,no_of_entries(1),0),[[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[]|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5539  123  Call: scasp:solve_goal(num(_237211),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5539  123  Exit: scasp:solve_goal(num(0),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],[[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5539  123  Redo: scasp:solve_goal(num(0),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],[[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(0)]),
+	   Modelx = [num(0)],
+	   StackOut = [[],num(0),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5539  123  Exit: scasp:solve_goal(num(1),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],[[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(1)]),
+	   Modelx = [num(1)],
+	   StackOut = [[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5539  123  Redo: scasp:solve_goal(num(1),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],[[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(...))),[],[]|...],[num(1)]),
+	   Modelx = [num(1)],
+	   StackOut = [[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5539  123  Fail: scasp:solve_goal(num(_237211),[[],proved(time(0)),initiates(entry,no_of_entries(1),0),[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5506  117  Fail: scasp:solve_goal(initiates(entry,no_of_entries(1),0),[[],proved(fluent(no_of_entries(1))),[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[]|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5285  115  Redo: scasp:solve_goal(fluent(no_of_entries(1)),[[],event(entry),[],time(3),[],proved(time(0)),[],time(0),holdsAt(...)|...],[[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(3),[]|...],[fluent(no_of_entries(1)),num(1),[]]),
+	   Modelx = [fluent(no_of_entries(1)),num(1),[]],
+	   StackOut = [[],[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(3),[],proved(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5302  120  Redo: scasp:solve_goal(num(1),[fluent(no_of_entries(1)),[],event(entry),[],time(3),[],proved(time(0)),[],time(...)|...],[[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(3),[],proved(...)|...],[num(1)]),
+	   Modelx = [num(1)],
+	   StackOut = [[],num(1),fluent(no_of_entries(1)),[],event(entry),[],time(3),[],proved(time(...)),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5302  120  Fail: scasp:solve_goal(num(_227367),[fluent(no_of_entries(_227367)),[],event(entry),[],time(3),[],proved(time(0)),[],time(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5285  115  Fail: scasp:solve_goal(fluent(_220997),[[],event(entry),[],time(3),[],proved(time(0)),[],time(0),holdsAt(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5261  114  Redo: scasp:solve_goal(event(entry),[[],time(3),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],[[],event(entry),[],time(3),[],proved(time(0)),[],time(0),holdsAt(...)|...],[event(entry)]),
+	   Modelx = [event(entry)],
+	   StackOut = [[],event(entry),[],time(3),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(...),0),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5261  114  Fail: scasp:solve_goal(event(_220993),[[],time(3),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5237  113  Redo: scasp:solve_goal(time(3),[[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[],proved(...)|...],[[],time(3),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(...)|...],[time(3)]),
+	   Modelx = [time(3)],
+	   StackOut = [[],time(3),[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[]|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5237  113  Fail: scasp:solve_goal(time(_220989),[[],proved(time(0)),[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[],proved(...)|...],StackOut,Modelx)
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5197  111  Redo: scasp:solve_goal(time(0),[holdsAt(no_of_entries(1),0),[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(fluent(...)),[]|...],[[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(...),0),[]|...],[time(0)]),
+	   Modelx = [time(0)],
+	   StackOut = [[],time(0),holdsAt(no_of_entries(1),0),[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? l
+ + 5197  111  Exit: scasp:solve_goal(time(1),[holdsAt(no_of_entries(1),0),[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(fluent(...)),[]|...],[[],time(1),holdsAt(no_of_entries(1),0),[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(...),0),[]|...],[time(1)]),
+	   Modelx = [time(1)],
+	   StackOut = [[],time(1),holdsAt(no_of_entries(1),0),[],num(1),[],proved(time(0)),initiates(entry,no_of_entries(0),0),[],proved(...)|...]
+          [attach_attribute(_77251,att(_77251,false,att(clp_disequality_rt,neg([0,1,2,3]),[])))]
+          [attach_attribute(_138179,att(_138179,false,att(clp_disequality_rt,neg([entry]),[])))] ? 

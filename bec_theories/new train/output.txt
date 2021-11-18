@@ -1,0 +1,161 @@
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Different queries invoking:
+scasp --no_nmr bec_train01.pl
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+This queries with two events:
+happens(entry, 2).
+happens(entry, 5).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+QUERY:?- holdsAt(no_of_entries(2),6).
+
+	ANSWER:	1 (in 89.076 ms)
+
+MODEL:
+{ holdsAt(no_of_entries(2),6),  initiates(entry,no_of_entries(2),5),  happens(entry,5),  holdsAt(no_of_entries(1),5),  initiates(entry,no_of_entries(1),2),  happens(entry,2),  holdsAt(no_of_entries(0),2),  initiallyP(no_of_entries(0)),  not stoppedIn(0,no_of_entries(0),2),  not terminates(Var0 | {Var0 \= entry},no_of_entries(0),Var1),  terminates(entry,no_of_entries(0),Var2 | {Var2 \= 2,Var2 \= 5}),  not happens(entry,Var2 | {Var2 \= 2,Var2 \= 5}),  terminates(entry,no_of_entries(0),2),  terminates(entry,no_of_entries(0),5),  not stoppedIn(2,no_of_entries(1),5),  not terminates(Var3 | {Var3 \= entry},no_of_entries(1),Var4),  terminates(entry,no_of_entries(1),Var5 | {Var5 \= 2,Var5 \= 5}),  not happens(entry,Var5 | {Var5 \= 2,Var5 \= 5}),  terminates(entry,no_of_entries(1),2),  terminates(entry,no_of_entries(1),5),  not stoppedIn(5,no_of_entries(2),6),  not terminates(Var6 | {Var6 \= entry},no_of_entries(2),Var7),  terminates(entry,no_of_entries(2),Var8 | {Var8 \= 2,Var8 \= 5}),  not happens(entry,Var8 | {Var8 \= 2,Var8 \= 5}),  terminates(entry,no_of_entries(2),2),  terminates(entry,no_of_entries(2),5) }
+
+BINDINGS: ? ;
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+QUERY:?- holdsAt(no_of_entries(2),T).
+
+	ANSWER:	1 (in 91.551 ms)
+
+MODEL:
+{ holdsAt(no_of_entries(2),T | {T #> 5}),  initiates(entry,no_of_entries(2),5),  happens(entry,5),  holdsAt(no_of_entries(1),5),  initiates(entry,no_of_entries(1),2),  happens(entry,2),  holdsAt(no_of_entries(0),2),  initiallyP(no_of_entries(0)),  not stoppedIn(0,no_of_entries(0),2),  not terminates(Var1 | {Var1 \= entry},no_of_entries(0),Var2),  terminates(entry,no_of_entries(0),Var3 | {Var3 \= 2,Var3 \= 5}),  not happens(entry,Var3 | {Var3 \= 2,Var3 \= 5}),  terminates(entry,no_of_entries(0),2),  terminates(entry,no_of_entries(0),5),  not stoppedIn(2,no_of_entries(1),5),  not terminates(Var4 | {Var4 \= entry},no_of_entries(1),Var5),  terminates(entry,no_of_entries(1),Var6 | {Var6 \= 2,Var6 \= 5}),  not happens(entry,Var6 | {Var6 \= 2,Var6 \= 5}),  terminates(entry,no_of_entries(1),2),  terminates(entry,no_of_entries(1),5),  not stoppedIn(5,no_of_entries(2),T | {T #> 5}),  not terminates(Var7 | {Var7 \= entry},no_of_entries(2),Var8),  terminates(entry,no_of_entries(2),Var9 | {Var9 \= 2,Var9 \= 5}),  not happens(entry,Var9 | {Var9 \= 2,Var9 \= 5}),  terminates(entry,no_of_entries(2),2),  terminates(entry,no_of_entries(2),5) }
+
+BINDINGS: 
+T #> 5 ? ;
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+QUERY:?- holdsAt(no_of_entries(1),T).
+
+	ANSWER:	1 (in 53.195 ms)
+
+MODEL:
+{ holdsAt(no_of_entries(1),T | {T #> 2,T #=< 5}),  initiates(entry,no_of_entries(1),2),  happens(entry,2),  holdsAt(no_of_entries(0),2),  initiallyP(no_of_entries(0)),  not stoppedIn(0,no_of_entries(0),2),  not terminates(Var1 | {Var1 \= entry},no_of_entries(0),Var2),  terminates(entry,no_of_entries(0),Var3 | {Var3 \= 2,Var3 \= 5}),  not happens(entry,Var3 | {Var3 \= 2,Var3 \= 5}),  terminates(entry,no_of_entries(0),2),  terminates(entry,no_of_entries(0),5),  happens(entry,5),  not stoppedIn(2,no_of_entries(1),T | {T #> 2,T #=< 5}),  not terminates(Var4 | {Var4 \= entry},no_of_entries(1),Var5),  terminates(entry,no_of_entries(1),Var6 | {Var6 \= 2,Var6 \= 5}),  not happens(entry,Var6 | {Var6 \= 2,Var6 \= 5}),  terminates(entry,no_of_entries(1),2),  terminates(entry,no_of_entries(1),5) }
+
+BINDINGS: 
+T #> 2,T #=< 5 ? ;
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+QUERY:?- holdsAt(no_of_entries(0),1).
+
+	ANSWER:	1 (in 3.572 ms)
+
+MODEL:
+{ holdsAt(no_of_entries(0),1),  initiallyP(no_of_entries(0)),  not stoppedIn(0,no_of_entries(0),1),  not terminates(Var0 | {Var0 \= entry},no_of_entries(0),Var1),  terminates(entry,no_of_entries(0),Var2 | {Var2 \= 2,Var2 \= 5}),  not happens(entry,Var2 | {Var2 \= 2,Var2 \= 5}),  terminates(entry,no_of_entries(0),2),  happens(entry,2),  terminates(entry,no_of_entries(0),5),  happens(entry,5) }
+
+BINDINGS: ? ;
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+QUERY:?- holdsAt(no_of_entries(N),T).
+
+	ANSWER:	1 (in 6.856 ms)
+
+MODEL:
+{ holdsAt(no_of_entries(0),T | {T #> 0,T #=< 2}),  initiallyP(no_of_entries(0)),  not stoppedIn(0,no_of_entries(0),T | {T #> 0,T #=< 2}),  not terminates(Var2 | {Var2 \= entry},no_of_entries(0),Var3),  terminates(entry,no_of_entries(0),Var4 | {Var4 \= 2,Var4 \= 5}),  not happens(entry,Var4 | {Var4 \= 2,Var4 \= 5}),  terminates(entry,no_of_entries(0),2),  happens(entry,2),  terminates(entry,no_of_entries(0),5),  happens(entry,5) }
+
+BINDINGS: 
+N = 0 
+T #> 0,T #=< 2 ? ;
+
+
+	ANSWER:	2 (in 79.543 ms)
+
+MODEL:
+{ holdsAt(no_of_entries(1),T | {T #> 2,T #=< 5}),  initiates(entry,no_of_entries(1),2),  happens(entry,2),  holdsAt(no_of_entries(0),2),  initiallyP(no_of_entries(0)),  not stoppedIn(0,no_of_entries(0),2),  not terminates(Var2 | {Var2 \= entry},no_of_entries(0),Var3),  terminates(entry,no_of_entries(0),Var4 | {Var4 \= 2,Var4 \= 5}),  not happens(entry,Var4 | {Var4 \= 2,Var4 \= 5}),  terminates(entry,no_of_entries(0),2),  terminates(entry,no_of_entries(0),5),  happens(entry,5),  not stoppedIn(2,no_of_entries(1),T | {T #> 2,T #=< 5}),  not terminates(Var5 | {Var5 \= entry},no_of_entries(1),Var6),  terminates(entry,no_of_entries(1),Var7 | {Var7 \= 2,Var7 \= 5}),  not happens(entry,Var7 | {Var7 \= 2,Var7 \= 5}),  terminates(entry,no_of_entries(1),2),  terminates(entry,no_of_entries(1),5) }
+
+BINDINGS: 
+N = 1 
+T #> 2,T #=< 5 ? ;
+
+
+	ANSWER:	3 (in 77.491 ms)
+
+MODEL:
+{ holdsAt(no_of_entries(2),T | {T #> 5}),  initiates(entry,no_of_entries(2),5),  happens(entry,5),  holdsAt(no_of_entries(1),5),  initiates(entry,no_of_entries(1),2),  happens(entry,2),  holdsAt(no_of_entries(0),2),  initiallyP(no_of_entries(0)),  not stoppedIn(0,no_of_entries(0),2),  not terminates(Var2 | {Var2 \= entry},no_of_entries(0),Var3),  terminates(entry,no_of_entries(0),Var4 | {Var4 \= 2,Var4 \= 5}),  not happens(entry,Var4 | {Var4 \= 2,Var4 \= 5}),  terminates(entry,no_of_entries(0),2),  terminates(entry,no_of_entries(0),5),  not stoppedIn(2,no_of_entries(1),5),  not terminates(Var5 | {Var5 \= entry},no_of_entries(1),Var6),  terminates(entry,no_of_entries(1),Var7 | {Var7 \= 2,Var7 \= 5}),  not happens(entry,Var7 | {Var7 \= 2,Var7 \= 5}),  terminates(entry,no_of_entries(1),2),  terminates(entry,no_of_entries(1),5),  not stoppedIn(5,no_of_entries(2),T | {T #> 5}),  not terminates(Var8 | {Var8 \= entry},no_of_entries(2),Var9),  terminates(entry,no_of_entries(2),Var10 | {Var10 \= 2,Var10 \= 5}),  not happens(entry,Var10 | {Var10 \= 2,Var10 \= 5}),  terminates(entry,no_of_entries(2),2),  terminates(entry,no_of_entries(2),5) }
+
+BINDINGS: 
+N = 2 
+T #> 5 ? ;
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Final query with three events:
+happens(entry, 2).
+happens(entry, 5).
+happens(entry, 8).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+QUERY:?- holdsAt(no_of_entries(N),T).
+
+	ANSWER:	1 (in 12.728 ms)
+
+MODEL:
+{ holdsAt(no_of_entries(0),T | {T #> 0,T #=< 2}),  initiallyP(no_of_entries(0)),  not stoppedIn(0,no_of_entries(0),T | {T #> 0,T #=< 2}),  not terminates(Var2 | {Var2 \= entry},no_of_entries(0),Var3),  terminates(entry,no_of_entries(0),Var4 | {Var4 \= 2,Var4 \= 5,Var4 \= 8}),  not happens(entry,Var4 | {Var4 \= 2,Var4 \= 5,Var4 \= 8}),  terminates(entry,no_of_entries(0),2),  happens(entry,2),  terminates(entry,no_of_entries(0),5),  happens(entry,5),  terminates(entry,no_of_entries(0),8),  happens(entry,8) }
+
+BINDINGS: 
+N = 0 
+T #> 0,T #=< 2 ? ;
+
+
+	ANSWER:	2 (in 918.499 ms)
+
+MODEL:
+{ holdsAt(no_of_entries(1),T | {T #> 2,T #=< 5}),  initiates(entry,no_of_entries(1),2),  happens(entry,2),  holdsAt(no_of_entries(0),2),  initiallyP(no_of_entries(0)),  not stoppedIn(0,no_of_entries(0),2),  not terminates(Var2 | {Var2 \= entry},no_of_entries(0),Var3),  terminates(entry,no_of_entries(0),Var4 | {Var4 \= 2,Var4 \= 5,Var4 \= 8}),  not happens(entry,Var4 | {Var4 \= 2,Var4 \= 5,Var4 \= 8}),  terminates(entry,no_of_entries(0),2),  terminates(entry,no_of_entries(0),5),  happens(entry,5),  terminates(entry,no_of_entries(0),8),  happens(entry,8),  not stoppedIn(2,no_of_entries(1),T | {T #> 2,T #=< 5}),  not terminates(Var5 | {Var5 \= entry},no_of_entries(1),Var6),  terminates(entry,no_of_entries(1),Var7 | {Var7 \= 2,Var7 \= 5,Var7 \= 8}),  not happens(entry,Var7 | {Var7 \= 2,Var7 \= 5,Var7 \= 8}),  terminates(entry,no_of_entries(1),2),  terminates(entry,no_of_entries(1),5),  terminates(entry,no_of_entries(1),8) }
+
+BINDINGS: 
+N = 1 
+T #> 2,T #=< 5 ? ;
+
+
+	ANSWER:	3 (in 484.629 ms)
+
+MODEL:
+{ holdsAt(no_of_entries(2),T | {T #> 5,T #=< 8}),  initiates(entry,no_of_entries(2),5),  happens(entry,5),  holdsAt(no_of_entries(1),5),  initiates(entry,no_of_entries(1),2),  happens(entry,2),  holdsAt(no_of_entries(0),2),  initiallyP(no_of_entries(0)),  not stoppedIn(0,no_of_entries(0),2),  not terminates(Var2 | {Var2 \= entry},no_of_entries(0),Var3),  terminates(entry,no_of_entries(0),Var4 | {Var4 \= 2,Var4 \= 5,Var4 \= 8}),  not happens(entry,Var4 | {Var4 \= 2,Var4 \= 5,Var4 \= 8}),  terminates(entry,no_of_entries(0),2),  terminates(entry,no_of_entries(0),5),  terminates(entry,no_of_entries(0),8),  happens(entry,8),  not stoppedIn(2,no_of_entries(1),5),  not terminates(Var5 | {Var5 \= entry},no_of_entries(1),Var6),  terminates(entry,no_of_entries(1),Var7 | {Var7 \= 2,Var7 \= 5,Var7 \= 8}),  not happens(entry,Var7 | {Var7 \= 2,Var7 \= 5,Var7 \= 8}),  terminates(entry,no_of_entries(1),2),  terminates(entry,no_of_entries(1),5),  terminates(entry,no_of_entries(1),8),  not stoppedIn(5,no_of_entries(2),T | {T #> 5,T #=< 8}),  not terminates(Var8 | {Var8 \= entry},no_of_entries(2),Var9),  terminates(entry,no_of_entries(2),Var10 | {Var10 \= 2,Var10 \= 5,Var10 \= 8}),  not happens(entry,Var10 | {Var10 \= 2,Var10 \= 5,Var10 \= 8}),  terminates(entry,no_of_entries(2),2),  terminates(entry,no_of_entries(2),5),  terminates(entry,no_of_entries(2),8) }
+
+BINDINGS: 
+N = 2 
+T #> 5,T #=< 8 ? ;
+
+
+	ANSWER:	4 (in 615.857 ms)
+
+MODEL:
+{ holdsAt(no_of_entries(3),T | {T #> 8}),  initiates(entry,no_of_entries(3),8),  happens(entry,8),  holdsAt(no_of_entries(2),8),  initiates(entry,no_of_entries(2),5),  happens(entry,5),  holdsAt(no_of_entries(1),5),  initiates(entry,no_of_entries(1),2),  happens(entry,2),  holdsAt(no_of_entries(0),2),  initiallyP(no_of_entries(0)),  not stoppedIn(0,no_of_entries(0),2),  not terminates(Var2 | {Var2 \= entry},no_of_entries(0),Var3),  terminates(entry,no_of_entries(0),Var4 | {Var4 \= 2,Var4 \= 5,Var4 \= 8}),  not happens(entry,Var4 | {Var4 \= 2,Var4 \= 5,Var4 \= 8}),  terminates(entry,no_of_entries(0),2),  terminates(entry,no_of_entries(0),5),  terminates(entry,no_of_entries(0),8),  not stoppedIn(2,no_of_entries(1),5),  not terminates(Var5 | {Var5 \= entry},no_of_entries(1),Var6),  terminates(entry,no_of_entries(1),Var7 | {Var7 \= 2,Var7 \= 5,Var7 \= 8}),  not happens(entry,Var7 | {Var7 \= 2,Var7 \= 5,Var7 \= 8}),  terminates(entry,no_of_entries(1),2),  terminates(entry,no_of_entries(1),5),  terminates(entry,no_of_entries(1),8),  not stoppedIn(5,no_of_entries(2),8),  not terminates(Var8 | {Var8 \= entry},no_of_entries(2),Var9),  terminates(entry,no_of_entries(2),Var10 | {Var10 \= 2,Var10 \= 5,Var10 \= 8}),  not happens(entry,Var10 | {Var10 \= 2,Var10 \= 5,Var10 \= 8}),  terminates(entry,no_of_entries(2),2),  terminates(entry,no_of_entries(2),5),  terminates(entry,no_of_entries(2),8),  not stoppedIn(8,no_of_entries(3),T | {T #> 8}),  not terminates(Var11 | {Var11 \= entry},no_of_entries(3),Var12),  terminates(entry,no_of_entries(3),Var13 | {Var13 \= 2,Var13 \= 5,Var13 \= 8}),  not happens(entry,Var13 | {Var13 \= 2,Var13 \= 5,Var13 \= 8}),  terminates(entry,no_of_entries(3),2),  terminates(entry,no_of_entries(3),5),  terminates(entry,no_of_entries(3),8) }
+
+BINDINGS: 
+N = 3 
+T #> 8 ? ;
