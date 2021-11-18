@@ -1,0 +1,139 @@
+% #include 'bec_try.lp'.
+
+:- use_module(library(clpr)).
+
+max_time(20).
+
+happens(in,Var0) :-
+     % happens(approach,Var1),
+     narrative(List),
+     member(event(approach,Var1), List),
+     member(event(in, Var0), List),
+     {Var0-Var1 >= 2},
+     holdsAt(approaching,Var0).
+happens(lower,Var0) :-
+     % happens(approach,Var1),
+     narrative(List),
+     member(event(approach,Var1), List),
+     member(event(lower,Var0), List),
+     {Var0 = Var1+1},
+     holdsAt(open,Var0).
+happens(closegate,Var0) :-
+     % happens(lower,Var1),
+     narrative(List),
+     member(event(lower,Var1), List),
+     member(event(closegate,Var0),List),
+     {Var0-Var1 < 1,
+     Var0 > Var1},
+     holdsAt(lowering,Var0).
+happens(exit,Var0) :-
+     % happens(approach,Var1),
+     narrative(List),
+     member(event(approach,Var1), List),
+     member(event(exit,Var0),List),
+     {Var0-Var1 < 5,
+     Var0 > Var1},
+     holdsAt(passing,Var0).
+happens(raise,Var0) :-
+     % happens(exit,Var1),
+     narrative(List),
+     member(event(exit,Var1), List),
+     member(event(raise,Var0),List),
+     {Var0-Var1 < 1,
+     Var0 > Var1},
+     holdsAt(closed,Var0).
+happens(opengate,Var0) :-
+     % happens(raise,Var1), 
+     narrative(List),
+     member(event(raise,Var1), List),
+     member(event(opengate,Var0),List),
+     {Var0 > Var1+1,
+     Var0 < Var1+2},
+     holdsAt(rising,Var0).
+
+event(approach).
+event(in).
+event(lower).
+event(exit).
+event(raise).
+event(opengate).
+event(closegate).
+
+initiates(approach,approaching,Var0).
+
+terminates(in,approaching,Var0).
+initiates(in,passing,Var0).
+
+terminates(exit,passing,Var0).
+
+initiates(exit,leaving,Var0).
+
+terminates(lower,open,Var0).
+
+initiates(lower,lowering,Var0).
+
+terminates(closegate,lowering,Var0).
+
+initiates(closegate,closed,Var0).
+
+terminates(raise,closed,Var0).
+
+initiates(raise,rising,Var0).
+
+terminates(opengate,rising,Var0).
+
+initiates(opengate,open,Var0).
+
+fluent(approaching).
+fluent(passing).
+fluent(leaving).
+fluent(rising).
+fluent(open).
+fluent(lowering).
+fluent(closed).
+
+initiallyP(open).
+
+initiallyN(approaching).
+initiallyN(passing).
+initiallyN(leaving).
+initiallyN(rising).
+initiallyN(closed).
+initiallyN(lowering).
+
+% happens(approach, 1).
+
+
+narrative([event(approach,1), 
+           event(in, T1), 
+           event(exit, T2),
+           event(raise, T3),
+           event(lower, T4),
+           event(closegate, T5),
+           event(opengate, T6)]) :-
+            {1 < T1,
+            T2 = T2,
+            T3 = T3,
+            T4 = T4,
+            T5 = T5,
+            T6 = T6}.
+
+query(A,B,C,D,E,F) :- 
+      narrative([event(approach,1), 
+           event(in, A), 
+           event(exit, B),
+           event(raise, C),
+           event(lower, D),
+           event(closegate, E),
+           event(opengate, F)]).
+
+
+releases(dummy, dummy, _).
+trajectory(dummy, dummy, dummy, _).
+
+clear :- 
+  shell(clear, _).
+
+
+exit :-
+   halt.

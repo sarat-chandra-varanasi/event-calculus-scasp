@@ -1,0 +1,1501 @@
+% QUERY:
+% Query not defined
+
+% USER PREDICATES:
+max_time(20).
+
+
+happens(in,Var0,Store) :-
+     happens(approach,Var1),
+     Var0-Var1 #>= 2,
+     holdsAt(approaching,Var0).
+happens(lower,Var0) :-
+     happens(approach,Var1),
+     Var0 #= Var1+1,
+     holdsAt(open,Var0).
+happens(closegate,Var0) :-
+     happens(lower,Var1),
+     Var0-Var1 #< 1,
+     Var0 #> Var1,
+     holdsAt(lowering,Var0).
+happens(exit,Var0) :-
+     happens(approach,Var1),
+     Var0-Var1 #< 5,
+     Var0 #> Var1,
+     holdsAt(passing,Var0).
+happens(raise,Var0) :-
+     happens(exit,Var1),
+     Var0-Var1 #< 1,
+     Var0 #> Var1,
+     holdsAt(closed,Var0).
+happens(opengate,Var0) :-
+     happens(raise,Var1),
+     Var0 #> Var1+1,
+     Var0 #< Var1+2,
+     holdsAt(rising,Var0).
+
+event(approach).
+event(in).
+event(exit).
+
+initiates(approach,approaching,Var0) :-
+     happens(approach,Var0).
+
+terminates(in,approaching,Var0) :-
+     happens(in,Var0).
+
+initiates(in,passing,Var0).
+
+terminates(exit,passing,Var0).
+
+initiates(exit,leaving,Var0).
+
+event(raise).
+event(lower).
+event(opengate).
+event(closegate).
+
+terminates(lower,open,Var0).
+
+initiates(lower,lowering,Var0).
+
+terminates(closegate,lowering,Var0).
+
+initiates(closegate,closed,Var0).
+
+terminates(raise,closed,Var0).
+
+initiates(raise,rising,Var0).
+
+terminates(opengate,rising,Var0).
+
+initiates(opengate,open,Var0).
+
+fluent(approaching).
+fluent(passing).
+fluent(leaving).
+fluent(rising).
+fluent(open).
+fluent(lowering).
+fluent(closed).
+
+initiallyP(open).
+
+initiallyN(approaching).
+initiallyN(passing).
+initiallyN(leaving).
+initiallyN(rising).
+initiallyN(closed).
+initiallyN(lowering).
+
+happens(approach,1, [], [(approach, 1)]).
+
+precision(1).
+
+time(Var0) :-
+     Var0 #> 0,
+     Var0 #< 12.
+
+stoppedIn(Var0,Var1,Var2) :-
+     fluent(Var1),
+     time(Var0),
+     time(Var2),
+     event(Var3),
+     terminates(Var3,Var1,Var4),
+     happens(Var3,Var4),
+     Var0 #< Var4,
+     Var4 #< Var2.
+stoppedIn(Var0,Var1,Var2) :-
+     fluent(Var1),
+     time(Var0),
+     time(Var2),
+     event(Var3),
+     releases(Var3,Var1,Var4),
+     happens(Var3,Var4),
+     Var0 #< Var4,
+     Var4 #< Var2.
+
+startedIn(Var0,Var1,Var2) :-
+     time(Var0),
+     time(Var2),
+     fluent(Var1),
+     event(Var3),
+     initiates(Var3,Var1,Var4),
+     happens(Var3,Var4),
+     Var0 #< Var4,
+     Var4 #< Var2.
+startedIn(Var0,Var1,Var2) :-
+     time(Var0),
+     time(Var2),
+     event(Var3),
+     fluent(Var1),
+     releases(Var3,Var1,Var4),
+     happens(Var3,Var4),
+     Var0 #< Var4,
+     Var4 #< Var2.
+
+holdsAt(Var0,Var1) :-
+     0 #< Var1,
+     fluent(Var0),
+     time(Var1),
+     initiallyP(Var0),
+     not stoppedIn(0,Var0,Var1).
+holdsAt(Var0,Var1) :-
+     fluent(Var0),
+     fluent(Var2),
+     time(Var3),
+     time(Var1),
+     event(Var4),
+     initiates(Var4,Var2,Var3),
+     happens(Var4,Var3),
+     trajectory(Var2,Var3,Var0,Var1),
+     not stoppedIn(Var3,Var2,Var1).
+
+-holdsAt(Var0,Var1) :-
+     0 #< Var1,
+     fluent(Var0),
+     time(Var1),
+     initiallyN(Var0),
+     not startedIn(0,Var0,Var1).
+
+holdsAt(Var0,Var1) :-
+     event(Var2),
+     fluent(Var0),
+     time(Var3),
+     time(Var1),
+     initiates(Var2,Var0,Var3),
+     happens(Var2,Var3),
+     precision(Var4),
+     Var3+Var4 #< Var1,
+     not stoppedIn(Var3,Var0,Var1).
+
+-holdsAt(Var0,Var1) :-
+     time(Var2),
+     time(Var1),
+     event(Var3),
+     fluent(Var0),
+     terminates(Var3,Var0,Var2),
+     happens(Var3,Var2),
+     precision(Var4),
+     Var2+Var4 #< Var1,
+     not startedIn(Var2,Var0,Var1).
+
+global_constraints :-
+     global_constraint.
+
+
+% DUAL RULES:
+not o_-holdsAt_1(Var0,Var1) :-
+     0 #>= Var1.
+not o_-holdsAt_1(Var0,Var1) :-
+     0 #< Var1,
+     not fluent(Var0).
+not o_-holdsAt_1(Var0,Var1) :-
+     0 #< Var1,
+     fluent(Var0),
+     not time(Var1).
+not o_-holdsAt_1(Var0,Var1) :-
+     0 #< Var1,
+     fluent(Var0),
+     time(Var1),
+     not initiallyN(Var0).
+not o_-holdsAt_1(Var0,Var1) :-
+     0 #< Var1,
+     fluent(Var0),
+     time(Var1),
+     initiallyN(Var0),
+     startedIn(0,Var0,Var1).
+
+not o_-holdsAt_2(Var0,Var1,Var2,Var3,Var4) :-
+     not time(Var2).
+not o_-holdsAt_2(Var0,Var1,Var2,Var3,Var4) :-
+     time(Var2),
+     not time(Var1).
+not o_-holdsAt_2(Var0,Var1,Var2,Var3,Var4) :-
+     time(Var2),
+     time(Var1),
+     not event(Var3).
+not o_-holdsAt_2(Var0,Var1,Var2,Var3,Var4) :-
+     time(Var2),
+     time(Var1),
+     event(Var3),
+     not fluent(Var0).
+not o_-holdsAt_2(Var0,Var1,Var2,Var3,Var4) :-
+     time(Var2),
+     time(Var1),
+     event(Var3),
+     fluent(Var0),
+     not terminates(Var3,Var0,Var2).
+not o_-holdsAt_2(Var0,Var1,Var2,Var3,Var4) :-
+     time(Var2),
+     time(Var1),
+     event(Var3),
+     fluent(Var0),
+     terminates(Var3,Var0,Var2),
+     not happens(Var3,Var2).
+not o_-holdsAt_2(Var0,Var1,Var2,Var3,Var4) :-
+     time(Var2),
+     time(Var1),
+     event(Var3),
+     fluent(Var0),
+     terminates(Var3,Var0,Var2),
+     happens(Var3,Var2),
+     not precision(Var4).
+not o_-holdsAt_2(Var0,Var1,Var2,Var3,Var4) :-
+     time(Var2),
+     time(Var1),
+     event(Var3),
+     fluent(Var0),
+     terminates(Var3,Var0,Var2),
+     happens(Var3,Var2),
+     precision(Var4),
+     Var2+Var4 #>= Var1.
+not o_-holdsAt_2(Var0,Var1,Var2,Var3,Var4) :-
+     time(Var2),
+     time(Var1),
+     event(Var3),
+     fluent(Var0),
+     terminates(Var3,Var0,Var2),
+     happens(Var3,Var2),
+     precision(Var4),
+     Var2+Var4 #< Var1,
+     startedIn(Var2,Var0,Var1).
+
+not o_-holdsAt_2(Var0,Var1) :-
+     fluent(Var0), time(Var1), forall(Var2,forall(Var3,forall(Var4,not o_-holdsAt_2(Var0,Var1,Var2,Var3,Var4)))).
+
+not -holdsAt(Var0,Var1) :-
+     not o_-holdsAt_1(Var0,Var1),
+     not o_-holdsAt_2(Var0,Var1).
+
+not trajectory(Var0,Var1,Var2,Var3).
+
+not o_startedIn_1(Var0,Var1,Var2,Var3,Var4) :-
+     not time(Var0).
+not o_startedIn_1(Var0,Var1,Var2,Var3,Var4) :-
+     time(Var0),
+     not time(Var2).
+not o_startedIn_1(Var0,Var1,Var2,Var3,Var4) :-
+     time(Var0),
+     time(Var2),
+     not fluent(Var1).
+not o_startedIn_1(Var0,Var1,Var2,Var3,Var4) :-
+     time(Var0),
+     time(Var2),
+     fluent(Var1),
+     not event(Var3).
+not o_startedIn_1(Var0,Var1,Var2,Var3,Var4) :-
+     time(Var0),
+     time(Var2),
+     fluent(Var1),
+     event(Var3),
+     not initiates(Var3,Var1,Var4).
+not o_startedIn_1(Var0,Var1,Var2,Var3,Var4) :-
+     time(Var0),
+     time(Var2),
+     fluent(Var1),
+     event(Var3),
+     initiates(Var3,Var1,Var4),
+     not happens(Var3,Var4).
+not o_startedIn_1(Var0,Var1,Var2,Var3,Var4) :-
+     time(Var0),
+     time(Var2),
+     fluent(Var1),
+     event(Var3),
+     initiates(Var3,Var1,Var4),
+     happens(Var3,Var4),
+     Var0 #>= Var4.
+not o_startedIn_1(Var0,Var1,Var2,Var3,Var4) :-
+     time(Var0),
+     time(Var2),
+     fluent(Var1),
+     event(Var3),
+     initiates(Var3,Var1,Var4),
+     happens(Var3,Var4),
+     Var0 #< Var4,
+     Var4 #>= Var2.
+
+not o_startedIn_1(Var0,Var1,Var2) :-
+     time(Var0), fluent(Var1), time(Var2), forall(Var3,forall(Var4,not o_startedIn_1(Var0,Var1,Var2,Var3,Var4))).
+
+not o_startedIn_2(Var0,Var1,Var2,Var3,Var4) :-
+     not time(Var0).
+not o_startedIn_2(Var0,Var1,Var2,Var3,Var4) :-
+     time(Var0),
+     not time(Var2).
+not o_startedIn_2(Var0,Var1,Var2,Var3,Var4) :-
+     time(Var0),
+     time(Var2),
+     not event(Var3).
+not o_startedIn_2(Var0,Var1,Var2,Var3,Var4) :-
+     time(Var0),
+     time(Var2),
+     event(Var3),
+     not fluent(Var1).
+not o_startedIn_2(Var0,Var1,Var2,Var3,Var4) :-
+     time(Var0),
+     time(Var2),
+     event(Var3),
+     fluent(Var1),
+     not releases(Var3,Var1,Var4).
+not o_startedIn_2(Var0,Var1,Var2,Var3,Var4) :-
+     time(Var0),
+     time(Var2),
+     event(Var3),
+     fluent(Var1),
+     releases(Var3,Var1,Var4),
+     not happens(Var3,Var4).
+not o_startedIn_2(Var0,Var1,Var2,Var3,Var4) :-
+     time(Var0),
+     time(Var2),
+     event(Var3),
+     fluent(Var1),
+     releases(Var3,Var1,Var4),
+     happens(Var3,Var4),
+     Var0 #>= Var4.
+not o_startedIn_2(Var0,Var1,Var2,Var3,Var4) :-
+     time(Var0),
+     time(Var2),
+     event(Var3),
+     fluent(Var1),
+     releases(Var3,Var1,Var4),
+     happens(Var3,Var4),
+     Var0 #< Var4,
+     Var4 #>= Var2.
+
+not o_startedIn_2(Var0,Var1,Var2) :-
+     time(Var0), fluent(Var1), time(Var2), forall(Var3,forall(Var4,not o_startedIn_2(Var0,Var1,Var2,Var3,Var4))).
+
+not startedIn(Var0,Var1,Var2) :-
+     not o_startedIn_1(Var0,Var1,Var2),
+     not o_startedIn_2(Var0,Var1,Var2).
+
+not releases(Var0,Var1,Var2).
+
+not o_stoppedIn_1(Var0,Var1,Var2,Var3,Var4) :-
+     not fluent(Var1).
+not o_stoppedIn_1(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var1),
+     not time(Var0).
+not o_stoppedIn_1(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var1),
+     time(Var0),
+     not time(Var2).
+not o_stoppedIn_1(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var1),
+     time(Var0),
+     time(Var2),
+     not event(Var3).
+not o_stoppedIn_1(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var1),
+     time(Var0),
+     time(Var2),
+     event(Var3),
+     not terminates(Var3,Var1,Var4).
+not o_stoppedIn_1(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var1),
+     time(Var0),
+     time(Var2),
+     event(Var3),
+     terminates(Var3,Var1,Var4),
+     not happens(Var3,Var4).
+not o_stoppedIn_1(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var1),
+     time(Var0),
+     time(Var2),
+     event(Var3),
+     terminates(Var3,Var1,Var4),
+     happens(Var3,Var4),
+     Var0 #>= Var4.
+not o_stoppedIn_1(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var1),
+     time(Var0),
+     time(Var2),
+     event(Var3),
+     terminates(Var3,Var1,Var4),
+     happens(Var3,Var4),
+     Var0 #< Var4,
+     Var4 #>= Var2.
+
+not o_stoppedIn_1(Var0,Var1,Var2) :-
+     time(Var0), fluent(Var1), time(Var2), forall(Var3,forall(Var4,not o_stoppedIn_1(Var0,Var1,Var2,Var3,Var4))).
+
+not o_stoppedIn_2(Var0,Var1,Var2,Var3,Var4) :-
+     not fluent(Var1).
+not o_stoppedIn_2(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var1),
+     not time(Var0).
+not o_stoppedIn_2(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var1),
+     time(Var0),
+     not time(Var2).
+not o_stoppedIn_2(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var1),
+     time(Var0),
+     time(Var2),
+     not event(Var3).
+not o_stoppedIn_2(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var1),
+     time(Var0),
+     time(Var2),
+     event(Var3),
+     not releases(Var3,Var1,Var4).
+not o_stoppedIn_2(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var1),
+     time(Var0),
+     time(Var2),
+     event(Var3),
+     releases(Var3,Var1,Var4),
+     not happens(Var3,Var4).
+not o_stoppedIn_2(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var1),
+     time(Var0),
+     time(Var2),
+     event(Var3),
+     releases(Var3,Var1,Var4),
+     happens(Var3,Var4),
+     Var0 #>= Var4.
+not o_stoppedIn_2(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var1),
+     time(Var0),
+     time(Var2),
+     event(Var3),
+     releases(Var3,Var1,Var4),
+     happens(Var3,Var4),
+     Var0 #< Var4,
+     Var4 #>= Var2.
+
+not o_stoppedIn_2(Var0,Var1,Var2) :-
+     time(Var0), fluent(Var1), time(Var2), forall(Var3,forall(Var4,not o_stoppedIn_2(Var0,Var1,Var2,Var3,Var4))).
+
+not stoppedIn(Var0,Var1,Var2) :-
+     not o_stoppedIn_1(Var0,Var1,Var2),
+     not o_stoppedIn_2(Var0,Var1,Var2).
+
+not o_time_1(Var0) :-
+     Var0 #=< 0.
+not o_time_1(Var0) :-
+     Var0 #> 0,
+     Var0 #>= 12.
+
+not time(Var0) :-
+     not o_time_1(Var0).
+
+not o_precision_1(Var0) :-
+     Var0 \= 1.
+
+not precision(Var0) :-
+     not o_precision_1(Var0).
+
+not o_initiallyN_1(Var0) :-
+     Var0 \= approaching.
+
+not o_initiallyN_2(Var0) :-
+     Var0 \= passing.
+
+not o_initiallyN_3(Var0) :-
+     Var0 \= leaving.
+
+not o_initiallyN_4(Var0) :-
+     Var0 \= rising.
+
+not o_initiallyN_5(Var0) :-
+     Var0 \= closed.
+
+not o_initiallyN_6(Var0) :-
+     Var0 \= lowering.
+
+not initiallyN(Var0) :-
+     not o_initiallyN_1(Var0),
+     not o_initiallyN_2(Var0),
+     not o_initiallyN_3(Var0),
+     not o_initiallyN_4(Var0),
+     not o_initiallyN_5(Var0),
+     not o_initiallyN_6(Var0).
+
+not o_initiallyP_1(Var0) :-
+     Var0 \= open.
+
+not initiallyP(Var0) :-
+     not o_initiallyP_1(Var0).
+
+not o_fluent_1(Var0) :-
+     Var0 \= approaching.
+
+not o_fluent_2(Var0) :-
+     Var0 \= passing.
+
+not o_fluent_3(Var0) :-
+     Var0 \= leaving.
+
+not o_fluent_4(Var0) :-
+     Var0 \= rising.
+
+not o_fluent_5(Var0) :-
+     Var0 \= open.
+
+not o_fluent_6(Var0) :-
+     Var0 \= lowering.
+
+not o_fluent_7(Var0) :-
+     Var0 \= closed.
+
+not fluent(Var0) :-
+     not o_fluent_1(Var0),
+     not o_fluent_2(Var0),
+     not o_fluent_3(Var0),
+     not o_fluent_4(Var0),
+     not o_fluent_5(Var0),
+     not o_fluent_6(Var0),
+     not o_fluent_7(Var0).
+
+not o_terminates_1(Var0,Var1,Var2) :-
+     Var0 \= in.
+not o_terminates_1(Var0,Var1,Var2) :-
+     Var0 = in,
+     Var1 \= approaching.
+not o_terminates_1(Var0,Var1,Var2) :-
+     Var0 = in,
+     Var1 = approaching,
+     not happens(in,Var2).
+
+not o_terminates_2(Var0,Var1,Var2) :-
+     Var0 \= exit.
+not o_terminates_2(Var0,Var1,Var2) :-
+     Var0 = exit,
+     Var1 \= passing.
+
+not o_terminates_3(Var0,Var1,Var2) :-
+     Var0 \= lower.
+not o_terminates_3(Var0,Var1,Var2) :-
+     Var0 = lower,
+     Var1 \= open.
+
+not o_terminates_4(Var0,Var1,Var2) :-
+     Var0 \= closegate.
+not o_terminates_4(Var0,Var1,Var2) :-
+     Var0 = closegate,
+     Var1 \= lowering.
+
+not o_terminates_5(Var0,Var1,Var2) :-
+     Var0 \= raise.
+not o_terminates_5(Var0,Var1,Var2) :-
+     Var0 = raise,
+     Var1 \= closed.
+
+not o_terminates_6(Var0,Var1,Var2) :-
+     Var0 \= opengate.
+not o_terminates_6(Var0,Var1,Var2) :-
+     Var0 = opengate,
+     Var1 \= rising.
+
+not terminates(Var0,Var1,Var2) :-
+     not o_terminates_1(Var0,Var1,Var2),
+     not o_terminates_2(Var0,Var1,Var2),
+     not o_terminates_3(Var0,Var1,Var2),
+     not o_terminates_4(Var0,Var1,Var2),
+     not o_terminates_5(Var0,Var1,Var2),
+     not o_terminates_6(Var0,Var1,Var2).
+
+not o_initiates_1(Var0,Var1,Var2) :-
+     Var0 \= approach.
+not o_initiates_1(Var0,Var1,Var2) :-
+     Var0 = approach,
+     Var1 \= approaching.
+not o_initiates_1(Var0,Var1,Var2) :-
+     Var0 = approach,
+     Var1 = approaching,
+     not happens(approach,Var2).
+
+not o_initiates_2(Var0,Var1,Var2) :-
+     Var0 \= in.
+not o_initiates_2(Var0,Var1,Var2) :-
+     Var0 = in,
+     Var1 \= passing.
+
+not o_initiates_3(Var0,Var1,Var2) :-
+     Var0 \= exit.
+not o_initiates_3(Var0,Var1,Var2) :-
+     Var0 = exit,
+     Var1 \= leaving.
+
+not o_initiates_4(Var0,Var1,Var2) :-
+     Var0 \= lower.
+not o_initiates_4(Var0,Var1,Var2) :-
+     Var0 = lower,
+     Var1 \= lowering.
+
+not o_initiates_5(Var0,Var1,Var2) :-
+     Var0 \= closegate.
+not o_initiates_5(Var0,Var1,Var2) :-
+     Var0 = closegate,
+     Var1 \= closed.
+
+not o_initiates_6(Var0,Var1,Var2) :-
+     Var0 \= raise.
+not o_initiates_6(Var0,Var1,Var2) :-
+     Var0 = raise,
+     Var1 \= rising.
+
+not o_initiates_7(Var0,Var1,Var2) :-
+     Var0 \= opengate.
+not o_initiates_7(Var0,Var1,Var2) :-
+     Var0 = opengate,
+     Var1 \= open.
+
+not initiates(Var0,Var1,Var2) :-
+     not o_initiates_1(Var0,Var1,Var2),
+     not o_initiates_2(Var0,Var1,Var2),
+     not o_initiates_3(Var0,Var1,Var2),
+     not o_initiates_4(Var0,Var1,Var2),
+     not o_initiates_5(Var0,Var1,Var2),
+     not o_initiates_6(Var0,Var1,Var2),
+     not o_initiates_7(Var0,Var1,Var2).
+
+not o_event_1(Var0) :-
+     Var0 \= approach.
+
+not o_event_2(Var0) :-
+     Var0 \= in.
+
+not o_event_3(Var0) :-
+     Var0 \= exit.
+
+not o_event_4(Var0) :-
+     Var0 \= raise.
+
+not o_event_5(Var0) :-
+     Var0 \= lower.
+
+not o_event_6(Var0) :-
+     Var0 \= opengate.
+
+not o_event_7(Var0) :-
+     Var0 \= closegate.
+
+not event(Var0) :-
+     not o_event_1(Var0),
+     not o_event_2(Var0),
+     not o_event_3(Var0),
+     not o_event_4(Var0),
+     not o_event_5(Var0),
+     not o_event_6(Var0),
+     not o_event_7(Var0).
+
+not o_holdsAt_1(Var0,Var1) :-
+     0 #>= Var1.
+not o_holdsAt_1(Var0,Var1) :-
+     0 #< Var1,
+     not fluent(Var0).
+not o_holdsAt_1(Var0,Var1) :-
+     0 #< Var1,
+     fluent(Var0),
+     not time(Var1).
+not o_holdsAt_1(Var0,Var1) :-
+     0 #< Var1,
+     fluent(Var0),
+     time(Var1),
+     not initiallyP(Var0).
+not o_holdsAt_1(Var0,Var1) :-
+     0 #< Var1,
+     fluent(Var0),
+     time(Var1),
+     initiallyP(Var0),
+     stoppedIn(0,Var0,Var1).
+
+not o_holdsAt_2(Var0,Var1,Var2,Var3,Var4) :-
+     not fluent(Var0).
+not o_holdsAt_2(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var0),
+     not fluent(Var2).
+not o_holdsAt_2(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var0),
+     fluent(Var2),
+     not time(Var3).
+not o_holdsAt_2(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var0),
+     fluent(Var2),
+     time(Var3),
+     not time(Var1).
+not o_holdsAt_2(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var0),
+     fluent(Var2),
+     time(Var3),
+     time(Var1),
+     not event(Var4).
+not o_holdsAt_2(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var0),
+     fluent(Var2),
+     time(Var3),
+     time(Var1),
+     event(Var4),
+     not initiates(Var4,Var2,Var3).
+not o_holdsAt_2(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var0),
+     fluent(Var2),
+     time(Var3),
+     time(Var1),
+     event(Var4),
+     initiates(Var4,Var2,Var3),
+     not happens(Var4,Var3).
+not o_holdsAt_2(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var0),
+     fluent(Var2),
+     time(Var3),
+     time(Var1),
+     event(Var4),
+     initiates(Var4,Var2,Var3),
+     happens(Var4,Var3),
+     not trajectory(Var2,Var3,Var0,Var1).
+not o_holdsAt_2(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var0),
+     fluent(Var2),
+     time(Var3),
+     time(Var1),
+     event(Var4),
+     initiates(Var4,Var2,Var3),
+     happens(Var4,Var3),
+     trajectory(Var2,Var3,Var0,Var1),
+     stoppedIn(Var3,Var2,Var1).
+
+not o_holdsAt_2(Var0,Var1) :-
+     fluent(Var0), time(Var1), forall(Var2,forall(Var3,forall(Var4,not o_holdsAt_2(Var0,Var1,Var2,Var3,Var4)))).
+
+not o_holdsAt_3(Var0,Var1,Var2,Var3,Var4) :-
+     not event(Var2).
+not o_holdsAt_3(Var0,Var1,Var2,Var3,Var4) :-
+     event(Var2),
+     not fluent(Var0).
+not o_holdsAt_3(Var0,Var1,Var2,Var3,Var4) :-
+     event(Var2),
+     fluent(Var0),
+     not time(Var3).
+not o_holdsAt_3(Var0,Var1,Var2,Var3,Var4) :-
+     event(Var2),
+     fluent(Var0),
+     time(Var3),
+     not time(Var1).
+not o_holdsAt_3(Var0,Var1,Var2,Var3,Var4) :-
+     event(Var2),
+     fluent(Var0),
+     time(Var3),
+     time(Var1),
+     not initiates(Var2,Var0,Var3).
+not o_holdsAt_3(Var0,Var1,Var2,Var3,Var4) :-
+     event(Var2),
+     fluent(Var0),
+     time(Var3),
+     time(Var1),
+     initiates(Var2,Var0,Var3),
+     not happens(Var2,Var3).
+not o_holdsAt_3(Var0,Var1,Var2,Var3,Var4) :-
+     event(Var2),
+     fluent(Var0),
+     time(Var3),
+     time(Var1),
+     initiates(Var2,Var0,Var3),
+     happens(Var2,Var3),
+     not precision(Var4).
+not o_holdsAt_3(Var0,Var1,Var2,Var3,Var4) :-
+     event(Var2),
+     fluent(Var0),
+     time(Var3),
+     time(Var1),
+     initiates(Var2,Var0,Var3),
+     happens(Var2,Var3),
+     precision(Var4),
+     Var3+Var4 #>= Var1.
+not o_holdsAt_3(Var0,Var1,Var2,Var3,Var4) :-
+     event(Var2),
+     fluent(Var0),
+     time(Var3),
+     time(Var1),
+     initiates(Var2,Var0,Var3),
+     happens(Var2,Var3),
+     precision(Var4),
+     Var3+Var4 #< Var1,
+     stoppedIn(Var3,Var0,Var1).
+
+not o_holdsAt_3(Var0,Var1) :-
+     fluent(Var0), time(Var1), forall(Var2,forall(Var3,forall(Var4,not o_holdsAt_3(Var0,Var1,Var2,Var3,Var4)))).
+
+not holdsAt(Var0,Var1) :-
+     not o_holdsAt_1(Var0,Var1),
+     not o_holdsAt_2(Var0,Var1),
+     not o_holdsAt_3(Var0,Var1).
+
+not o_happens_1(Var0,Var1,Var2) :-
+     Var0 \= in.
+not o_happens_1(Var0,Var1,Var2) :-
+     Var0 = in,
+     not happens(approach,Var2).
+not o_happens_1(Var0,Var1,Var2) :-
+     Var0 = in,
+     happens(approach,Var2),
+     Var1-Var2 #< 2.
+not o_happens_1(Var0,Var1,Var2) :-
+     Var0 = in,
+     happens(approach,Var2),
+     Var1-Var2 #>= 2,
+     not holdsAt(approaching,Var1).
+
+not o_happens_1(Var0,Var1) :-
+     event(Var0), time(Var1), forall(Var2,not o_happens_1(Var0,Var1,Var2)).
+
+not o_happens_2(Var0,Var1,Var2) :-
+     Var0 \= lower.
+not o_happens_2(Var0,Var1,Var2) :-
+     Var0 = lower,
+     not happens(approach,Var2).
+not o_happens_2(Var0,Var1,Var2) :-
+     Var0 = lower,
+     happens(approach,Var2),
+     Var1 #<> Var2+1.
+not o_happens_2(Var0,Var1,Var2) :-
+     Var0 = lower,
+     happens(approach,Var2),
+     Var1 #= Var2+1,
+     not holdsAt(open,Var1).
+
+not o_happens_2(Var0,Var1) :-
+     event(Var0), time(Var1), forall(Var2,not o_happens_2(Var0,Var1,Var2)).
+
+not o_happens_3(Var0,Var1,Var2) :-
+     Var0 \= closegate.
+not o_happens_3(Var0,Var1,Var2) :-
+     Var0 = closegate,
+     not happens(lower,Var2).
+not o_happens_3(Var0,Var1,Var2) :-
+     Var0 = closegate,
+     happens(lower,Var2),
+     Var1-Var2 #>= 1.
+not o_happens_3(Var0,Var1,Var2) :-
+     Var0 = closegate,
+     happens(lower,Var2),
+     Var1-Var2 #< 1,
+     Var1 #=< Var2.
+not o_happens_3(Var0,Var1,Var2) :-
+     Var0 = closegate,
+     happens(lower,Var2),
+     Var1-Var2 #< 1,
+     Var1 #> Var2,
+     not holdsAt(lowering,Var1).
+
+not o_happens_3(Var0,Var1) :-
+     event(Var0), time(Var1), forall(Var2,not o_happens_3(Var0,Var1,Var2)).
+
+not o_happens_4(Var0,Var1,Var2) :-
+     Var0 \= exit.
+not o_happens_4(Var0,Var1,Var2) :-
+     Var0 = exit,
+     not happens(approach,Var2).
+not o_happens_4(Var0,Var1,Var2) :-
+     Var0 = exit,
+     happens(approach,Var2),
+     Var1-Var2 #>= 5.
+not o_happens_4(Var0,Var1,Var2) :-
+     Var0 = exit,
+     happens(approach,Var2),
+     Var1-Var2 #< 5,
+     Var1 #=< Var2.
+not o_happens_4(Var0,Var1,Var2) :-
+     Var0 = exit,
+     happens(approach,Var2),
+     Var1-Var2 #< 5,
+     Var1 #> Var2,
+     not holdsAt(passing,Var1).
+
+not o_happens_4(Var0,Var1) :-
+     event(Var0), time(Var1),forall(Var2,not o_happens_4(Var0,Var1,Var2)).
+
+not o_happens_5(Var0,Var1,Var2) :-
+     Var0 \= raise.
+not o_happens_5(Var0,Var1,Var2) :-
+     Var0 = raise,
+     not happens(exit,Var2).
+not o_happens_5(Var0,Var1,Var2) :-
+     Var0 = raise,
+     happens(exit,Var2),
+     Var1-Var2 #>= 1.
+not o_happens_5(Var0,Var1,Var2) :-
+     Var0 = raise,
+     happens(exit,Var2),
+     Var1-Var2 #< 1,
+     Var1 #=< Var2.
+not o_happens_5(Var0,Var1,Var2) :-
+     Var0 = raise,
+     happens(exit,Var2),
+     Var1-Var2 #< 1,
+     Var1 #> Var2,
+     not holdsAt(closed,Var1).
+
+not o_happens_5(Var0,Var1) :-
+     event(Var0), time(Var1), forall(Var2,not o_happens_5(Var0,Var1,Var2)).
+
+not o_happens_6(Var0,Var1,Var2) :-
+     Var0 \= opengate.
+not o_happens_6(Var0,Var1,Var2) :-
+     Var0 = opengate,
+     not happens(raise,Var2).
+not o_happens_6(Var0,Var1,Var2) :-
+     Var0 = opengate,
+     happens(raise,Var2),
+     Var1 #=< Var2+1.
+not o_happens_6(Var0,Var1,Var2) :-
+     Var0 = opengate,
+     happens(raise,Var2),
+     Var1 #> Var2+1,
+     Var1 #>= Var2+2.
+not o_happens_6(Var0,Var1,Var2) :-
+     Var0 = opengate,
+     happens(raise,Var2),
+     Var1 #> Var2+1,
+     Var1 #< Var2+2,
+     not holdsAt(rising,Var1).
+
+not o_happens_6(Var0,Var1) :-
+     event(Var0), time(Var1), forall(Var2,not o_happens_6(Var0,Var1,Var2)).
+
+not o_happens_7(Var0,Var1) :-
+     Var0 \= approach.
+not o_happens_7(Var0,Var1) :-
+     Var0 = approach,
+     Var1 \= 1.
+
+not happens(Var0,Var1) :-
+     not o_happens_1(Var0,Var1),
+     not o_happens_2(Var0,Var1),
+     not o_happens_3(Var0,Var1),
+     not o_happens_4(Var0,Var1),
+     not o_happens_5(Var0,Var1),
+     not o_happens_6(Var0,Var1),
+     not o_happens_7(Var0,Var1).
+
+not o_max_time_1(Var0) :-
+     Var0 \= 20.
+
+not max_time(Var0) :-
+     not o_max_time_1(Var0).
+
+not o_false.
+
+
+% INTEGRITY CONSTRAINTS:
+not o__chk_1_1(Var0,Var1) :-
+     not -holdsAt(Var0,Var1).
+not o__chk_1_1(Var0,Var1) :-
+     -holdsAt(Var0,Var1),
+     not holdsAt(Var0,Var1).
+
+not o__chk_1_1 :-
+     forall(Var0,forall(Var1,not o__chk_1_1(Var0,Var1))).
+
+not o_chk_1 :-
+     not o__chk_1_1.
+
+not o__chk_2_1(Var0,Var1,Var2) :-
+     Var0 \= closegate.
+not o__chk_2_1(Var0,Var1,Var2) :-
+     Var0 = closegate,
+     not happens(lower,Var2).
+not o__chk_2_1(Var0,Var1,Var2) :-
+     Var0 = closegate,
+     happens(lower,Var2),
+     Var1-Var2 #>= 1.
+not o__chk_2_1(Var0,Var1,Var2) :-
+     Var0 = closegate,
+     happens(lower,Var2),
+     Var1-Var2 #< 1,
+     Var1 #=< Var2.
+not o__chk_2_1(Var0,Var1,Var2) :-
+     Var0 = closegate,
+     happens(lower,Var2),
+     Var1-Var2 #< 1,
+     Var1 #> Var2,
+     not holdsAt(lowering,Var1).
+not o__chk_2_1(Var0,Var1,Var2) :-
+     Var0 = closegate,
+     happens(lower,Var2),
+     Var1-Var2 #< 1,
+     Var1 #> Var2,
+     holdsAt(lowering,Var1),
+     happens(closegate,Var1).
+
+not o__chk_2_1(Var0,Var1) :-
+     forall(Var2,not o__chk_2_1(Var0,Var1,Var2)).
+
+not o_chk_2(Var0,Var1) :-
+     not o__chk_2_1(Var0,Var1).
+
+not o__chk_3_1(Var0,Var1,Var2) :-
+     Var0 \= exit.
+not o__chk_3_1(Var0,Var1,Var2) :-
+     Var0 = exit,
+     not happens(approach,Var2).
+not o__chk_3_1(Var0,Var1,Var2) :-
+     Var0 = exit,
+     happens(approach,Var2),
+     Var1-Var2 #>= 5.
+not o__chk_3_1(Var0,Var1,Var2) :-
+     Var0 = exit,
+     happens(approach,Var2),
+     Var1-Var2 #< 5,
+     Var1 #=< Var2.
+not o__chk_3_1(Var0,Var1,Var2) :-
+     Var0 = exit,
+     happens(approach,Var2),
+     Var1-Var2 #< 5,
+     Var1 #> Var2,
+     not holdsAt(passing,Var1).
+not o__chk_3_1(Var0,Var1,Var2) :-
+     Var0 = exit,
+     happens(approach,Var2),
+     Var1-Var2 #< 5,
+     Var1 #> Var2,
+     holdsAt(passing,Var1),
+     happens(exit,Var1).
+
+not o__chk_3_1(Var0,Var1) :-
+     forall(Var2,not o__chk_3_1(Var0,Var1,Var2)).
+
+not o_chk_3(Var0,Var1) :-
+     not o__chk_3_1(Var0,Var1).
+
+not o__chk_4_1(Var0,Var1,Var2) :-
+     Var0 \= in.
+not o__chk_4_1(Var0,Var1,Var2) :-
+     Var0 = in,
+     not happens(approach,Var2).
+not o__chk_4_1(Var0,Var1,Var2) :-
+     Var0 = in,
+     happens(approach,Var2),
+     Var1-Var2 #< 2.
+not o__chk_4_1(Var0,Var1,Var2) :-
+     Var0 = in,
+     happens(approach,Var2),
+     Var1-Var2 #>= 2,
+     not holdsAt(approaching,Var1).
+not o__chk_4_1(Var0,Var1,Var2) :-
+     Var0 = in,
+     happens(approach,Var2),
+     Var1-Var2 #>= 2,
+     holdsAt(approaching,Var1),
+     happens(in,Var1).
+
+not o__chk_4_1(Var0,Var1) :-
+     forall(Var2,not o__chk_4_1(Var0,Var1,Var2)).
+
+not o_chk_4(Var0,Var1) :-
+     not o__chk_4_1(Var0,Var1).
+
+not o__chk_5_1(Var0,Var1,Var2) :-
+     Var0 \= lower.
+not o__chk_5_1(Var0,Var1,Var2) :-
+     Var0 = lower,
+     not happens(approach,Var2).
+not o__chk_5_1(Var0,Var1,Var2) :-
+     Var0 = lower,
+     happens(approach,Var2),
+     Var1 #<> Var2+1.
+not o__chk_5_1(Var0,Var1,Var2) :-
+     Var0 = lower,
+     happens(approach,Var2),
+     Var1 #= Var2+1,
+     not holdsAt(open,Var1).
+not o__chk_5_1(Var0,Var1,Var2) :-
+     Var0 = lower,
+     happens(approach,Var2),
+     Var1 #= Var2+1,
+     holdsAt(open,Var1),
+     happens(lower,Var1).
+
+not o__chk_5_1(Var0,Var1) :-
+     forall(Var2,not o__chk_5_1(Var0,Var1,Var2)).
+
+not o_chk_5(Var0,Var1) :-
+     not o__chk_5_1(Var0,Var1).
+
+not o__chk_6_1(Var0,Var1,Var2) :-
+     Var0 \= opengate.
+not o__chk_6_1(Var0,Var1,Var2) :-
+     Var0 = opengate,
+     not happens(raise,Var2).
+not o__chk_6_1(Var0,Var1,Var2) :-
+     Var0 = opengate,
+     happens(raise,Var2),
+     Var1 #=< Var2+1.
+not o__chk_6_1(Var0,Var1,Var2) :-
+     Var0 = opengate,
+     happens(raise,Var2),
+     Var1 #> Var2+1,
+     Var1 #>= Var2+2.
+not o__chk_6_1(Var0,Var1,Var2) :-
+     Var0 = opengate,
+     happens(raise,Var2),
+     Var1 #> Var2+1,
+     Var1 #< Var2+2,
+     not holdsAt(rising,Var1).
+not o__chk_6_1(Var0,Var1,Var2) :-
+     Var0 = opengate,
+     happens(raise,Var2),
+     Var1 #> Var2+1,
+     Var1 #< Var2+2,
+     holdsAt(rising,Var1),
+     happens(opengate,Var1).
+
+not o__chk_6_1(Var0,Var1) :-
+     forall(Var2,not o__chk_6_1(Var0,Var1,Var2)).
+
+not o_chk_6(Var0,Var1) :-
+     not o__chk_6_1(Var0,Var1).
+
+not o__chk_7_1(Var0,Var1,Var2) :-
+     Var0 \= raise.
+not o__chk_7_1(Var0,Var1,Var2) :-
+     Var0 = raise,
+     not happens(exit,Var2).
+not o__chk_7_1(Var0,Var1,Var2) :-
+     Var0 = raise,
+     happens(exit,Var2),
+     Var1-Var2 #>= 1.
+not o__chk_7_1(Var0,Var1,Var2) :-
+     Var0 = raise,
+     happens(exit,Var2),
+     Var1-Var2 #< 1,
+     Var1 #=< Var2.
+not o__chk_7_1(Var0,Var1,Var2) :-
+     Var0 = raise,
+     happens(exit,Var2),
+     Var1-Var2 #< 1,
+     Var1 #> Var2,
+     not holdsAt(closed,Var1).
+not o__chk_7_1(Var0,Var1,Var2) :-
+     Var0 = raise,
+     happens(exit,Var2),
+     Var1-Var2 #< 1,
+     Var1 #> Var2,
+     holdsAt(closed,Var1),
+     happens(raise,Var1).
+
+not o__chk_7_1(Var0,Var1) :-
+     forall(Var2,not o__chk_7_1(Var0,Var1,Var2)).
+
+not o_chk_7(Var0,Var1) :-
+     not o__chk_7_1(Var0,Var1).
+
+not o__chk_8_1(Var0,Var1) :-
+     0 #>= Var1.
+not o__chk_8_1(Var0,Var1) :-
+     0 #< Var1,
+     not fluent(Var0).
+not o__chk_8_1(Var0,Var1) :-
+     0 #< Var1,
+     fluent(Var0),
+     not time(Var1).
+not o__chk_8_1(Var0,Var1) :-
+     0 #< Var1,
+     fluent(Var0),
+     time(Var1),
+     not initiallyP(Var0).
+not o__chk_8_1(Var0,Var1) :-
+     0 #< Var1,
+     fluent(Var0),
+     time(Var1),
+     initiallyP(Var0),
+     stoppedIn(0,Var0,Var1).
+not o__chk_8_1(Var0,Var1) :-
+     0 #< Var1,
+     fluent(Var0),
+     time(Var1),
+     initiallyP(Var0),
+     not stoppedIn(0,Var0,Var1),
+     holdsAt(Var0,Var1).
+
+not o_chk_8(Var0,Var1) :-
+     not o__chk_8_1(Var0,Var1).
+
+not o__chk_9_1(Var0,Var1,Var2,Var3,Var4) :-
+     not event(Var2).
+not o__chk_9_1(Var0,Var1,Var2,Var3,Var4) :-
+     event(Var2),
+     not fluent(Var0).
+not o__chk_9_1(Var0,Var1,Var2,Var3,Var4) :-
+     event(Var2),
+     fluent(Var0),
+     not time(Var3).
+not o__chk_9_1(Var0,Var1,Var2,Var3,Var4) :-
+     event(Var2),
+     fluent(Var0),
+     time(Var3),
+     not time(Var1).
+not o__chk_9_1(Var0,Var1,Var2,Var3,Var4) :-
+     event(Var2),
+     fluent(Var0),
+     time(Var3),
+     time(Var1),
+     not initiates(Var2,Var0,Var3).
+not o__chk_9_1(Var0,Var1,Var2,Var3,Var4) :-
+     event(Var2),
+     fluent(Var0),
+     time(Var3),
+     time(Var1),
+     initiates(Var2,Var0,Var3),
+     not happens(Var2,Var3).
+not o__chk_9_1(Var0,Var1,Var2,Var3,Var4) :-
+     event(Var2),
+     fluent(Var0),
+     time(Var3),
+     time(Var1),
+     initiates(Var2,Var0,Var3),
+     happens(Var2,Var3),
+     not precision(Var4).
+not o__chk_9_1(Var0,Var1,Var2,Var3,Var4) :-
+     event(Var2),
+     fluent(Var0),
+     time(Var3),
+     time(Var1),
+     initiates(Var2,Var0,Var3),
+     happens(Var2,Var3),
+     precision(Var4),
+     Var3+Var4 #>= Var1.
+not o__chk_9_1(Var0,Var1,Var2,Var3,Var4) :-
+     event(Var2),
+     fluent(Var0),
+     time(Var3),
+     time(Var1),
+     initiates(Var2,Var0,Var3),
+     happens(Var2,Var3),
+     precision(Var4),
+     Var3+Var4 #< Var1,
+     stoppedIn(Var3,Var0,Var1).
+not o__chk_9_1(Var0,Var1,Var2,Var3,Var4) :-
+     event(Var2),
+     fluent(Var0),
+     time(Var3),
+     time(Var1),
+     initiates(Var2,Var0,Var3),
+     happens(Var2,Var3),
+     precision(Var4),
+     Var3+Var4 #< Var1,
+     not stoppedIn(Var3,Var0,Var1),
+     holdsAt(Var0,Var1).
+
+not o__chk_9_1(Var0,Var1) :-
+     forall(Var2,forall(Var3,forall(Var4,not o__chk_9_1(Var0,Var1,Var2,Var3,Var4)))).
+
+not o_chk_9(Var0,Var1) :-
+     not o__chk_9_1(Var0,Var1).
+
+not o__chk_10_1(Var0,Var1,Var2,Var3,Var4) :-
+     not fluent(Var0).
+not o__chk_10_1(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var0),
+     not fluent(Var2).
+not o__chk_10_1(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var0),
+     fluent(Var2),
+     not time(Var3).
+not o__chk_10_1(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var0),
+     fluent(Var2),
+     time(Var3),
+     not time(Var1).
+not o__chk_10_1(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var0),
+     fluent(Var2),
+     time(Var3),
+     time(Var1),
+     not event(Var4).
+not o__chk_10_1(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var0),
+     fluent(Var2),
+     time(Var3),
+     time(Var1),
+     event(Var4),
+     not initiates(Var4,Var2,Var3).
+not o__chk_10_1(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var0),
+     fluent(Var2),
+     time(Var3),
+     time(Var1),
+     event(Var4),
+     initiates(Var4,Var2,Var3),
+     not happens(Var4,Var3).
+not o__chk_10_1(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var0),
+     fluent(Var2),
+     time(Var3),
+     time(Var1),
+     event(Var4),
+     initiates(Var4,Var2,Var3),
+     happens(Var4,Var3),
+     not trajectory(Var2,Var3,Var0,Var1).
+not o__chk_10_1(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var0),
+     fluent(Var2),
+     time(Var3),
+     time(Var1),
+     event(Var4),
+     initiates(Var4,Var2,Var3),
+     happens(Var4,Var3),
+     trajectory(Var2,Var3,Var0,Var1),
+     stoppedIn(Var3,Var2,Var1).
+not o__chk_10_1(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var0),
+     fluent(Var2),
+     time(Var3),
+     time(Var1),
+     event(Var4),
+     initiates(Var4,Var2,Var3),
+     happens(Var4,Var3),
+     trajectory(Var2,Var3,Var0,Var1),
+     not stoppedIn(Var3,Var2,Var1),
+     holdsAt(Var0,Var1).
+
+not o__chk_10_1(Var0,Var1) :-
+     forall(Var2,forall(Var3,forall(Var4,not o__chk_10_1(Var0,Var1,Var2,Var3,Var4)))).
+
+not o_chk_10(Var0,Var1) :-
+     not o__chk_10_1(Var0,Var1).
+
+not o__chk_11_1(Var0,Var1,Var2,Var3,Var4) :-
+     not fluent(Var1).
+not o__chk_11_1(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var1),
+     not time(Var0).
+not o__chk_11_1(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var1),
+     time(Var0),
+     not time(Var2).
+not o__chk_11_1(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var1),
+     time(Var0),
+     time(Var2),
+     not event(Var3).
+not o__chk_11_1(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var1),
+     time(Var0),
+     time(Var2),
+     event(Var3),
+     not terminates(Var3,Var1,Var4).
+not o__chk_11_1(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var1),
+     time(Var0),
+     time(Var2),
+     event(Var3),
+     terminates(Var3,Var1,Var4),
+     not happens(Var3,Var4).
+not o__chk_11_1(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var1),
+     time(Var0),
+     time(Var2),
+     event(Var3),
+     terminates(Var3,Var1,Var4),
+     happens(Var3,Var4),
+     Var0 #>= Var4.
+not o__chk_11_1(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var1),
+     time(Var0),
+     time(Var2),
+     event(Var3),
+     terminates(Var3,Var1,Var4),
+     happens(Var3,Var4),
+     Var0 #< Var4,
+     Var4 #>= Var2.
+not o__chk_11_1(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var1),
+     time(Var0),
+     time(Var2),
+     event(Var3),
+     terminates(Var3,Var1,Var4),
+     happens(Var3,Var4),
+     Var0 #< Var4,
+     Var4 #< Var2,
+     stoppedIn(Var0,Var1,Var2).
+
+not o__chk_11_1(Var0,Var1,Var2) :-
+     forall(Var3,forall(Var4,not o__chk_11_1(Var0,Var1,Var2,Var3,Var4))).
+
+not o_chk_11(Var0,Var1,Var2) :-
+     not o__chk_11_1(Var0,Var1,Var2).
+
+not o__chk_12_1(Var0,Var1,Var2,Var3,Var4) :-
+     not fluent(Var1).
+not o__chk_12_1(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var1),
+     not time(Var0).
+not o__chk_12_1(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var1),
+     time(Var0),
+     not time(Var2).
+not o__chk_12_1(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var1),
+     time(Var0),
+     time(Var2),
+     not event(Var3).
+not o__chk_12_1(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var1),
+     time(Var0),
+     time(Var2),
+     event(Var3),
+     not releases(Var3,Var1,Var4).
+not o__chk_12_1(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var1),
+     time(Var0),
+     time(Var2),
+     event(Var3),
+     releases(Var3,Var1,Var4),
+     not happens(Var3,Var4).
+not o__chk_12_1(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var1),
+     time(Var0),
+     time(Var2),
+     event(Var3),
+     releases(Var3,Var1,Var4),
+     happens(Var3,Var4),
+     Var0 #>= Var4.
+not o__chk_12_1(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var1),
+     time(Var0),
+     time(Var2),
+     event(Var3),
+     releases(Var3,Var1,Var4),
+     happens(Var3,Var4),
+     Var0 #< Var4,
+     Var4 #>= Var2.
+not o__chk_12_1(Var0,Var1,Var2,Var3,Var4) :-
+     fluent(Var1),
+     time(Var0),
+     time(Var2),
+     event(Var3),
+     releases(Var3,Var1,Var4),
+     happens(Var3,Var4),
+     Var0 #< Var4,
+     Var4 #< Var2,
+     stoppedIn(Var0,Var1,Var2).
+
+not o__chk_12_1(Var0,Var1,Var2) :-
+     forall(Var3,forall(Var4,not o__chk_12_1(Var0,Var1,Var2,Var3,Var4))).
+
+not o_chk_12(Var0,Var1,Var2) :-
+     not o__chk_12_1(Var0,Var1,Var2).
+
+not o__chk_13_1(Var0,Var1,Var2) :-
+     Var0 \= in.
+not o__chk_13_1(Var0,Var1,Var2) :-
+     Var0 = in,
+     Var1 \= approaching.
+not o__chk_13_1(Var0,Var1,Var2) :-
+     Var0 = in,
+     Var1 = approaching,
+     not happens(in,Var2).
+not o__chk_13_1(Var0,Var1,Var2) :-
+     Var0 = in,
+     Var1 = approaching,
+     happens(in,Var2),
+     terminates(in,approaching,Var2).
+
+not o_chk_13(Var0,Var1,Var2) :-
+     not o__chk_13_1(Var0,Var1,Var2).
+
+global_constraint.

@@ -1,0 +1,47 @@
+#include 'bec_original.lp'.
+
+happens(in,Var0) :-
+     happens(approach,Var1),
+     Var0-Var1 #>= 2,
+     not_happensIn(Var0, Var1),
+     holdsAt(approaching,Var0).
+%happens(lower,Var0) :-
+%     happens(approach,Var1),
+%     Var0 #= Var1+1,
+%     holdsAt(open,Var0).
+
+event(approach).
+event(in).
+%event(lower).
+
+initiates(approach,approaching,Var0).
+terminates(in,approaching,Var0).
+initiates(in,passing,Var0).
+
+%terminates(lower,open,Var0).
+%initiates(lower,lowering,Var0).
+
+fluent(approaching).
+fluent(passing).
+fluent(open).
+fluent(lowering).
+
+initiallyP(open).
+
+initiallyN(approaching).
+initiallyN(passing).
+initiallyN(leaving).
+initiallyN(rising).
+initiallyN(closed).
+initiallyN(lowering).
+
+happens(approach,1).
+
+
+happensIn(T1, T2) :-
+        event(E), 
+        happens(E, T),
+        T1 .<. T, T .<. T2.
+
+notot_happensIn(T1, T2) :-
+        not happensIn(T1, T2).

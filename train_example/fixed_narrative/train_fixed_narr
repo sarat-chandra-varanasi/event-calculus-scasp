@@ -1,0 +1,124 @@
+#include 'bec_sarat_fixed_narr.lp'.
+
+% QUERY:
+% Query not defined
+
+% USER PREDICATES:
+max_time(T) :- T .>. 0, T .=<. 20.
+
+
+happens(in,Var0) :-
+     narrative(List),
+     member(event(in,Var0), List),
+     member(event(approach,Var1), List),
+     % happens(approach,Var1),
+     Var0-Var1 #>= 2,
+     holdsAt(approaching,Var0).
+happens(lower,Var0) :-
+     narrative(List),
+     member(event(lower,Var0), List),
+     member(event(approach,Var1), List),
+     % happens(approach,Var1),
+     Var0 #= Var1+1,
+     holdsAt(open,Var0).
+happens(closegate,Var0) :-
+     narrative(List),
+     member(event(closegate,Var0), List),
+     member(event(lower,Var1), List),
+     % happens(lower,Var1),
+     Var0-Var1 #< 1,
+     Var0 #> Var1,
+     holdsAt(lowering,Var0).
+happens(exit,Var0) :-
+     narrative(List),
+     member(event(exit,Var0), List),
+     member(event(approach,Var1), List),
+     % happens(approach,Var1),
+     Var0-Var1 #< 5,
+     Var0 #> Var1,
+     holdsAt(passing,Var0).
+happens(raise,Var0) :-
+     narrative(List),
+     member(event(raise,Var0), List),
+     member(event(exit,Var1), List),
+     happens(exit,Var1),
+     Var0-Var1 #< 1,
+     Var0 #> Var1,
+     holdsAt(closed,Var0).
+happens(opengate,Var0) :-
+     narrative(List),
+     member(event(opengate,Var0), List),
+     member(event(raise,Var1), List),
+     happens(raise,Var1),
+     Var0 #> Var1+1,
+     Var0 #< Var1+2,
+     holdsAt(rising,Var0).
+
+event(approach).
+event(in).
+event(exit).
+
+initiates(approach,approaching,Var0).
+terminates(in,approaching,Var0).
+initiates(in,passing,Var0).
+
+terminates(exit,passing,Var0).
+
+initiates(exit,leaving,Var0).
+
+event(raise).
+event(lower).
+event(opengate).
+event(closegate).
+
+terminates(lower,open,Var0).
+
+initiates(lower,lowering,Var0).
+
+terminates(closegate,lowering,Var0).
+
+initiates(closegate,closed,Var0).
+
+terminates(raise,closed,Var0).
+
+initiates(raise,rising,Var0).
+
+terminates(opengate,rising,Var0).
+
+initiates(opengate,open,Var0).
+
+fluent(approaching).
+fluent(passing).
+fluent(leaving).
+fluent(rising).
+fluent(open).
+fluent(lowering).
+fluent(closed).
+
+initiallyP(open).
+
+initiallyN(approaching).
+initiallyN(passing).
+initiallyN(leaving).
+initiallyN(rising).
+initiallyN(closed).
+initiallyN(lowering).
+
+
+happens(approach, T) :- 
+    narrative(List),
+    member(event(approach, T), List).
+
+narrative([event(approach,1), 
+           event(in, T1), 
+           event(exit, T2),
+           event(raise, T3),
+           event(lower, T4),
+           event(closegate, T5),
+           event(opengate, T6)]) :-
+          max_time(T1),
+          max_time(T2),
+          max_time(T3),
+          max_time(T4), 
+          max_time(T5), 
+          max_time(T6).

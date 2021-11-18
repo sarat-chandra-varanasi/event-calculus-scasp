@@ -1,0 +1,121 @@
+% QUERY:?- not_stoppedIn(1,approaching,[],T).
+(0) not_stoppedIn(1,approaching,[],_15264)
+(1) findall(_15627,terminates(_15627,approaching,_15633),_15629)
+(1) terminates(_15627,approaching,_15633)
+(1) happens_outside([in],1,_15264,[])
+(2) findall(_15972,happens(in,_15972,[],_15979),_15974)
+(2) happens(in,_15972,[],_15979)
+(3) add(approach,[],_16271)
+(4) member(approach,[])
+ FAIL
+(4) not member(approach,[])
+(5) not o_member_1(approach,[])
+(6) forall(_16699,not o_member_1(approach,[],_16699))
+(7) not o_member_1(approach,[],_16918)
+(8) [] \= [approach|_16918]
+(5) not o_member_2(approach,[])
+(6) forall(_19118,forall(_19121,not o_member_2(approach,[],_19118,_19121)))
+(7) not o_member_2(approach,[],_20180,_19401)
+(8) [] \= [_20180|_19401]
+(3) happens(approach,_16276,[approach],_16278)
+(3) _15972-1 #>= 2
+(3) holdsAt(approaching, {_24135~[_24135 >= 3]} ,[approach],_15979)
+(4) 0.<. {_24135~[_24135 >= 3]} 
+(4) fluent(approaching)
+(4) time( {_24135~[_24135 >= 3]} )
+(5)  {_24135~[_24135 >= 3]} .>.0
+(5)  {_24135~[_24135 >= 3]} .<.12
+(4) initiallyP(approaching)
+ FAIL
+(4) event(_24520)
+(4) fluent(approaching)
+(4) time(_24528)
+(5) _24528.>.0
+(5)  {_25168~[_25168 > 0]} .<.12
+(4) time( {_24135~[_24135 >= 3]} )
+(5)  {_24135~[_24135 >= 3]} .>.0
+(5)  {_24135~[_24135 >= 3]} .<.12
+(4) initiates(approach,approaching, {_25168~[_25168 > 0, _25168 < 12]} )
+(4) happens(approach, {_25168~[_25168 > 0, _25168 < 12]} ,[approach],_15979)
+(4) precision(_24549)
+(4) 1+0.<. {_24135~[_24135 < 12, _24135 >= 3]} 
+(4) not_stoppedIn(1,approaching,[approach], {_24135~[_24135 < 12, _24135 >= 3]} )
+(5) findall(_27129,terminates(_27129,approaching,_27135),_27131)
+(5) terminates(_27129,approaching,_27135)
+(5) happens_outside([in],1, {_24135~[_24135 < 12, _24135 >= 3]} ,[approach])
+(6) findall(_27475,happens(in,_27475,[approach],_27482),_27477)
+(6) happens(in,_27475,[approach],_27482)
+(7) add(approach,[approach],_27776)
+(8) member(approach,[approach])
+(7) happens(approach,_27781,[approach],_27783)
+(7) _27475-1 #>= 2
+(7) holdsAt(approaching, {_28481~[_28481 >= 3]} ,[approach],_27482)
+(8) 0.<. {_28481~[_28481 >= 3]} 
+(8) fluent(approaching)
+(8) time( {_28481~[_28481 >= 3]} )
+(9)  {_28481~[_28481 >= 3]} .>.0
+(9)  {_28481~[_28481 >= 3]} .<.12
+(8) initiallyP(approaching)
+ FAIL
+(8) event(_28866)
+(8) fluent(approaching)
+(8) time(_28874)
+(9) _28874.>.0
+(9)  {_29481~[_29481 > 0]} .<.12
+(8) time( {_28481~[_28481 >= 3]} )
+(9)  {_28481~[_28481 >= 3]} .>.0
+(9)  {_28481~[_28481 >= 3]} .<.12
+(8) initiates(approach,approaching, {_29481~[_29481 > 0, _29481 < 12]} )
+(8) happens(approach, {_29481~[_29481 > 0, _29481 < 12]} ,[approach],_27482)
+(8) precision(_28895)
+(8) 1+0.<. {_28481~[_28481 < 12, _28481 >= 3]} 
+(8) not_stoppedIn(1,approaching,[approach], {_28481~[_28481 < 12, _28481 >= 3]} )
+(8) fluent(approaching)
+(8) time(_28874)
+(9) _28874.>.0
+(9)  {_29481~[_29481 > 0]} .<.12
+(8) time( {_28481~[_28481 >= 3]} )
+(9)  {_28481~[_28481 >= 3]} .>.0
+(9)  {_28481~[_28481 >= 3]} .<.12
+(8) initiates(in,approaching, {_29481~[_29481 > 0, _29481 < 12]} )
+ FAIL
+ FAIL
+(9) approach \= approach
+(8) not member(approach,[approach])
+(9) not o_member_1(approach,[approach])
+(10) forall(_28207,not o_member_1(approach,[approach],_28207))
+(11) not o_member_1(approach,[approach],_28429)
+(12) [approach] \= [approach|_28429]
+(11) not o_member_1(approach,[approach],[])
+(12) [approach] \= [approach]
+ FAIL
+ FAIL
+ FAIL
+ FAIL
+(6) out([],1, {_24135~[_24135 < 12, _24135 >= 3]} )
+(6) happens_outside([],1, {_24135~[_24135 < 12, _24135 >= 3]} ,[approach])
+(4) fluent(approaching)
+(4) time(_24528)
+(5) _24528.>.0
+(5)  {_25168~[_25168 > 0]} .<.12
+(4) time( {_24135~[_24135 >= 3]} )
+(5)  {_24135~[_24135 >= 3]} .>.0
+(5)  {_24135~[_24135 >= 3]} .<.12
+(4) initiates(in,approaching, {_25168~[_25168 > 0, _25168 < 12]} )
+ FAIL
+(2) out([ {_16647~[_16647 < 12, _16647 >= 3]} ],1,_15264)
+(3) outside( {_16647~[_16647 < 12, _16647 >= 3]} ,1,_15264)
+(4)  {_16647~[_16647 < 12, _16647 >= 3]} .<.1
+(4)  {_16647~[_16647 < 12, _16647 >= 3]} .>._15264
+(3) out([],1, {_17402~[_17402 < 12]} )
+(2) happens_outside([],1, {_17402~[_17402 < 12]} ,[])
+(0) o_nmr_check
+
+	ANSWER:	1 (in 15.6249999992724 ms)
+
+MODEL:
+{ not_stoppedIn(1,approaching,[],T | {T #< 12}),  terminates(in,approaching,Var1),  happens_outside([in],1,T | {T #< 12},[]),  happens(in,Var2 | {Var2 #>= 3,Var2 #< 12},[],[approach]),  add(approach,[],[approach]),  not member(approach,[]),  happens(approach,1,[approach],[approach]),  holdsAt(approaching,Var2 | {Var2 #>= 3,Var2 #< 12},[approach],[approach]),  event(approach),  fluent(approaching),  time(1),  time(Var2 | {Var2 #>= 3,Var2 #< 12}),  initiates(approach,approaching,1),  precision(0),  not_stoppedIn(1,approaching,[approach],Var2 | {Var2 #>= 3,Var2 #< 12}),  terminates(in,approaching,Var3),  happens_outside([in],1,Var2 | {Var2 #>= 3,Var2 #< 12},[approach]),  out([],1,Var2 | {Var2 #>= 3,Var2 #< 12}),  happens_outside([],1,Var2 | {Var2 #>= 3,Var2 #< 12},[approach]),  out([Var2 | {Var2 #>= 3,Var2 #< 12}],1,T | {T #< 12}),  outside(Var2 | {Var2 #>= 3,Var2 #< 12},1,T | {T #< 12}),  out([],1,T | {T #< 12}),  happens_outside([],1,T | {T #< 12},[]) }
+
+BINDINGS: 
+T #< 12 ? |: 
+

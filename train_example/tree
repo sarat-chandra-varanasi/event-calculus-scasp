@@ -1,0 +1,91 @@
+% QUERY:?- holdsAt(passing,T3),happens(exit,T0).
+
+	ANSWER:	1 (in 1531.249999935541 ms)
+
+JUSTIFICATION_TREE:
+holdsAt(passing,Var4 | {Var4 #> 3,Var4 #< 12}) :-
+    event(in),
+    fluent(passing),
+    time(Var3 | {Var3 #>= 3,Var3 #< 12}),
+    time(Var4 | {Var4 #> 3,Var4 #< 12}),
+    initiates(in,passing,Var3 | {Var3 #>= 3,Var3 #< 12}),
+    happens(in,Var3 | {Var3 #>= 3,Var3 #< 12}) :-
+        happens(approach,1).
+    precision(0),
+    not stoppedIn(Var3 | {Var3 #>= 3,Var3 #< 12},passing,Var4 | {Var4 #> 3,Var4 #< 12}) :-
+        proved(fluent(passing)),
+        time(Var3 | {Var3 #>= 3,Var3 #< 12}),
+        time(Var4 | {Var4 #> 3,Var4 #< 12}),
+        not event(Var5 | {Var5 \= approach,Var5 \= closegate,Var5 \= exit,Var5 \= in,Var5 \= lower,Var5 \= opengate,Var5 \= raise}),
+        time(Var3 | {Var3 #>= 3,Var3 #< 12}),
+        time(Var4 | {Var4 #> 3,Var4 #< 12}),
+        event(approach),
+        not terminates(approach,passing,Var6),
+        time(Var3 | {Var3 #>= 3,Var3 #< 12}),
+        time(Var4 | {Var4 #> 3,Var4 #< 12}),
+        event(closegate),
+        not terminates(closegate,passing,Var7),
+        time(Var3 | {Var3 #>= 3,Var3 #< 12}),
+        time(Var4 | {Var4 #> 3,Var4 #< 12}),
+        event(exit),
+        terminates(exit,passing,Var21 | {Var21 #>= 6}),
+        not happens(exit,Var21 | {Var21 #>= 6}) :-
+            not happens(approach,Var9 | {Var9 \= 1}),
+            proved(happens(approach,1)).
+        time(Var3 | {Var3 #>= 3,Var3 #< 12}),
+        time(Var4 | {Var4 #> 3,Var4 #< 12}),
+        proved(event(in)),
+        not terminates(in,passing,Var10),
+        time(Var3 | {Var3 #>= 3,Var3 #< 12}),
+        time(Var4 | {Var4 #> 3,Var4 #< 12}),
+        event(lower),
+        not terminates(lower,passing,Var11),
+        time(Var3 | {Var3 #>= 3,Var3 #< 12}),
+        time(Var4 | {Var4 #> 3,Var4 #< 12}),
+        event(opengate),
+        not terminates(opengate,passing,Var12),
+        time(Var3 | {Var3 #>= 3,Var3 #< 12}),
+        time(Var4 | {Var4 #> 3,Var4 #< 12}),
+        event(raise),
+        not terminates(raise,passing,Var13),
+        time(Var14 | {Var14 #>= 3,Var14 #< 12}),
+        time(Var15 | {Var15 #> 3,Var15 #< 12}),
+        not event(Var16 | {Var16 \= approach,Var16 \= closegate,Var16 \= exit,Var16 \= in,Var16 \= lower,Var16 \= opengate,Var16 \= raise}),
+        time(Var14 | {Var14 #>= 3,Var14 #< 12}),
+        time(Var15 | {Var15 #> 3,Var15 #< 12}),
+        proved(event(approach)),
+        not releases(approach,passing,Var54),
+        time(Var14 | {Var14 #>= 3,Var14 #< 12}),
+        time(Var15 | {Var15 #> 3,Var15 #< 12}),
+        proved(event(closegate)),
+        not releases(closegate,passing,Var55),
+        time(Var14 | {Var14 #>= 3,Var14 #< 12}),
+        time(Var15 | {Var15 #> 3,Var15 #< 12}),
+        proved(event(exit)),
+        not releases(exit,passing,Var56),
+        time(Var14 | {Var14 #>= 3,Var14 #< 12}),
+        time(Var15 | {Var15 #> 3,Var15 #< 12}),
+        not releases(in,passing,Var57),
+        time(Var14 | {Var14 #>= 3,Var14 #< 12}),
+        time(Var15 | {Var15 #> 3,Var15 #< 12}),
+        proved(event(lower)),
+        not releases(lower,passing,Var58),
+        time(Var14 | {Var14 #>= 3,Var14 #< 12}),
+        time(Var15 | {Var15 #> 3,Var15 #< 12}),
+        proved(event(opengate)),
+        not releases(opengate,passing,Var59),
+        time(Var14 | {Var14 #>= 3,Var14 #< 12}),
+        time(Var15 | {Var15 #> 3,Var15 #< 12}),
+        proved(event(raise)),
+        not releases(raise,passing,Var60).
+happens(exit,T0 | {T0 #> 3,T0 #< 6}) :-
+    happens(approach,1),
+    happens(in,Var17 | {Var17 #>= 3,Var17 #< 6}) :-
+        happens(approach,1).
+
+MODEL:
+{ holdsAt(passing,T3 | {T3 #> 3,T3 #< 12}),  event(in),  fluent(passing),  time(Var2 | {Var2 #>= 3,Var2 #< 12}),  time(T3 | {T3 #> 3,T3 #< 12}),  initiates(in,passing,Var2 | {Var2 #>= 3,Var2 #< 12}),  happens(in,Var2 | {Var2 #>= 3,Var2 #< 12}),  happens(approach,1),  precision(0),  not stoppedIn(Var2 | {Var2 #>= 3,Var2 #< 12},passing,T3 | {T3 #> 3,T3 #< 12}),  time(Var3 | {Var3 #>= 3,Var3 #< 12}),  time(Var4 | {Var4 #> 3,Var4 #< 12}),  not event(Var5 | {Var5 \= approach,Var5 \= closegate,Var5 \= exit,Var5 \= in,Var5 \= lower,Var5 \= opengate,Var5 \= raise}),  event(approach),  not terminates(approach,passing,Var6),  event(closegate),  not terminates(closegate,passing,Var7),  event(exit),  terminates(exit,passing,Var8 | {Var8 #>= 6}),  not happens(exit,Var8 | {Var8 #>= 6}),  not happens(approach,Var9 | {Var9 \= 1}),  not terminates(in,passing,Var10),  event(lower),  not terminates(lower,passing,Var11),  event(opengate),  not terminates(opengate,passing,Var12),  event(raise),  not terminates(raise,passing,Var13),  time(Var14 | {Var14 #>= 3,Var14 #< 12}),  time(Var15 | {Var15 #> 3,Var15 #< 12}),  not event(Var16 | {Var16 \= approach,Var16 \= closegate,Var16 \= exit,Var16 \= in,Var16 \= lower,Var16 \= opengate,Var16 \= raise}),  happens(exit,T0 | {T0 #> 3,T0 #< 6}),  happens(in,Var17 | {Var17 #>= 3,Var17 #< 6}) }
+
+BINDINGS: 
+T3 #> 3,T3 #< 12 
+T0 #> 3,T0 #< 6 ? |: 

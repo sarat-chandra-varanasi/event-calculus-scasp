@@ -1,0 +1,29 @@
+#include 'bec_history.lp'.
+
+happens(in,Var0, Ein, Eout) :-
+     add(approach, Ein, E1),
+     happens(approach,Var1,E1, E2),
+     Var0-Var1 #>= 2,
+     holdsAt(approaching,Var0, E2, Eout).
+
+event(approach).
+event(in).
+initiates(approach,approaching,Var0).
+terminates(in,approaching,Var0).
+initiates(in,passing,Var0).
+
+% :- happens(E, T1), happens(E, T2), T1 .<>. T2.
+
+fluent(approaching).
+fluent(passing).
+
+initiallyP(open).
+
+initiallyN(approaching).
+initiallyN(passing).
+initiallyN(leaving).
+initiallyN(rising).
+initiallyN(closed).
+initiallyN(lowering).
+
+happens(approach, 1, E, E).
