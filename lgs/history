@@ -1,0 +1,40 @@
+ 1999  scasp --update
+ 2000  clear
+ 2001  scasp --help
+ 2002  clear
+ 2003  cd ~/clarissa/lgs
+ 2004  ls
+ 2005  scasp -i lgs.lp
+ 2006  clear
+ 2007  scasp -i --no_nmr lgs.lp
+ 2008  scasp -i --no_nmr -v lgs.lp
+ 2009  scasp --no_nmr -v lgs.lp > debug  
+ 2010  clear
+ 2011  scasp --no_nmr -v lgs.lp 
+ 2012  scasp lgs.lp 
+ 2013  scasp --no_nmr lgs.lp 
+ 2014  scasp --help
+ 2015  scasp --no_nmr --all_c_forall lgs.lp 
+ 2016  scasp --no_nmr --sasp_forall lgs.lp 
+ 2017  scasp --no_nmr --prev_forall lgs.lp 
+ 2018  scasp --help
+ 2019  scasp --no_nmr --prev_forall lgs.lp 
+ 2020  scasp --no_nmr --sasp_forall lgs.lp 
+ 2021  scasp --no_nmr --prev_forall lgs.lp 
+ 2022  scasp --help
+ 2023  scasp --no_nmr --all_c_forall lgs.lp 
+ 2024  scasp --no_nmr --all_c_forall -debug lgs.lp > debug
+ 2025  scasp --no_nmr --all_c_forall lgs.lp
+ 2026  scasp --no_nmr --all_c_forall -v lgs.lp
+ 2027  scasp --no_nmr --all_c_forall -v lgs.lp > debug
+ 2028  scasp --code lgs.lp > gen_code
+ 2029  scasp -c gen_code
+ 2030  scasp -c --all_c_forall gen_code
+ 2031  scasp -c --prev_forall  gen_code
+ 2032  casp -c --prev_forall gen_code
+ 2033  scasp -c --prev_forall gen_code
+ 2034  history
+ 2035  tail -n 100 history
+ 2036  tail -n100 history
+ 2037  history | tail -n 100
+ 2038  history | tail -n 100 > history

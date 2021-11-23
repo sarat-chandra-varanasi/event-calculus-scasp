@@ -1,0 +1,502 @@
+% QUERY:
+?- holdsAt(opening_door,T1),happens(e3,T).
+
+% USER PREDICATES:
+cond_open_door(Var0) :-
+     holdsAt(on_ground,Var0),
+     holdsAt(adjustment_necessary,Var0).
+
+becomes(req_open_door_true,Var0) :-
+     not cond_open_door(Var1),
+     cond_open_door(Var2),
+     Var2 #> Var1,
+     Var2 #< Var1+0.1,
+     inf(Var2,Var0).
+
+initiates(e1,on_ground,Var0).
+initiates(e2,adjustment_necessary,Var0).
+
+happens(open_door,Var0) :-
+     becomes(req_open_door_true,Var0).
+
+initiates(open_door,opening_door,Var0).
+initiates(open_door,opening_door_2,Var0).
+
+happens(e3,Var0) :-
+     holdsAt(opening_door_2,Var1),
+     Var2 #> Var1+5,
+     inf(Var2,Var0).
+
+terminates(e3,opening_door,Var0).
+
+happens(e1,1).
+happens(e2,2).
+
+max_time(30).
+
+stoppedIn(Var0,Var1,Var2) :-
+     terminates(Var3,Var1,Var4),
+     happens(Var3,Var4),
+     Var0 #< Var4,
+     Var4 #< Var2,
+     max_time(Var5),
+     Var0 #=< Var5,
+     Var4 #=< Var5,
+     Var2 #=< Var5.
+
+holdsAt(Var0,Var1) :-
+     initiates(Var2,Var0,Var3),
+     happens(Var2,Var3),
+     Var3 #< Var1,
+     max_time(Var4),
+     Var3 #=< Var4,
+     Var1 #=< Var4,
+     not stoppedIn(Var3,Var0,Var1).
+
+global_constraints :-
+     global_constraint.
+
+
+% DUAL RULES:
+not cond_open_door(Var0) :-
+     not o_cond_open_door_1(Var0).
+
+not o_cond_open_door_1(Var0) :-
+     not holdsAt(on_ground,Var0).
+not o_cond_open_door_1(Var0) :-
+     holdsAt(on_ground,Var0),
+     not holdsAt(adjustment_necessary,Var0).
+
+not holdsAt(Var0,Var1) :-
+     not o_holdsAt_1(Var0,Var1).
+
+not o_holdsAt_1(Var0,Var1) :-
+     forall(Var2,forall(Var3,forall(Var4,not o_holdsAt_1(Var0,Var1,Var2,Var3,Var4)))).
+
+not o_holdsAt_1(Var0,Var1,Var2,Var3,Var4) :-
+     not initiates(Var2,Var0,Var3).
+not o_holdsAt_1(Var0,Var1,Var2,Var3,Var4) :-
+     initiates(Var2,Var0,Var3),
+     not happens(Var2,Var3).
+not o_holdsAt_1(Var0,Var1,Var2,Var3,Var4) :-
+     initiates(Var2,Var0,Var3),
+     happens(Var2,Var3),
+     Var3 #>= Var1.
+not o_holdsAt_1(Var0,Var1,Var2,Var3,Var4) :-
+     initiates(Var2,Var0,Var3),
+     happens(Var2,Var3),
+     Var3 #< Var1,
+     not max_time(Var4).
+not o_holdsAt_1(Var0,Var1,Var2,Var3,Var4) :-
+     initiates(Var2,Var0,Var3),
+     happens(Var2,Var3),
+     Var3 #< Var1,
+     max_time(Var4),
+     Var3 #> Var4.
+not o_holdsAt_1(Var0,Var1,Var2,Var3,Var4) :-
+     initiates(Var2,Var0,Var3),
+     happens(Var2,Var3),
+     Var3 #< Var1,
+     max_time(Var4),
+     Var3 #=< Var4,
+     Var1 #> Var4.
+not o_holdsAt_1(Var0,Var1,Var2,Var3,Var4) :-
+     initiates(Var2,Var0,Var3),
+     happens(Var2,Var3),
+     Var3 #< Var1,
+     max_time(Var4),
+     Var3 #=< Var4,
+     Var1 #=< Var4,
+     stoppedIn(Var3,Var0,Var1).
+
+not becomes(Var0,Var1) :-
+     not o_becomes_1(Var0,Var1).
+
+not o_becomes_1(Var0,Var1) :-
+     forall(Var2,forall(Var3,not o_becomes_1(Var0,Var1,Var2,Var3))).
+
+not o_becomes_1(Var0,Var1,Var2,Var3) :-
+     Var0 \= req_open_door_true.
+not o_becomes_1(Var0,Var1,Var2,Var3) :-
+     Var0 = req_open_door_true,
+     cond_open_door(Var2).
+not o_becomes_1(Var0,Var1,Var2,Var3) :-
+     Var0 = req_open_door_true,
+     not cond_open_door(Var2),
+     not cond_open_door(Var3).
+not o_becomes_1(Var0,Var1,Var2,Var3) :-
+     Var0 = req_open_door_true,
+     not cond_open_door(Var2),
+     cond_open_door(Var3),
+     Var3 #=< Var2.
+not o_becomes_1(Var0,Var1,Var2,Var3) :-
+     Var0 = req_open_door_true,
+     not cond_open_door(Var2),
+     cond_open_door(Var3),
+     Var3 #> Var2,
+     Var3 #>= Var2+0.1.
+not o_becomes_1(Var0,Var1,Var2,Var3) :-
+     Var0 = req_open_door_true,
+     not cond_open_door(Var2),
+     cond_open_door(Var3),
+     Var3 #> Var2,
+     Var3 #< Var2+0.1,
+     not inf(Var3,Var1).
+
+not inf(Var0,Var1).
+
+not initiates(Var0,Var1,Var2) :-
+     not o_initiates_1(Var0,Var1,Var2),
+     not o_initiates_2(Var0,Var1,Var2),
+     not o_initiates_3(Var0,Var1,Var2),
+     not o_initiates_4(Var0,Var1,Var2).
+
+not o_initiates_1(Var0,Var1,Var2) :-
+     Var0 \= e1.
+not o_initiates_1(Var0,Var1,Var2) :-
+     Var0 = e1,
+     Var1 \= on_ground.
+
+not o_initiates_2(Var0,Var1,Var2) :-
+     Var0 \= e2.
+not o_initiates_2(Var0,Var1,Var2) :-
+     Var0 = e2,
+     Var1 \= adjustment_necessary.
+
+not o_initiates_3(Var0,Var1,Var2) :-
+     Var0 \= open_door.
+not o_initiates_3(Var0,Var1,Var2) :-
+     Var0 = open_door,
+     Var1 \= opening_door.
+
+not o_initiates_4(Var0,Var1,Var2) :-
+     Var0 \= open_door.
+not o_initiates_4(Var0,Var1,Var2) :-
+     Var0 = open_door,
+     Var1 \= opening_door_2.
+
+not happens(Var0,Var1) :-
+     not o_happens_1(Var0,Var1),
+     not o_happens_2(Var0,Var1),
+     not o_happens_3(Var0,Var1),
+     not o_happens_4(Var0,Var1).
+
+not o_happens_1(Var0,Var1) :-
+     Var0 \= open_door.
+not o_happens_1(Var0,Var1) :-
+     Var0 = open_door,
+     not becomes(req_open_door_true,Var1).
+
+not o_happens_2(Var0,Var1) :-
+     forall(Var2,forall(Var3,not o_happens_2(Var0,Var1,Var2,Var3))).
+
+not o_happens_2(Var0,Var1,Var2,Var3) :-
+     Var0 \= e3.
+not o_happens_2(Var0,Var1,Var2,Var3) :-
+     Var0 = e3,
+     not holdsAt(opening_door_2,Var2).
+not o_happens_2(Var0,Var1,Var2,Var3) :-
+     Var0 = e3,
+     holdsAt(opening_door_2,Var2),
+     Var3 #=< Var2+5.
+not o_happens_2(Var0,Var1,Var2,Var3) :-
+     Var0 = e3,
+     holdsAt(opening_door_2,Var2),
+     Var3 #> Var2+5,
+     not inf(Var3,Var1).
+
+not o_happens_3(Var0,Var1) :-
+     Var0 \= e1.
+not o_happens_3(Var0,Var1) :-
+     Var0 = e1,
+     Var1 \= 1.
+
+not o_happens_4(Var0,Var1) :-
+     Var0 \= e2.
+not o_happens_4(Var0,Var1) :-
+     Var0 = e2,
+     Var1 \= 2.
+
+not terminates(Var0,Var1,Var2) :-
+     not o_terminates_1(Var0,Var1,Var2).
+
+not o_terminates_1(Var0,Var1,Var2) :-
+     Var0 \= e3.
+not o_terminates_1(Var0,Var1,Var2) :-
+     Var0 = e3,
+     Var1 \= opening_door.
+
+not max_time(Var0) :-
+     not o_max_time_1(Var0).
+
+not o_max_time_1(Var0) :-
+     Var0 \= 30.
+
+not stoppedIn(Var0,Var1,Var2) :-
+     not o_stoppedIn_1(Var0,Var1,Var2).
+
+not o_stoppedIn_1(Var0,Var1,Var2) :-
+     forall(Var3,forall(Var4,forall(Var5,not o_stoppedIn_1(Var0,Var1,Var2,Var3,Var4,Var5)))).
+
+not o_stoppedIn_1(Var0,Var1,Var2,Var3,Var4,Var5) :-
+     not terminates(Var3,Var1,Var4).
+not o_stoppedIn_1(Var0,Var1,Var2,Var3,Var4,Var5) :-
+     terminates(Var3,Var1,Var4),
+     not happens(Var3,Var4).
+not o_stoppedIn_1(Var0,Var1,Var2,Var3,Var4,Var5) :-
+     terminates(Var3,Var1,Var4),
+     happens(Var3,Var4),
+     Var0 #>= Var4.
+not o_stoppedIn_1(Var0,Var1,Var2,Var3,Var4,Var5) :-
+     terminates(Var3,Var1,Var4),
+     happens(Var3,Var4),
+     Var0 #< Var4,
+     Var4 #>= Var2.
+not o_stoppedIn_1(Var0,Var1,Var2,Var3,Var4,Var5) :-
+     terminates(Var3,Var1,Var4),
+     happens(Var3,Var4),
+     Var0 #< Var4,
+     Var4 #< Var2,
+     not max_time(Var5).
+not o_stoppedIn_1(Var0,Var1,Var2,Var3,Var4,Var5) :-
+     terminates(Var3,Var1,Var4),
+     happens(Var3,Var4),
+     Var0 #< Var4,
+     Var4 #< Var2,
+     max_time(Var5),
+     Var0 #> Var5.
+not o_stoppedIn_1(Var0,Var1,Var2,Var3,Var4,Var5) :-
+     terminates(Var3,Var1,Var4),
+     happens(Var3,Var4),
+     Var0 #< Var4,
+     Var4 #< Var2,
+     max_time(Var5),
+     Var0 #=< Var5,
+     Var4 #> Var5.
+not o_stoppedIn_1(Var0,Var1,Var2,Var3,Var4,Var5) :-
+     terminates(Var3,Var1,Var4),
+     happens(Var3,Var4),
+     Var0 #< Var4,
+     Var4 #< Var2,
+     max_time(Var5),
+     Var0 #=< Var5,
+     Var4 #=< Var5,
+     Var2 #> Var5.
+
+
+% INTEGRITY CONSTRAINTS:
+global_constraint :-
+     forall(Var0,not o_chk_1(Var0)),
+     forall(Var0,forall(Var1,not o_chk_2(Var0,Var1))),
+     forall(Var0,forall(Var1,not o_chk_3(Var0,Var1))),
+     forall(Var0,forall(Var1,not o_chk_4(Var0,Var1))),
+     forall(Var0,forall(Var1,not o_chk_5(Var0,Var1))),
+     forall(Var0,forall(Var1,forall(Var2,not o_chk_6(Var0,Var1,Var2)))).
+
+not o_chk_1(Var0) :-
+     not o__chk_1_1(Var0).
+
+not o__chk_1_1(Var0) :-
+     holdsAt(on_ground,Var0),
+     holdsAt(adjustment_necessary,Var0),
+     cond_open_door(Var0).
+not o__chk_1_1(Var0) :-
+     holdsAt(on_ground,Var0),
+     not holdsAt(adjustment_necessary,Var0).
+not o__chk_1_1(Var0) :-
+     not holdsAt(on_ground,Var0).
+
+not o_chk_2(Var0,Var1) :-
+     not o__chk_2_1(Var0,Var1).
+
+not o__chk_2_1(Var0,Var1) :-
+     forall(Var2,forall(Var3,not o__chk_2_1(Var0,Var1,Var2,Var3))).
+
+not o__chk_2_1(Var0,Var1,Var2,Var3) :-
+     Var0 = req_open_door_true,
+     not cond_open_door(Var2),
+     cond_open_door(Var3),
+     Var3 #> Var2,
+     Var3 #< Var2+0.1,
+     inf(Var3,Var1),
+     becomes(req_open_door_true,Var1).
+not o__chk_2_1(Var0,Var1,Var2,Var3) :-
+     Var0 = req_open_door_true,
+     not cond_open_door(Var2),
+     cond_open_door(Var3),
+     Var3 #> Var2,
+     Var3 #< Var2+0.1,
+     not inf(Var3,Var1).
+not o__chk_2_1(Var0,Var1,Var2,Var3) :-
+     Var0 = req_open_door_true,
+     not cond_open_door(Var2),
+     cond_open_door(Var3),
+     Var3 #> Var2,
+     Var3 #>= Var2+0.1.
+not o__chk_2_1(Var0,Var1,Var2,Var3) :-
+     Var0 = req_open_door_true,
+     not cond_open_door(Var2),
+     cond_open_door(Var3),
+     Var3 #=< Var2.
+not o__chk_2_1(Var0,Var1,Var2,Var3) :-
+     Var0 = req_open_door_true,
+     not cond_open_door(Var2),
+     not cond_open_door(Var3).
+not o__chk_2_1(Var0,Var1,Var2,Var3) :-
+     Var0 = req_open_door_true,
+     cond_open_door(Var2).
+not o__chk_2_1(Var0,Var1,Var2,Var3) :-
+     Var0 \= req_open_door_true.
+
+not o_chk_3(Var0,Var1) :-
+     not o__chk_3_1(Var0,Var1).
+
+not o__chk_3_1(Var0,Var1) :-
+     forall(Var2,forall(Var3,not o__chk_3_1(Var0,Var1,Var2,Var3))).
+
+not o__chk_3_1(Var0,Var1,Var2,Var3) :-
+     Var0 = e3,
+     holdsAt(opening_door_2,Var2),
+     Var3 #> Var2+5,
+     inf(Var3,Var1),
+     happens(e3,Var1).
+not o__chk_3_1(Var0,Var1,Var2,Var3) :-
+     Var0 = e3,
+     holdsAt(opening_door_2,Var2),
+     Var3 #> Var2+5,
+     not inf(Var3,Var1).
+not o__chk_3_1(Var0,Var1,Var2,Var3) :-
+     Var0 = e3,
+     holdsAt(opening_door_2,Var2),
+     Var3 #=< Var2+5.
+not o__chk_3_1(Var0,Var1,Var2,Var3) :-
+     Var0 = e3,
+     not holdsAt(opening_door_2,Var2).
+not o__chk_3_1(Var0,Var1,Var2,Var3) :-
+     Var0 \= e3.
+
+not o_chk_4(Var0,Var1) :-
+     not o__chk_4_1(Var0,Var1).
+
+not o__chk_4_1(Var0,Var1) :-
+     Var0 = open_door,
+     becomes(req_open_door_true,Var1),
+     happens(open_door,Var1).
+not o__chk_4_1(Var0,Var1) :-
+     Var0 = open_door,
+     not becomes(req_open_door_true,Var1).
+not o__chk_4_1(Var0,Var1) :-
+     Var0 \= open_door.
+
+not o_chk_5(Var0,Var1) :-
+     not o__chk_5_1(Var0,Var1).
+
+not o__chk_5_1(Var0,Var1) :-
+     forall(Var2,forall(Var3,forall(Var4,not o__chk_5_1(Var0,Var1,Var2,Var3,Var4)))).
+
+not o__chk_5_1(Var0,Var1,Var2,Var3,Var4) :-
+     initiates(Var2,Var0,Var3),
+     happens(Var2,Var3),
+     Var3 #< Var1,
+     max_time(Var4),
+     Var3 #=< Var4,
+     Var1 #=< Var4,
+     not stoppedIn(Var3,Var0,Var1),
+     holdsAt(Var0,Var1).
+not o__chk_5_1(Var0,Var1,Var2,Var3,Var4) :-
+     initiates(Var2,Var0,Var3),
+     happens(Var2,Var3),
+     Var3 #< Var1,
+     max_time(Var4),
+     Var3 #=< Var4,
+     Var1 #=< Var4,
+     stoppedIn(Var3,Var0,Var1).
+not o__chk_5_1(Var0,Var1,Var2,Var3,Var4) :-
+     initiates(Var2,Var0,Var3),
+     happens(Var2,Var3),
+     Var3 #< Var1,
+     max_time(Var4),
+     Var3 #=< Var4,
+     Var1 #> Var4.
+not o__chk_5_1(Var0,Var1,Var2,Var3,Var4) :-
+     initiates(Var2,Var0,Var3),
+     happens(Var2,Var3),
+     Var3 #< Var1,
+     max_time(Var4),
+     Var3 #> Var4.
+not o__chk_5_1(Var0,Var1,Var2,Var3,Var4) :-
+     initiates(Var2,Var0,Var3),
+     happens(Var2,Var3),
+     Var3 #< Var1,
+     not max_time(Var4).
+not o__chk_5_1(Var0,Var1,Var2,Var3,Var4) :-
+     initiates(Var2,Var0,Var3),
+     happens(Var2,Var3),
+     Var3 #>= Var1.
+not o__chk_5_1(Var0,Var1,Var2,Var3,Var4) :-
+     initiates(Var2,Var0,Var3),
+     not happens(Var2,Var3).
+not o__chk_5_1(Var0,Var1,Var2,Var3,Var4) :-
+     not initiates(Var2,Var0,Var3).
+
+not o_chk_6(Var0,Var1,Var2) :-
+     not o__chk_6_1(Var0,Var1,Var2).
+
+not o__chk_6_1(Var0,Var1,Var2) :-
+     forall(Var3,forall(Var4,forall(Var5,not o__chk_6_1(Var0,Var1,Var2,Var3,Var4,Var5)))).
+
+not o__chk_6_1(Var0,Var1,Var2,Var3,Var4,Var5) :-
+     terminates(Var3,Var1,Var4),
+     happens(Var3,Var4),
+     Var0 #< Var4,
+     Var4 #< Var2,
+     max_time(Var5),
+     Var0 #=< Var5,
+     Var4 #=< Var5,
+     Var2 #=< Var5,
+     stoppedIn(Var0,Var1,Var2).
+not o__chk_6_1(Var0,Var1,Var2,Var3,Var4,Var5) :-
+     terminates(Var3,Var1,Var4),
+     happens(Var3,Var4),
+     Var0 #< Var4,
+     Var4 #< Var2,
+     max_time(Var5),
+     Var0 #=< Var5,
+     Var4 #=< Var5,
+     Var2 #> Var5.
+not o__chk_6_1(Var0,Var1,Var2,Var3,Var4,Var5) :-
+     terminates(Var3,Var1,Var4),
+     happens(Var3,Var4),
+     Var0 #< Var4,
+     Var4 #< Var2,
+     max_time(Var5),
+     Var0 #=< Var5,
+     Var4 #> Var5.
+not o__chk_6_1(Var0,Var1,Var2,Var3,Var4,Var5) :-
+     terminates(Var3,Var1,Var4),
+     happens(Var3,Var4),
+     Var0 #< Var4,
+     Var4 #< Var2,
+     max_time(Var5),
+     Var0 #> Var5.
+not o__chk_6_1(Var0,Var1,Var2,Var3,Var4,Var5) :-
+     terminates(Var3,Var1,Var4),
+     happens(Var3,Var4),
+     Var0 #< Var4,
+     Var4 #< Var2,
+     not max_time(Var5).
+not o__chk_6_1(Var0,Var1,Var2,Var3,Var4,Var5) :-
+     terminates(Var3,Var1,Var4),
+     happens(Var3,Var4),
+     Var0 #< Var4,
+     Var4 #>= Var2.
+not o__chk_6_1(Var0,Var1,Var2,Var3,Var4,Var5) :-
+     terminates(Var3,Var1,Var4),
+     happens(Var3,Var4),
+     Var0 #>= Var4.
+not o__chk_6_1(Var0,Var1,Var2,Var3,Var4,Var5) :-
+     terminates(Var3,Var1,Var4),
+     not happens(Var3,Var4).
+not o__chk_6_1(Var0,Var1,Var2,Var3,Var4,Var5) :-
+     not terminates(Var3,Var1,Var4).
+
