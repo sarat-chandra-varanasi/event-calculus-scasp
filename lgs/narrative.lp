@@ -1,8 +1,9 @@
 #include 'lgs_definitions.lp'.
+#include 'requirements.lp'.
 
-initiallyP(closing).
+initiallyN(closing).
 initiallyN(opening).
 
 
-initiallyP(extending).
+initiallyN(extending).
 initiallyN(retracting).
